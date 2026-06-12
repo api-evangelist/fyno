@@ -1,0 +1,117 @@
+vocabulary:
+  - term: distinct_id
+    definition: >
+      A unique identifier for a user within the Fyno platform, sourced from the
+      integrating application's own user identity system. Used to look up channel
+      destinations from the user's profile and to tag notification logs.
+    domain: Identity
+
+  - term: WSID
+    definition: >
+      Workspace ID — a unique identifier for a Fyno account workspace. Included
+      as a path parameter in every API request. Obtained from the API Keys page
+      in the Fyno dashboard.
+    domain: Authentication
+
+  - term: event
+    definition: >
+      A named notification trigger configured in the Fyno dashboard. An event
+      references one or more templates and a routing policy that determines which
+      channels and providers are used for delivery.
+    domain: Notifications
+
+  - term: version
+    definition: >
+      Specifies which environment a notification is sent through. Accepted values
+      are "live" (production) and "test" (sandbox). Test mode sends to test
+      provider configurations without reaching real users.
+    domain: Environments
+
+  - term: to
+    definition: >
+      An object in the event request payload that provides explicit channel
+      destination addresses (phone numbers, email addresses, push tokens, etc.).
+      When supplied alongside distinct_id, the to object values take precedence
+      over profile channel data for the specified channels.
+    domain: Notifications
+
+  - term: channel
+    definition: >
+      A communication medium through which notifications are delivered. Fyno
+      supports SMS, WhatsApp, Email, Push, In-App, Slack, Discord, Microsoft
+      Teams, Voice, RCS, and iMessage channels.
+    domain: Channels
+
+  - term: template
+    definition: >
+      A pre-configured message design associated with a notification event.
+      Templates define the content and formatting of notifications per channel
+      and support variable interpolation using the data payload.
+    domain: Content
+
+  - term: data
+    definition: >
+      A key-value map included in the event request that supplies variable values
+      for template rendering. Keys correspond to placeholders defined in the
+      notification template.
+    domain: Content
+
+  - term: suppression_list
+    definition: >
+      A global list of users and channel destinations that are excluded from
+      receiving notifications. Entries can represent opt-outs, DND registrations,
+      or policy-based blocks and support optional expiry timestamps.
+    domain: Compliance
+
+  - term: callback
+    definition: >
+      An optional webhook configuration within an event request specifying a URL
+      (and optional headers) to receive delivery status updates for the triggered
+      notification.
+    domain: Webhooks
+
+  - term: idempotency_key
+    definition: >
+      An optional client-generated string included in event requests to prevent
+      duplicate notification processing if the same request is retried.
+    domain: Reliability
+
+  - term: profile
+    definition: >
+      A stored record in Fyno representing a single user, containing their
+      channel destination identifiers, custom properties, timezone, and
+      subscription preferences.
+    domain: Identity
+
+  - term: subscription
+    definition: >
+      A user's opt-in or opt-out preference for receiving notifications on a
+      specific channel or for a specific notification category.
+    domain: Preferences
+
+  - term: Fyno Verify
+    definition: >
+      A bundled Fyno service that provides OTP (one-time password) and TOTP
+      (time-based OTP) generation and validation for user authentication flows
+      via SMS, email, or authenticator apps.
+    domain: Authentication
+
+  - term: Fyno Shorty
+    definition: >
+      A bundled URL shortening service included with the Fyno platform, used to
+      create trackable short links for inclusion in notification messages.
+    domain: Utilities
+
+  - term: routing_engine
+    definition: >
+      The Fyno platform component that evaluates provider availability, throttle
+      limits, and routing rules to determine which communication provider delivers
+      each notification.
+    domain: Infrastructure
+
+  - term: workflow
+    definition: >
+      A no-code sequence of steps configured in the Fyno dashboard that defines
+      conditional logic, channel fallbacks, delays, and retry policies for a
+      notification event.
+    domain: Orchestration

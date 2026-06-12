@@ -1,0 +1,47 @@
+{
+  "summary": "Create a new user profile with multi-channel destinations",
+  "description": "Creates a Fyno user profile with SMS, email, and push channel data plus custom properties for segmentation.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.fyno.io/v1/{WSID}/live/profiles",
+    "headers": {
+      "Authorization": "Bearer <API_KEY>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "distinct_id": "user-12345",
+      "name": "Jane Doe",
+      "channels": {
+        "sms": {
+          "channel_data": {
+            "number": "919876543210"
+          }
+        },
+        "email": {
+          "channel_data": {
+            "email": "jane@example.com"
+          }
+        },
+        "whatsapp": {
+          "channel_data": {
+            "number": "919876543210"
+          }
+        }
+      },
+      "properties": {
+        "plan": "growth",
+        "country": "IN",
+        "signup_date": "2026-01-10T00:00:00Z",
+        "ltv": 4500
+      },
+      "timezone": "Asia/Kolkata"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "message": "Profile created successfully",
+      "distinct_id": "user-12345"
+    }
+  }
+}

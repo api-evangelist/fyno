@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fyno/main/json-schema/fyno-user-profile-schema.json",
+  "title": "Fyno User Profile",
+  "description": "Schema for creating or updating a user profile in the Fyno platform.",
+  "type": "object",
+  "required": ["distinct_id"],
+  "properties": {
+    "distinct_id": {
+      "type": "string",
+      "description": "Unique identifier for the user within your system.",
+      "example": "user-12345"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name of the user.",
+      "example": "Jane Doe"
+    },
+    "channels": {
+      "type": "object",
+      "description": "Channel-specific destination identifiers for the user.",
+      "properties": {
+        "sms": {
+          "type": "object",
+          "properties": {
+            "channel_data": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "type": "string",
+                  "description": "Phone number in E.164 format.",
+                  "example": "919XXXXXXXXX"
+                }
+              },
+              "required": ["number"]
+            }
+          }
+        },
+        "whatsapp": {
+          "type": "object",
+          "properties": {
+            "channel_data": {
+              "type": "object",
+              "properties": {
+                "number": {
+                  "type": "string",
+                  "description": "WhatsApp phone number in E.164 format.",
+                  "example": "919XXXXXXXXX"
+                }
+              },
+              "required": ["number"]
+            }
+          }
+        },
+        "email": {
+          "type": "object",
+          "properties": {
+            "channel_data": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "Email address of the user.",
+                  "example": "jane@example.com"
+                }
+              },
+              "required": ["email"]
+            }
+          }
+        },
+        "push": {
+          "type": "object",
+          "properties": {
+            "channel_data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "token": { "type": "string" },
+                  "provider": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "inapp": {
+          "type": "object",
+          "properties": {
+            "channel_data": {
+              "type": "object",
+              "properties": {
+                "user_id": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "properties": {
+      "type": "object",
+      "description": "Custom user properties for segmentation and personalization.",
+      "additionalProperties": true,
+      "example": {
+        "plan": "growth",
+        "country": "IN",
+        "ltv": 4500
+      }
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone identifier for the user, used for DND and scheduling.",
+      "example": "Asia/Kolkata"
+    }
+  }
+}

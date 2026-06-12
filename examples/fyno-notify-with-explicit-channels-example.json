@@ -1,0 +1,31 @@
+{
+  "summary": "Notify a user with explicit channel destinations (no profile lookup)",
+  "description": "Fires a one-time_password notification using the to object. No distinct_id is provided so no profile lookup occurs.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.fyno.io/v1/{WSID}/live/event",
+    "headers": {
+      "Authorization": "Bearer <API_KEY>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "event": "one_time_password",
+      "to": {
+        "sms": "919876543210",
+        "email": "user@example.com"
+      },
+      "data": {
+        "otp": "847261",
+        "expires_in_minutes": 10
+      },
+      "idempotency_key": "idem-otp-session-xyz"
+    }
+  },
+  "response": {
+    "status": 202,
+    "body": {
+      "requestId": "req_def456uvw",
+      "message": "Request accepted"
+    }
+  }
+}

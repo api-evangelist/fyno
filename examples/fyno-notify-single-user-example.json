@@ -1,0 +1,36 @@
+{
+  "summary": "Notify a single user via distinct_id with template data",
+  "description": "Fires an order_confirmation notification event for a known user. Fyno resolves channel destinations from the user profile.",
+  "request": {
+    "method": "POST",
+    "url": "https://api.fyno.io/v1/{WSID}/live/event",
+    "headers": {
+      "Authorization": "Bearer <API_KEY>",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "event": "order_confirmation",
+      "distinct_id": "user-12345",
+      "data": {
+        "order_id": "ORD-9876",
+        "amount": 1200,
+        "currency": "INR",
+        "customer_name": "Jane Doe",
+        "estimated_delivery": "2026-06-15"
+      },
+      "callback": {
+        "url": "https://yourserver.example.com/fyno/webhook",
+        "headers": {
+          "x-secret": "mysecret"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 202,
+    "body": {
+      "requestId": "req_abc123xyz",
+      "message": "Request accepted"
+    }
+  }
+}

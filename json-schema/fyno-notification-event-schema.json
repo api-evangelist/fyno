@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fyno/main/json-schema/fyno-notification-event-schema.json",
+  "title": "Fyno Notification Event",
+  "description": "Schema for firing a notification event via the Fyno REST API. At least one of distinct_id or to must be provided.",
+  "type": "object",
+  "properties": {
+    "event": {
+      "type": "string",
+      "description": "The name of the notification event configured in your Fyno account.",
+      "example": "order_confirmation"
+    },
+    "distinct_id": {
+      "type": "string",
+      "description": "Unique identifier for the user whose profile channels will be used for delivery.",
+      "example": "user-12345"
+    },
+    "to": {
+      "type": "object",
+      "description": "Explicit destination channel addresses. Overrides profile channel data when distinct_id is also supplied.",
+      "properties": {
+        "sms": {
+          "type": "string",
+          "description": "Phone number in E.164 format for SMS delivery.",
+          "example": "919XXXXXXXXX"
+        },
+        "whatsapp": {
+          "type": "string",
+          "description": "Phone number in E.164 format for WhatsApp delivery.",
+          "example": "919XXXXXXXXX"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address for email delivery.",
+          "example": "user@example.com"
+        },
+        "push": {
+          "type": "array",
+          "description": "Push notification tokens.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "token": { "type": "string" },
+              "provider": { "type": "string" }
+            }
+          }
+        },
+        "inapp": {
+          "type": "string",
+          "description": "In-app notification channel identifier."
+        },
+        "slack": {
+          "type": "object",
+          "description": "Slack destination details.",
+          "properties": {
+            "channel": { "type": "string" },
+            "webhook_url": { "type": "string" }
+          }
+        },
+        "voice": {
+          "type": "string",
+          "description": "Phone number for voice call delivery.",
+          "example": "919XXXXXXXXX"
+        }
+      },
+      "additionalProperties": true
+    },
+    "data": {
+      "type": "object",
+      "description": "Template variable data used to populate notification content.",
+      "additionalProperties": true,
+      "example": {
+        "order_id": "ORD-9876",
+        "amount": 1200,
+        "customer_name": "Jane Doe"
+      }
+    },
+    "callback": {
+      "type": "object",
+      "description": "Optional webhook callback configuration for delivery status updates.",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to POST delivery status updates to."
+        },
+        "headers": {
+          "type": "object",
+          "description": "Additional HTTP headers to send with the callback request.",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "idempotency_key": {
+      "type": "string",
+      "description": "Optional key to prevent duplicate event processing.",
+      "example": "idem-abc-001"
+    }
+  },
+  "required": ["event"],
+  "anyOf": [
+    { "required": ["distinct_id"] },
+    { "required": ["to"] }
+  ]
+}

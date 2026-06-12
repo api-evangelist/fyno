@@ -1,0 +1,130 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "fyno": "https://fyno.io/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "NotificationEvent": {
+      "@id": "fyno:NotificationEvent",
+      "@type": "@id",
+      "rdfs:comment": "A named trigger that dispatches notifications to one or more users across configured channels."
+    },
+    "UserProfile": {
+      "@id": "fyno:UserProfile",
+      "@type": "@id",
+      "rdfs:comment": "A stored record representing a user's channel destinations, properties, and preferences."
+    },
+    "SuppressionEntry": {
+      "@id": "fyno:SuppressionEntry",
+      "@type": "@id",
+      "rdfs:comment": "A record blocking notification delivery to a specific user or destination on a channel."
+    },
+    "Workspace": {
+      "@id": "fyno:Workspace",
+      "@type": "@id",
+      "rdfs:comment": "An isolated Fyno account environment identified by a workspace ID (WSID)."
+    },
+
+    "distinct_id": {
+      "@id": "fyno:distinctId",
+      "@type": "xsd:string",
+      "rdfs:comment": "Unique user identifier in the integrating application's identity system."
+    },
+    "event": {
+      "@id": "fyno:event",
+      "@type": "xsd:string",
+      "rdfs:comment": "The name of the notification event to trigger."
+    },
+    "to": {
+      "@id": "fyno:to",
+      "@type": "@id",
+      "rdfs:comment": "Explicit channel destination addresses for the notification."
+    },
+    "data": {
+      "@id": "fyno:templateData",
+      "@type": "@id",
+      "rdfs:comment": "Key-value map of template variable values."
+    },
+    "channel": {
+      "@id": "fyno:channel",
+      "@type": "xsd:string",
+      "rdfs:comment": "Communication channel (sms, email, whatsapp, push, inapp, voice, etc.)."
+    },
+    "WSID": {
+      "@id": "fyno:workspaceId",
+      "@type": "xsd:string",
+      "rdfs:comment": "Workspace ID path parameter identifying the Fyno account environment."
+    },
+    "version": {
+      "@id": "fyno:version",
+      "@type": "xsd:string",
+      "rdfs:comment": "Deployment environment: live or test."
+    },
+    "callback": {
+      "@id": "fyno:callback",
+      "@type": "@id",
+      "rdfs:comment": "Webhook configuration for delivery status callbacks."
+    },
+    "idempotency_key": {
+      "@id": "fyno:idempotencyKey",
+      "@type": "xsd:string",
+      "rdfs:comment": "Client-supplied key for idempotent event processing."
+    },
+    "timezone": {
+      "@id": "schema:timezone",
+      "@type": "xsd:string",
+      "rdfs:comment": "IANA timezone identifier for the user profile."
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "sms": {
+      "@id": "fyno:smsChannel",
+      "@type": "@id"
+    },
+    "whatsapp": {
+      "@id": "fyno:whatsappChannel",
+      "@type": "@id"
+    },
+    "push": {
+      "@id": "fyno:pushChannel",
+      "@type": "@id"
+    },
+    "inapp": {
+      "@id": "fyno:inappChannel",
+      "@type": "@id"
+    },
+    "voice": {
+      "@id": "fyno:voiceChannel",
+      "@type": "@id"
+    },
+    "slack": {
+      "@id": "fyno:slackChannel",
+      "@type": "@id"
+    },
+    "destination": {
+      "@id": "fyno:destination",
+      "@type": "xsd:string",
+      "rdfs:comment": "Phone number or email of a suppressed user."
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "expiry_ts": {
+      "@id": "fyno:expiryTimestamp",
+      "@type": "xsd:dateTime",
+      "rdfs:comment": "Optional timestamp after which the suppression entry expires."
+    }
+  }
+}

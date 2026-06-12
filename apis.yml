@@ -49,6 +49,20 @@ apis:
         url: https://fyno.io/docs/notification-event-creation
       - type: APIReference
         url: https://fyno.io/docs/api-reference
+      - type: OpenAPI
+        url: openapi/fyno-notification-events-openapi.yml
+      - type: JSONSchema
+        url: json-schema/fyno-notification-event-schema.json
+      - type: JSONSchema
+        url: json-schema/fyno-user-profile-schema.json
+      - type: Example
+        url: examples/fyno-notify-single-user-example.json
+      - type: Example
+        url: examples/fyno-notify-with-explicit-channels-example.json
+      - type: Example
+        url: examples/fyno-bulk-notify-example.json
+      - type: Example
+        url: examples/fyno-create-user-profile-example.json
 
   - aid: fyno:user-profiles
     name: Fyno User Profiles API
@@ -158,6 +172,12 @@ common:
 
   - type: FinOps
     url: finops/fyno-finops.yml
+
+  - type: Vocabulary
+    url: vocabulary/fyno-vocabulary.yml
+
+  - type: JSONLDContext
+    url: json-ld/fyno-context.jsonld
 
 maintainers:
   - FN: Kin Lane
