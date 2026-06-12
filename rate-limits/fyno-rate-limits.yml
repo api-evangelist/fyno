@@ -1,0 +1,70 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: Fyno
+providerId: fyno
+created: '2026-06-12'
+modified: '2026-06-12'
+
+description: >
+  Fyno's public API documentation does not publish explicit per-second or per-minute
+  rate limit values. Monthly API request quotas are enforced at the plan level.
+  The platform includes automated throttling to manage downstream provider rate limits
+  (e.g., WhatsApp TPS, SMS MPS) transparently. A 429 Too Many Requests response is
+  returned when limits are exceeded. Idempotency keys expire after 24 hours.
+
+retryAfter: true
+throttledStatusCode: 429
+
+headers:
+  - name: Idempotency-Key
+    description: >
+      Optional header for idempotent requests on Live Notification Event, Bulk Event,
+      and Automation APIs. Keys expire after 24 hours.
+    format: string
+    scope: Live API requests only
+
+limits:
+
+  - name: Monthly API Request Quota — Starter
+    scope: workspace
+    metric: api_requests
+    limit: 200000
+    timeFrame: monthly
+    notes: Overage billed at $75 USD per 1M additional requests
+
+  - name: Monthly API Request Quota — Growth
+    scope: workspace
+    metric: api_requests
+    limit: 800000
+    timeFrame: monthly
+    notes: Overage billed at $55 USD per 1M additional requests
+
+  - name: Monthly API Request Quota — Business
+    scope: workspace
+    metric: api_requests
+    limit: 3500000
+    timeFrame: monthly
+    notes: Overage billed at $40 USD per 1M additional requests
+
+  - name: Monthly API Request Quota — Enterprise
+    scope: workspace
+    metric: api_requests
+    limit: 12500000
+    timeFrame: monthly
+    notes: Overage billed at $30 USD per 1M additional requests; custom limits negotiable
+
+  - name: Free Trial API Request Limit
+    scope: workspace
+    metric: api_requests
+    limit: 50000
+    timeFrame: trial_period
+    notes: 14-day trial period
+
+  - name: Idempotency Key Expiry
+    scope: request
+    metric: idempotency_key_ttl
+    limit: 24
+    timeFrame: hours
+    notes: >
+      Idempotency keys are purged after 24 hours and become eligible for reuse.
+      Only supported on Live version of Event, Event Bulk, and Automation APIs.

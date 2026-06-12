@@ -1,0 +1,248 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: Fyno
+providerId: fyno
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+
+type: paid
+description: >
+  Fyno offers annual subscription plans with a 14-day free trial (50,000 API requests).
+  Plans are differentiated by monthly API request volume, feature access (workflow layer,
+  campaigns, multi-tenancy, data exchange), and support level. No perpetual free tier is
+  offered. Pricing is listed in both INR and USD.
+
+plans:
+
+  - name: Free Trial
+    type: free
+    description: 14-day trial with 50,000 API requests, full platform access for evaluation.
+    price: 0
+    currency: USD
+    period: trial
+    quota:
+      - metric: api_requests
+        limit: 50000
+        timeFrame: trial_period
+        type: quota
+    features:
+      - type: boolean
+        name: Trial Access
+        value: true
+
+  - name: Starter
+    type: paid
+    description: >
+      Entry-level annual plan suitable for small teams. Includes core notification
+      event firing, 7-day log retention, and standard chat support. Does not include
+      workflow layer, data exchange, or campaign features.
+    price: 3000
+    currency: USD
+    period: annual
+    quota:
+      - metric: api_requests
+        limit: 200000
+        timeFrame: monthly
+        type: quota
+      - metric: api_requests_annual
+        limit: 2400000
+        timeFrame: annual
+        type: quota
+    metered:
+      - metric: api_requests_overage
+        price: 75
+        currency: USD
+        per: 1000000
+        unit: api_requests
+    features:
+      - type: boolean
+        name: Notification Events API
+        value: true
+      - type: boolean
+        name: Workflow Layer
+        value: false
+      - type: boolean
+        name: Campaign Feature
+        value: false
+      - type: boolean
+        name: Data Exchange
+        value: false
+      - type: boolean
+        name: Multi-Tenancy
+        value: false
+      - type: string
+        name: Log Retention
+        value: 7 days
+      - type: string
+        name: Support
+        value: Standard chat support
+
+  - name: Growth
+    type: paid
+    description: >
+      Mid-tier annual plan for growing teams. Adds workflow builder, campaign management,
+      in-app and push SDK support, and 30-day log retention. Includes Fyno Verify and
+      Fyno Shorty at no extra cost.
+    price: 8000
+    currency: USD
+    period: annual
+    quota:
+      - metric: api_requests
+        limit: 800000
+        timeFrame: monthly
+        type: quota
+      - metric: api_requests_annual
+        limit: 9600000
+        timeFrame: annual
+        type: quota
+    metered:
+      - metric: api_requests_overage
+        price: 55
+        currency: USD
+        per: 1000000
+        unit: api_requests
+    features:
+      - type: boolean
+        name: Notification Events API
+        value: true
+      - type: boolean
+        name: Workflow Layer
+        value: true
+      - type: boolean
+        name: Campaign Feature
+        value: true
+      - type: boolean
+        name: In-App SDK
+        value: true
+      - type: boolean
+        name: Push SDK
+        value: true
+      - type: boolean
+        name: Fyno Verify (OTP)
+        value: true
+      - type: boolean
+        name: Fyno Shorty (URL shortener)
+        value: true
+      - type: boolean
+        name: Data Exchange
+        value: false
+      - type: boolean
+        name: Multi-Tenancy
+        value: false
+      - type: string
+        name: Log Retention
+        value: 30 days
+      - type: string
+        name: Support
+        value: Standard chat support
+
+  - name: Business
+    type: paid
+    description: >
+      Advanced plan for larger organizations. Adds workflow data exchange, intelligent
+      routing, notification batching, multi-tenancy, and role-based access control.
+      Includes priority support. Does not include custom integrations.
+    price: 25000
+    currency: USD
+    period: annual
+    quota:
+      - metric: api_requests
+        limit: 3500000
+        timeFrame: monthly
+        type: quota
+      - metric: api_requests_annual
+        limit: 42000000
+        timeFrame: annual
+        type: quota
+    metered:
+      - metric: api_requests_overage
+        price: 40
+        currency: USD
+        per: 1000000
+        unit: api_requests
+    features:
+      - type: boolean
+        name: Notification Events API
+        value: true
+      - type: boolean
+        name: Workflow Layer with Data Exchange
+        value: true
+      - type: boolean
+        name: Campaign Feature
+        value: true
+      - type: boolean
+        name: In-App SDK
+        value: true
+      - type: boolean
+        name: Push SDK
+        value: true
+      - type: boolean
+        name: Fyno Verify (OTP)
+        value: true
+      - type: boolean
+        name: Fyno Shorty (URL shortener)
+        value: true
+      - type: boolean
+        name: Routing Engine
+        value: true
+      - type: boolean
+        name: Notification Batching
+        value: true
+      - type: boolean
+        name: Multi-Tenancy
+        value: true
+      - type: boolean
+        name: Role-Based Access Control
+        value: true
+      - type: boolean
+        name: Custom Integrations
+        value: false
+      - type: string
+        name: Log Retention
+        value: 90 days
+      - type: string
+        name: SLA
+        value: 99.5% uptime
+      - type: string
+        name: Support
+        value: Priority support
+
+  - name: Enterprise
+    type: enterprise
+    description: >
+      Full-featured plan for large-scale deployments. Includes all Business features
+      plus custom integrations, a dedicated key account manager, custom SLA, and
+      volume pricing. Contact sales for exact pricing.
+    price: 60000
+    currency: USD
+    period: annual
+    priceNote: Starting price; custom quotes available
+    quota:
+      - metric: api_requests
+        limit: 12500000
+        timeFrame: monthly
+        type: quota
+      - metric: api_requests_annual
+        limit: 150000000
+        timeFrame: annual
+        type: quota
+    metered:
+      - metric: api_requests_overage
+        price: 30
+        currency: USD
+        per: 1000000
+        unit: api_requests
+    features:
+      - type: boolean
+        name: All Business Features
+        value: true
+      - type: boolean
+        name: Custom Integrations
+        value: true
+      - type: boolean
+        name: Key Account Manager
+        value: true
+      - type: string
+        name: Support
+        value: Custom SLA + dedicated support

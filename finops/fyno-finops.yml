@@ -1,0 +1,93 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: Fyno
+providerId: fyno
+created: '2026-06-12'
+modified: '2026-06-12'
+
+description: >
+  Fyno uses a subscription-based billing model with annual plan tiers and metered
+  overage charges. The primary cost driver is API request volume (notifications
+  triggered). Plans include bundled monthly quotas; consumption above quota is
+  billed per million additional API requests at decreasing rates on higher tiers.
+
+billingModel: subscription_with_overage
+billingCycle: annual
+currency: USD
+
+focusColumns:
+  - BilledCost
+  - UsageQuantity
+  - ResourceType
+  - ServiceName
+  - SkuPriceId
+  - ChargeType
+
+meters:
+
+  - name: API Requests (Included)
+    unit: api_requests
+    chargeType: included_in_subscription
+    description: >
+      Monthly notification API request quota bundled with each plan tier.
+      Each API request represents a payload processed to trigger a message
+      to a user/customer on one or more configured channels, or a data
+      exchange triggered externally via workflows.
+    tiers:
+      - plan: Starter
+        included: 200000
+        period: monthly
+      - plan: Growth
+        included: 800000
+        period: monthly
+      - plan: Business
+        included: 3500000
+        period: monthly
+      - plan: Enterprise
+        included: 12500000
+        period: monthly
+
+  - name: API Requests Overage
+    unit: api_requests
+    chargeType: metered_overage
+    description: >
+      Per-million overage charge applied when monthly API request quota is exceeded.
+      Overage rates decrease on higher plan tiers.
+    rates:
+      - plan: Starter
+        pricePerMillion: 75
+        currency: USD
+      - plan: Growth
+        pricePerMillion: 55
+        currency: USD
+      - plan: Business
+        pricePerMillion: 40
+        currency: USD
+      - plan: Enterprise
+        pricePerMillion: 30
+        currency: USD
+
+principles:
+
+  - name: Visibility
+    description: >
+      Fyno's dashboard provides real-time analytics on notification delivery rates,
+      channel performance, and event logs with configurable retention periods (7–90+
+      days by plan). Anomaly detection surfaces unexpected usage spikes. Analytics
+      label filters on logs and reports enable attribution of spend to specific
+      campaigns or workflows.
+
+  - name: Optimization
+    description: >
+      Higher-tier plans unlock lower overage rates per million API requests, incentivizing
+      volume consolidation. The routing engine enables automatic failover and channel
+      selection to reduce failed notification retries and wasted API calls. Automated
+      throttling against downstream provider limits prevents failed sends that would
+      still consume quota. Suppression lists eliminate sends to opted-out users.
+
+  - name: Accountability
+    description: >
+      Role-based access control (Business+) and Maker-Checker workflows with
+      approver-only roles enforce governance around campaign and workflow changes
+      that could affect spend. Multi-tenancy support (Business+) enables cost
+      attribution per tenant or product line.

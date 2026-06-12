@@ -1,0 +1,164 @@
+aid: fyno
+name: Fyno
+description: >
+  Fyno is a notification routing and orchestration platform that provides a single
+  unified REST API for sending and managing notifications across 10+ communication
+  channels including email, SMS, push, WhatsApp, in-app, RCS, voice, and iMessage.
+  Engineering teams integrate once to gain access to 100+ pre-built provider integrations,
+  a no-code workflow builder, and an advanced routing engine with automated throttling.
+  The platform provides detailed analytics, delivery tracking, user profile management,
+  suppression lists, and campaign management capabilities with a 99.99% uptime SLA.
+  Fyno also includes Fyno Verify (OTP/TOTP authentication) and Fyno Shorty (URL shortener)
+  as bundled services.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Notifications
+  - Messaging
+  - Communication
+  - Push Notifications
+  - Email
+  - SMS
+  - WhatsApp
+  - In-App
+  - Orchestration
+  - Multi-Channel
+url: https://raw.githubusercontent.com/api-evangelist/fyno/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+
+apis:
+
+  - aid: fyno:notification-events
+    name: Fyno Notification Events API
+    description: >
+      Core REST API for triggering notification events to single or multiple users
+      across all configured channels. Accepts a standardized payload with event name,
+      destination identifiers, template data, and optional callback configuration.
+      Supports idempotent requests and bulk batch sending via a single endpoint.
+    humanURL: https://fyno.io/docs/notification-event-creation
+    baseURL: https://api.fyno.io/v1
+    tags:
+      - Notifications
+      - Events
+      - Messaging
+      - Multi-Channel
+    properties:
+      - type: Documentation
+        url: https://fyno.io/docs/notification-event-creation
+      - type: APIReference
+        url: https://fyno.io/docs/api-reference
+
+  - aid: fyno:user-profiles
+    name: Fyno User Profiles API
+    description: >
+      REST API for creating, reading, updating, and deleting user profiles within
+      the Fyno platform. Supports adding and updating channel-specific destination
+      data, merging user profiles, and managing channel identifiers for targeted
+      notification delivery.
+    humanURL: https://fyno.io/docs/home
+    baseURL: https://api.fyno.io/v1
+    tags:
+      - Users
+      - Profiles
+      - Identity
+    properties:
+      - type: Documentation
+        url: https://fyno.io/docs/home
+
+  - aid: fyno:user-subscriptions
+    name: Fyno User Subscriptions API
+    description: >
+      REST API for managing user notification preferences and subscription settings.
+      Allows retrieval and updates of per-user channel preferences and opt-in/opt-out
+      controls for notification categories.
+    humanURL: https://fyno.io/docs/home
+    baseURL: https://api.fyno.io/v1
+    tags:
+      - Subscriptions
+      - Preferences
+      - Users
+    properties:
+      - type: Documentation
+        url: https://fyno.io/docs/home
+
+  - aid: fyno:suppression-list
+    name: Fyno Suppression List API
+    description: >
+      REST API for managing the global suppression list to prevent unwanted
+      notifications from being sent to specific users. Supports fetching the list,
+      adding users to suppression, and removing suppressed users with per-event
+      override capabilities.
+    humanURL: https://fyno.io/docs/home
+    baseURL: https://api.fyno.io/v1
+    tags:
+      - Suppression
+      - Compliance
+      - Users
+    properties:
+      - type: Documentation
+        url: https://fyno.io/docs/home
+
+  - aid: fyno:verify
+    name: Fyno Verify API
+    description: >
+      OTP and TOTP-based verification API for authenticating users via SMS, email,
+      or authenticator apps. Bundled with Growth and above plans at no additional
+      cost. Supports mobile SDKs for iOS (Swift) and Android (Kotlin) as well as
+      React Native.
+    humanURL: https://fyno.io/docs/home
+    baseURL: https://api.fyno.io/v1
+    tags:
+      - OTP
+      - Authentication
+      - Verification
+      - TOTP
+    properties:
+      - type: Documentation
+        url: https://fyno.io/docs/home
+
+common:
+
+  - type: Website
+    url: https://fyno.io/
+
+  - type: Documentation
+    url: https://fyno.io/docs/home
+
+  - type: APIReference
+    url: https://fyno.io/docs/api-reference
+
+  - type: GitHubOrganization
+    url: https://github.com/fynoio
+
+  - type: LinkedIn
+    url: https://in.linkedin.com/company/fyno-io
+
+  - type: X
+    url: https://x.com/fynohq
+
+  - type: Blog
+    url: https://fyno.io/blog
+
+  - type: Pricing
+    url: https://fyno.io/ratecard
+
+  - type: StatusPage
+    url: https://status.fyno.io/
+
+  - type: ChangeLog
+    url: https://fyno.io/docs/release-notes
+
+  - type: Plans
+    url: plans/fyno-plans-pricing.yml
+
+  - type: RateLimits
+    url: rate-limits/fyno-rate-limits.yml
+
+  - type: FinOps
+    url: finops/fyno-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
