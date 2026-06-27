@@ -2,6 +2,13 @@
   "repo": "fyno",
   "feeds": [
     {
+      "source": "https://www.fyno.io/blog/rss.xml",
+      "feed_url": "https://www.fyno.io/blog/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://x.com/fynohq",
       "feed_url": "https://x.com/fynohq",
       "title": "",
@@ -9,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:03:07Z",
+  "post_count": 20
 }
