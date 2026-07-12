@@ -134,6 +134,12 @@ apis:
 
 common:
 
+  - type: TrustCenter
+    url: security/fyno-trust-center.yml
+  - type: DomainSecurity
+    url: security/fyno-domain-security.yml
+  - type: Authentication
+    url: authentication/fyno-authentication.yml
   - type: Website
     url: https://fyno.io/
 

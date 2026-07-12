@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/fyno-notification-events-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: Enter your API Key. If you don't have it already, you can create one from the
+    API Keys page within your Fyno account
+  sources:
+  - openapi/fyno-notification-events-openapi.yml
