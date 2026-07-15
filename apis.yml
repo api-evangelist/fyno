@@ -134,6 +134,8 @@ apis:
 
 common:
 
+  - type: AgenticAccess
+    url: agentic-access/fyno-agentic-access.yml
   - type: TrustCenter
     url: security/fyno-trust-center.yml
   - type: DomainSecurity
