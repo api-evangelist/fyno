@@ -1,0 +1,714 @@
+openapi: 3.0.2
+info:
+  title: Fyno Rest Fire an Event User Properties API
+  version: v1
+servers:
+- url: https://api.fyno.io/v1
+security:
+- BearerAuth: []
+tags:
+- name: User Properties
+paths:
+  /{WSID}/{version}/profiles/properties/set:
+    post:
+      tags:
+      - User Properties
+      summary: Update User Property
+      description: 'This API enables you to update user properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn''t exist, it creates a new user with the provided distinct ID and updates values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will be determined based on the data type of the value. For example, if you `$set` a new property called `premium_user=true`, it will create the `premium_user` property with `Boolean` type and value `true`.<br/><br/>The property values can take the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `user_type=Premium` or `membership_number=ABC123`.</li> <li>**Number:** Can be an integer or a decimal. Example: `ltv=23000` or `cost=20.34`.</li> <li>**Boolean:** Can only contain `true` or `false` values.</li> <li>**Date:** Must be in ISO 8601 format. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> <li>**List:** Can contain an array of strings, numbers, and dates. Example: `products_ordered=[''iPhone 16 Pro'', ''iPad 32 GB'']` or `purchase_amount=[23000, 20.34]` or `purchase_date=[''2020-10-01T18:30:00Z'', ''2021-11-01T13:35:00+02:00'', ''2023-12-05'']`</li></ul>If you try to set a value with a data type that does not match the predefined property type, the API will accept the request but ignore the invalid value. For example, if a predefined property `cost` expects a numeric value and you try to set it to `ABC`, the API will not store the value.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).'
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: version
+        in: path
+        description: Specify the version for which you would like to update the user property.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: live
+          enum:
+          - live
+          - test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/set_user_property'
+        required: true
+      responses:
+        '202':
+          $ref: '#/components/responses/PropertyUpdateRequestAccepted'
+        '400':
+          $ref: '#/components/responses/EmptySetObject'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+  /{WSID}/{version}/profiles/properties/set-once:
+    post:
+      tags:
+      - User Properties
+      summary: Set an Unset Property
+      description: 'This API enables you to set user properties of your users listed in your [User Profiles](../user-profiles-overview) **only if it is currently unset.** If the given payload contains a mix of properties that are currently set and unset, then it will only add values to the properties that are currently unset and ignore the other properties. If the user with distinct ID doesn''t exist, it creates a new user with the provided distinct ID and sets values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will be determined based on the data type of the value. For example, if you `$once` a new property called `premium_user=true`, it will create the `premium_user` property with `Boolean` type and value `true`.<br/><br/>The property values can take the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `user_type=Premium` or `membership_number=ABC123`.</li> <li>**Number:** Can be an integer or a decimal. Example: `ltv=23000` or `cost=20.34`.</li> <li>**Boolean:** Can only contain `true` or `false` values.</li> <li>**Date:** Must be in ISO 8601 format. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> <li>**List:** Can contain an array of strings, numbers, and dates. Example: `products_ordered=[''iPhone 16 Pro'', ''iPad 32 GB'']` or `purchase_amount=[23000, 20.34]` or `purchase_date=[''2020-10-01T18:30:00Z'', ''2021-11-01T13:35:00+02:00'', ''2023-12-05'']`</li> </ul>If you try to set a value with a data type that does not match the predefined property type, the API will accept the request but ignore the invalid value. For example, if a predefined property `cost` expects a numeric value and you try to set it to `ABC`, the API will not store the value.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).'
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: version
+        in: path
+        description: Specify the version for which you would like to update the user property.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: live
+          enum:
+          - live
+          - test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/set_user_property_once'
+        required: true
+      responses:
+        '202':
+          $ref: '#/components/responses/PropertyUpdateRequestAccepted'
+        '400':
+          $ref: '#/components/responses/EmptySetOnceObject'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+  /{WSID}/{version}/profiles/properties/numerical-add:
+    post:
+      tags:
+      - User Properties
+      summary: Increment/Decrement Numeric Property
+      description: This API enables you to increment/decrement values of numeric properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties. To decrement property values, you can pass a negative value.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will set to `Number`. For example, if you `$add` a new property called `ltv=1200`, it will create the `ltv` property with `Number` type and value `1200`. Do not enclose the value in double quotes as they must be of numeric type.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: version
+        in: path
+        description: Specify the version for which you would like to update the user property.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: live
+          enum:
+          - live
+          - test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/increment_user_property'
+        required: true
+      responses:
+        '202':
+          $ref: '#/components/responses/PropertyUpdateRequestAccepted'
+        '400':
+          $ref: '#/components/responses/EmptyAddObject'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+  /{WSID}/{version}/profiles/properties/list-append:
+    post:
+      tags:
+      - User Properties
+      summary: Append Values to List
+      description: 'This API enables you to append values to list type properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn''t exist, it creates a new user with the provided distinct ID and updates values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will set to `List`. For example, if you `$append` a new property called `order_ids=245`, it will create the `order_ids` property with `List` type and value `[245]`. A list may contain only unique values, so if a value already exists, and you try to add the same value, it will be ignored. <br/><br/>You can append values with the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `products_order=[''iPhone 16 Pro'', ''iPad 32 GB'']`.</li> <li>**Number:** Can be an integer or a decimal. Example: `purchase_amount=[23000, 20.34]`.</li> <li>**Date:** Must be in ISO 8601 format: `YYYY-MM-DDTHH:MM:SS.sssZ`. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> </ul>You can append only one value to a property at a time. Although not recommended, a list property can contain a mix of different data types.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).'
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: version
+        in: path
+        description: Specify the version for which you would like to update the user property.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: live
+          enum:
+          - live
+          - test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/append_to_user_property'
+        required: true
+      responses:
+        '202':
+          $ref: '#/components/responses/PropertyUpdateRequestAccepted'
+        '400':
+          $ref: '#/components/responses/EmptyAppendObject'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+  /{WSID}/{version}/profiles/properties/list-remove:
+    post:
+      tags:
+      - User Properties
+      summary: Remove Value From List
+      description: This API enables you to remove existing values from the list type properties of your users listed in your [User Profiles](../user-profiles-overview). If the specified distinct ID or list property doesn't exist, it simply accepts the remove request and ignores it.<br/><br/>**Note:** This API can only be used to remove values from list and can remove only one value from a property at a time. To unset (nullify) other property types, please use [Unset User Property API.](./unset-user-property)
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: version
+        in: path
+        description: Specify the version for which you would like to update the user property.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: live
+          enum:
+          - live
+          - test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/remove_from_user_property_list'
+        required: true
+      responses:
+        '202':
+          $ref: '#/components/responses/PropertyUpdateRequestAccepted'
+        '400':
+          $ref: '#/components/responses/EmptyRemoveObject'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+  /{WSID}/{version}/profiles/properties/unset:
+    post:
+      tags:
+      - User Properties
+      summary: Unset User Property
+      description: 'This API enables you to unset (nullify) user properties of your users listed in your [User Profiles](../user-profiles-overview). If the specified distinct ID or property doesn''t exist, it simply accepts the unset request and ignores it. This API can be used to unset all property data types: String, Number, Boolean, Date, List.'
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: version
+        in: path
+        description: Specify the version for which you would like to update the user property.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: live
+          enum:
+          - live
+          - test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/unset_user_property'
+        required: true
+      responses:
+        '202':
+          $ref: '#/components/responses/PropertyUpdateRequestAccepted'
+        '400':
+          $ref: '#/components/responses/EmptyUnsetObject'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+  /{WSID}/{version}/profiles/properties/batch:
+    post:
+      tags:
+      - User Properties
+      summary: Batch Update User Properties
+      description: This API enables you to modify user properties of your users listed in your [User Profiles](../user-profiles-overview) in bulk:<br/><ul><li>[Update User Properties](./update-user-property) - `$set`</li><li>[Set Unset Properties](./set-an-unset-property) - `$once`</li><li>[Increment/Decrement Numeric Properties](./increment-decrement-numeric-property) - `$add`</li><li>[Append Values to List](./append-values-to-list) - `$append`</li><li>[Remove Values From List](./remove-value-from-list) - `$remove`, and</li><li>[Unset User Properties](./unset-user-property) `$unset`</li></ul><strong>Please refer to function specific API documentation for [&#36;set](./update-user-property), [&#36;once](./set-an-unset-property), [&#36;add](./increment-decrement-numeric-property), [&#36;append](./append-values-to-list), [&#36;remove](./remove-value-from-list), [&#36;unset](./unset-user-property) before using this API.</strong><br/></br><br/>**Note:** The user properties in User Profiles can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: version
+        in: path
+        description: Specify the version for which you would like to update the user property.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: live
+          enum:
+          - live
+          - test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user_property_bulk'
+      responses:
+        '202':
+          $ref: '#/components/responses/PropertyUpdateRequestAcceptedBulk'
+        '400':
+          $ref: '#/components/responses/EmptyActionBulkProperty'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+components:
+  responses:
+    EmptySetObject:
+      description: $set object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $set has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    APIKeyInvalid:
+      description: API Key or Workspace ID is invalid. User is unauthorised.
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Invalid API details
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptyRemoveObject:
+      description: $remove object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $remove has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptyAddObject:
+      description: $add object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $add has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptyActionBulkProperty:
+      description: $unset object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $set has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptyUnsetObject:
+      description: $unset object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $unset channel should have atleast one item in array
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    PropertyUpdateRequestAccepted:
+      description: Request has been accepted and will be processed asynchronously.
+      content:
+        application/json:
+          schema:
+            properties:
+              request_id:
+                example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                type: string
+            type: object
+            required:
+            - request_id
+    EmptyAppendObject:
+      description: $append object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $append has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptySetOnceObject:
+      description: $once object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $once has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    PropertyUpdateRequestAcceptedBulk:
+      description: Request has been accepted and will be processed asynchronously.
+      content:
+        application/json:
+          schema:
+            properties:
+              request_id:
+                example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+                type: string
+              batch:
+                type: array
+                items:
+                  properties:
+                    $set:
+                      type: string
+                      example: ok
+                    $once:
+                      type: string
+                      example: ok
+                    $add:
+                      type: string
+                      example: ok
+                    $append:
+                      type: string
+                      example: ok
+                    $remove:
+                      type: string
+                      example: ok
+                    $unset:
+                      type: string
+                      example: ok
+                  type: object
+            type: object
+            required:
+            - request_id
+            - batch
+  schemas:
+    distinct_id:
+      description: Enter the distinct ID that you use to identify the recipient.
+      example: XXXXXXXX
+      type: string
+    set_user_property_fields:
+      description: Enter the property name as JSON key and the value to set as JSON value
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number
+        - type: boolean
+        - type: string
+          format: date
+        - type: array
+      example:
+        property_1: some text
+        property_2: 123
+        property_3: 45.67
+        property_4: true
+        property_5: false
+        property_6: '2020-10-01T18:30:00.000Z'
+        property_7: '2021-12-01'
+        property_8:
+        - iPhone 16 Pro
+        - iPad 32 GB
+        property_9:
+        - 23000
+        - 20.34
+        property_n:
+        - '2020-10-01T18:30:00Z'
+        - '2021-11-01T13:35:00+02:00'
+        - '2023-12-05'
+      type: object
+    set_user_property_once:
+      properties:
+        $once:
+          $ref: '#/components/schemas/set_user_property_once_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $once
+      type: object
+    unset_user_property:
+      properties:
+        $unset:
+          $ref: '#/components/schemas/unset_user_property_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $unset
+      type: object
+    append_to_user_property:
+      properties:
+        $append:
+          $ref: '#/components/schemas/append_to_user_property_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $append
+      type: object
+    increment_user_property:
+      properties:
+        $add:
+          $ref: '#/components/schemas/increment_user_property_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $add
+      type: object
+    set_user_property:
+      properties:
+        $set:
+          $ref: '#/components/schemas/set_user_property_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $set
+      type: object
+    set_user_property_once_fields:
+      description: Enter the property name as JSON key and the value to set as JSON value
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number
+        - type: boolean
+        - type: string
+          format: date
+        - type: array
+      example:
+        property_1: some text
+        property_2: 123
+        property_3: 45.67
+        property_4: true
+        property_5: false
+        property_6: '2020-10-01T18:30:00.000Z'
+        property_7: '2021-12-01'
+        property_8:
+        - iPhone 16 Pro
+        - iPad 32 GB
+        property_9:
+        - 23000
+        - 20.34
+        property_n:
+        - '2020-10-01T18:30:00Z'
+        - '2021-11-01T13:35:00+02:00'
+        - '2023-12-05'
+      type: object
+    user_property_bulk:
+      properties:
+        batch:
+          description: Enter an array of objects with `distinct_id` and `action` to perform on the user properties
+          items:
+            type: object
+            properties:
+              distinct_id:
+                $ref: '#/components/schemas/distinct_id'
+              action:
+                type: object
+                properties:
+                  $set:
+                    $ref: '#/components/schemas/set_user_property_fields'
+                  $once:
+                    $ref: '#/components/schemas/set_user_property_once_fields'
+                  $add:
+                    $ref: '#/components/schemas/increment_user_property_fields'
+                  $append:
+                    $ref: '#/components/schemas/append_to_user_property_fields'
+                  $remove:
+                    $ref: '#/components/schemas/remove_from_user_property_list_fields'
+                  $unset:
+                    $ref: '#/components/schemas/unset_user_property_fields'
+            example:
+              distinct_id: XXXXX
+              action:
+                $set:
+                  property_1: some text
+                  property_2: 123
+                  property_3: 45.67
+                $once:
+                  property_4: true
+                  property_5:
+                  - iPhone 16 Pro
+                  - iPad 32 GB
+                  property_6: '2020-10-01T18:30:00.000Z'
+                $add:
+                  property_7: 10.23
+                  property_8: -11.9
+                  property_9: 223
+                $append:
+                  property_10: '#12345'
+                  property_11: 2030
+                  property_12: '2022-11-11T10:30:00+02:00'
+                $remove:
+                  property_13: '2023-11-10'
+                  property_14: ABC1234
+                  property_15: 4010
+                $unset:
+                - property_0
+                - old_property1
+            required:
+            - distinct_id
+            - action
+          type: array
+      required:
+      - batch
+    increment_user_property_fields:
+      description: Enter the property name as JSON key and the numeric value to increment/decrement as JSON value
+      example:
+        property_1: 23.4
+        property_2: 20301
+        property_n: -39.45
+      additionalProperties:
+        type: number
+      type: object
+    remove_from_user_property_list_fields:
+      description: Enter the property name as JSON key and the value to remove as JSON value
+      additionalProperties:
+        oneOf:
+        - type: number
+        - type: string
+        - type: string
+          format: date
+      example:
+        property_1: some text
+        property_2: 123
+        property_3: 45.67
+        property_4: '2020-10-01T18:30:00.000Z'
+        property_5: '2021-12-01'
+        property_n: '2021-11-01T13:35:00+02:00'
+      type: object
+    remove_from_user_property_list:
+      properties:
+        $remove:
+          $ref: '#/components/schemas/remove_from_user_property_list_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $remove
+      type: object
+    append_to_user_property_fields:
+      description: Enter the property name as JSON key and the numeric or string value to append as JSON value
+      additionalProperties:
+        oneOf:
+        - type: number
+        - type: string
+        - type: string
+          format: date
+      example:
+        property_1: some text
+        property_2: 123
+        property_3: 45.67
+        property_4: '2020-10-01T18:30:00.000Z'
+        property_5: '2021-12-01'
+        property_n: '2021-11-01T13:35:00+02:00'
+      type: object
+    unset_user_property_fields:
+      description: Enter the property names to unset in an array
+      example:
+      - property_1
+      - property_2
+      - property_n
+      items:
+        type: string
+      type: array
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: Enter your API Key. If you don't have it already, you can create one from the API Keys page within your Fyno account
+      scheme: bearer
+      x-fern-bearer:
+        name: apiKey
+        env: FYNO_API_KEY

@@ -1,0 +1,131 @@
+openapi: 3.0.2
+info:
+  title: Fyno Rest Fire an Event Fyno Verify API
+  version: v1
+servers:
+- url: https://api.fyno.io/v1
+security:
+- BearerAuth: []
+tags:
+- name: Fyno Verify
+paths:
+  /{WSID}/{version}/verify/validate:
+    post:
+      tags:
+      - Fyno Verify
+      summary: Verify OTP
+      description: This API enables you to validate the OTP entered by the user using either `request_id` (received in response of the Fire an Event API) or `destination` (such as phone number, email).
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: version
+        in: path
+        description: Specify the version for which you would like to manage the user profile.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          default: live
+          enum:
+          - live
+          - test
+      - name: request_id
+        in: query
+        description: Specify the request id of the triggered notification event that sent the OTP to the user.<br/>You must use this query parameter if **you've disabled "Use destination as id"** in the Fyno Verify setting.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+      - name: destination
+        in: query
+        description: Enter the destination where the OTP is sent. It can be either mobile no or email id.<br/>You must use this query parameter if **you've enabled "Use destination as id"** in the Fyno Verify setting.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: xxxxxxxxxx
+      - name: otp
+        in: query
+        description: Enter the OTP which you want to validate.
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+        example: 1234
+      responses:
+        '200':
+          $ref: '#/components/responses/OTPSuccess'
+        '400':
+          $ref: '#/components/responses/OTPInvalid'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+components:
+  responses:
+    OTPInvalid:
+      description: Invalid OTP entered by user
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: user entered the wrong OTP
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    OTPSuccess:
+      description: OTP successfully validated
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: OTP successfully validated.
+                type: string
+              status:
+                example: ok
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    APIKeyInvalid:
+      description: API Key or Workspace ID is invalid. User is unauthorised.
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Invalid API details
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: Enter your API Key. If you don't have it already, you can create one from the API Keys page within your Fyno account
+      scheme: bearer
+      x-fern-bearer:
+        name: apiKey
+        env: FYNO_API_KEY

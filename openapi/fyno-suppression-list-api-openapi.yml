@@ -1,0 +1,256 @@
+openapi: 3.0.2
+info:
+  title: Fyno Rest Fire an Event Suppression List API
+  version: v1
+servers:
+- url: https://api.fyno.io/v1
+security:
+- BearerAuth: []
+tags:
+- name: Suppression List
+paths:
+  /{WSID}/suppressions:
+    get:
+      tags:
+      - Suppression List
+      summary: Get Suppression List
+      description: The Suppression List API enables you to manage users who should be excluded from receiving communications on specific channels.<br/><br/>This API enables you to retrieve the list of all suppressed users across various channels.
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      responses:
+        '200':
+          $ref: '#/components/responses/SuppressionListSuccess'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+    post:
+      tags:
+      - Suppression List
+      summary: Add User to Suppression List
+      description: Add a user to the suppression list for a given channel.<br/><br/><strong>Note:</strong> If both `distinct_id` and `destination` are provided, `distinct_id` takes precedence, and `destination` is ignored.
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/add_suppression_list'
+      responses:
+        '200':
+          $ref: '#/components/responses/SuppressionListUpdated'
+        '400':
+          $ref: '#/components/responses/SuppressionListError'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+    delete:
+      tags:
+      - Suppression List
+      summary: Delete User from Suppression List
+      description: Delete a suppression entry using its `_id`, `distinct_id`, `destination`.<br/><br/><strong>Note:</strong> If all three values (`distinct_id`, `destination`, `_id`) are provided, `_id` takes precedence followed by `distinct_id`.
+      parameters:
+      - name: WSID
+        in: path
+        description: Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+        example: FYXXXXXXXX
+      - name: _id
+        in: query
+        description: Unique identifier of the suppression record to delete.
+        required: false
+        schema:
+          type: string
+        example: 68763be4b8cee01156d9fa8a
+      - name: distinct_id
+        in: query
+        description: Unique identifier (used as an alternative to destination)
+        required: false
+        schema:
+          type: string
+        example: XXXX-XXX-XXXX
+      - name: destination
+        in: query
+        description: Phone number or email of the suppressed user
+        required: false
+        schema:
+          type: string
+        example: 919XXXXXXXX
+      responses:
+        '200':
+          $ref: '#/components/responses/SuppressionListDeleted'
+        '400':
+          $ref: '#/components/responses/SuppressionDeleteError'
+        '401':
+          $ref: '#/components/responses/APIKeyInvalid'
+components:
+  schemas:
+    add_suppression_list:
+      oneOf:
+      - properties:
+          distinct_id:
+            type: string
+            example: XXXX-XXX-XXXX
+            description: Unique identifier (used as an alternative to destination)
+          channel:
+            type: string
+            example: sms
+            description: Communication channel (e.g., sms, whatsapp, email)
+          description:
+            type: string
+            example: DND
+            description: Reason or tag for suppression (e.g., "DND", "Testing").
+        type: object
+        required:
+        - distinct_id
+        - channel
+      - properties:
+          destination:
+            type: string
+            example: 919XXXXXXXX
+            description: Phone number or email of the suppressed user
+          channel:
+            type: string
+            example: sms
+            description: Communication channel (e.g., sms, whatsapp, email)
+          description:
+            type: string
+            example: DND
+            description: Reason or tag for suppression (e.g., "DND", "Testing").
+        type: object
+        required:
+        - destination
+        - channel
+    fetch_suppression_list:
+      properties:
+        _id:
+          type: string
+          example: 68763be4b8cee01156d9fa8a
+          description: Unique identifier of the suppression record
+        destination:
+          type: string
+          example: 919XXXXXXXX
+          description: Phone number or email of the suppressed user
+        distinct_id:
+          type: string
+          example: XXXX-XXX-XXXX
+          description: Unique identifier (used as an alternative to destination)
+        channel:
+          type: string
+          example: sms
+          description: Communication channel (e.g., sms, whatsapp, email)
+        description:
+          type: string
+          example: DND
+          description: Reason or tag for suppression (e.g., "DND", "Testing").
+        created_at:
+          type: string
+          example: '2025-07-15T16:20:16.302+05:30'
+          description: Timestamp when the suppression was created
+        expiry_ts:
+          type: string
+          example: '2025-07-15T16:25:16.302+05:30'
+          description: Optional timestamp for expiration of suppression
+      type: object
+  responses:
+    SuppressionListDeleted:
+      description: Suppression list updated.
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                example: ok
+                type: string
+              _message:
+                type: string
+                example: 1 record(s) has been deleted!
+            type: object
+    SuppressionListError:
+      description: Destination is invalid
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                example: error
+                type: string
+              _message:
+                type: string
+                example: Invalid destination for channel sms
+            type: object
+    APIKeyInvalid:
+      description: API Key or Workspace ID is invalid. User is unauthorised.
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Invalid API details
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    SuppressionListSuccess:
+      description: Suppression list fetched.
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: '#/components/schemas/fetch_suppression_list'
+            type: array
+    SuppressionDeleteError:
+      description: The provided `_id` does not exist.
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                example: error
+                type: string
+              _message:
+                type: string
+                example: Unable to delete non existing data!
+            type: object
+    SuppressionListUpdated:
+      description: Suppression list updated.
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                example: ok
+                type: string
+              _message:
+                type: string
+                example: User has been added to the suppression!
+            type: object
+  securitySchemes:
+    BearerAuth:
+      type: http
+      description: Enter your API Key. If you don't have it already, you can create one from the API Keys page within your Fyno account
+      scheme: bearer
+      x-fern-bearer:
+        name: apiKey
+        env: FYNO_API_KEY
