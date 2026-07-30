@@ -11,7 +11,20 @@ description: >
   Fyno also includes Fyno Verify (OTP/TOTP authentication) and Fyno Shorty (URL shortener)
   as bundled services.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fyno.png
 tags:
   - Notifications
   - Messaging
@@ -29,110 +42,227 @@ modified: '2026-06-12'
 specificationVersion: '0.19'
 
 apis:
-
-  - aid: fyno:notification-events
-    name: Fyno Notification Events API
-    description: >
-      Core REST API for triggering notification events to single or multiple users
-      across all configured channels. Accepts a standardized payload with event name,
-      destination identifiers, template data, and optional callback configuration.
-      Supports idempotent requests and bulk batch sending via a single endpoint.
-    humanURL: https://fyno.io/docs/notification-event-creation
-    baseURL: https://api.fyno.io/v1
-    tags:
-      - Notifications
-      - Events
-      - Messaging
-      - Multi-Channel
-    properties:
-      - type: Documentation
-        url: https://fyno.io/docs/notification-event-creation
-      - type: APIReference
-        url: https://fyno.io/docs/api-reference
-      - type: OpenAPI
-        url: openapi/fyno-notification-events-openapi.yml
-      - type: JSONSchema
-        url: json-schema/fyno-notification-event-schema.json
-      - type: JSONSchema
-        url: json-schema/fyno-user-profile-schema.json
-      - type: Examples
-        url: examples/fyno-notify-single-user-example.json
-      - type: Examples
-        url: examples/fyno-notify-with-explicit-channels-example.json
-      - type: Examples
-        url: examples/fyno-bulk-notify-example.json
-      - type: Examples
-        url: examples/fyno-create-user-profile-example.json
-
-  - aid: fyno:user-profiles
-    name: Fyno User Profiles API
-    description: >
-      REST API for creating, reading, updating, and deleting user profiles within
-      the Fyno platform. Supports adding and updating channel-specific destination
-      data, merging user profiles, and managing channel identifiers for targeted
-      notification delivery.
-    humanURL: https://fyno.io/docs/home
-    baseURL: https://api.fyno.io/v1
-    tags:
-      - Users
-      - Profiles
-      - Identity
-    properties:
-      - type: Documentation
-        url: https://fyno.io/docs/home
-
-  - aid: fyno:user-subscriptions
-    name: Fyno User Subscriptions API
-    description: >
-      REST API for managing user notification preferences and subscription settings.
-      Allows retrieval and updates of per-user channel preferences and opt-in/opt-out
-      controls for notification categories.
-    humanURL: https://fyno.io/docs/home
-    baseURL: https://api.fyno.io/v1
-    tags:
-      - Subscriptions
-      - Preferences
-      - Users
-    properties:
-      - type: Documentation
-        url: https://fyno.io/docs/home
-
-  - aid: fyno:suppression-list
-    name: Fyno Suppression List API
-    description: >
-      REST API for managing the global suppression list to prevent unwanted
-      notifications from being sent to specific users. Supports fetching the list,
-      adding users to suppression, and removing suppressed users with per-event
-      override capabilities.
-    humanURL: https://fyno.io/docs/home
-    baseURL: https://api.fyno.io/v1
-    tags:
-      - Suppression
-      - Compliance
-      - Users
-    properties:
-      - type: Documentation
-        url: https://fyno.io/docs/home
-
-  - aid: fyno:verify
-    name: Fyno Verify API
-    description: >
-      OTP and TOTP-based verification API for authenticating users via SMS, email,
-      or authenticator apps. Bundled with Growth and above plans at no additional
-      cost. Supports mobile SDKs for iOS (Swift) and Android (Kotlin) as well as
-      React Native.
-    humanURL: https://fyno.io/docs/home
-    baseURL: https://api.fyno.io/v1
-    tags:
-      - OTP
-      - Authentication
-      - Verification
-      - TOTP
-    properties:
-      - type: Documentation
-        url: https://fyno.io/docs/home
-
+- aid: fyno:user-profiles
+  name: Fyno User Profiles API
+  description: >
+    REST API for creating, reading, updating, and deleting user profiles within the Fyno platform. Supports
+    adding and updating channel-specific destination data, merging user profiles, and managing channel
+    identifiers for targeted notification delivery.
+  humanURL: https://fyno.io/docs/home
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - Users
+  - Profiles
+  - Identity
+  properties:
+  - type: Documentation
+    url: https://fyno.io/docs/home
+- aid: fyno:user-subscriptions
+  name: Fyno User Subscriptions API
+  description: >
+    REST API for managing user notification preferences and subscription settings. Allows retrieval and
+    updates of per-user channel preferences and opt-in/opt-out controls for notification categories.
+  humanURL: https://fyno.io/docs/home
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - Subscriptions
+  - Preferences
+  - Users
+  properties:
+  - type: Documentation
+    url: https://fyno.io/docs/home
+- aid: fyno:suppression-list
+  name: Fyno Suppression List API
+  description: >
+    REST API for managing the global suppression list to prevent unwanted notifications from being sent
+    to specific users. Supports fetching the list, adding users to suppression, and removing suppressed
+    users with per-event override capabilities.
+  humanURL: https://fyno.io/docs/home
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - Suppression
+  - Compliance
+  - Users
+  properties:
+  - type: Documentation
+    url: https://fyno.io/docs/home
+- aid: fyno:verify
+  name: Fyno Verify API
+  description: >
+    OTP and TOTP-based verification API for authenticating users via SMS, email, or authenticator apps.
+    Bundled with Growth and above plans at no additional cost. Supports mobile SDKs for iOS (Swift) and
+    Android (Kotlin) as well as React Native.
+  humanURL: https://fyno.io/docs/home
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - OTP
+  - Authentication
+  - Verification
+  - TOTP
+  properties:
+  - type: Documentation
+    url: https://fyno.io/docs/home
+- aid: fyno:fyno-fire-an-event-api
+  name: Fyno Fire an Event API
+  description: The Fire an Event API from Fyno — 2 operation(s) for fire an event.
+  humanURL: https://fyno.io/docs/notification-event-creation
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - Fire an Event
+  properties:
+  - type: OpenAPI
+    url: openapi/fyno-fire-an-event-api-openapi.yml
+  - type: Documentation
+    url: https://fyno.io/docs/notification-event-creation
+  - type: APIReference
+    url: https://fyno.io/docs/api-reference
+  - type: JSONSchema
+    url: json-schema/fyno-notification-event-schema.json
+  - type: JSONSchema
+    url: json-schema/fyno-user-profile-schema.json
+  - type: Examples
+    url: examples/fyno-notify-single-user-example.json
+  - type: Examples
+    url: examples/fyno-notify-with-explicit-channels-example.json
+  - type: Examples
+    url: examples/fyno-bulk-notify-example.json
+  - type: Examples
+    url: examples/fyno-create-user-profile-example.json
+- aid: fyno:fyno-fyno-verify-api
+  name: Fyno Fyno Verify API
+  description: The Fyno Verify API from Fyno — 1 operation(s) for fyno verify.
+  humanURL: https://fyno.io/docs/notification-event-creation
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - Fyno Verify
+  properties:
+  - type: OpenAPI
+    url: openapi/fyno-fyno-verify-api-openapi.yml
+  - type: Documentation
+    url: https://fyno.io/docs/notification-event-creation
+  - type: APIReference
+    url: https://fyno.io/docs/api-reference
+  - type: JSONSchema
+    url: json-schema/fyno-notification-event-schema.json
+  - type: JSONSchema
+    url: json-schema/fyno-user-profile-schema.json
+  - type: Examples
+    url: examples/fyno-notify-single-user-example.json
+  - type: Examples
+    url: examples/fyno-notify-with-explicit-channels-example.json
+  - type: Examples
+    url: examples/fyno-bulk-notify-example.json
+  - type: Examples
+    url: examples/fyno-create-user-profile-example.json
+- aid: fyno:fyno-manage-user-profiles-api
+  name: Fyno Manage User Profiles API
+  description: The Manage User Profiles API from Fyno — 6 operation(s) for manage user profiles.
+  humanURL: https://fyno.io/docs/notification-event-creation
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - Manage User Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/fyno-manage-user-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://fyno.io/docs/notification-event-creation
+  - type: APIReference
+    url: https://fyno.io/docs/api-reference
+  - type: JSONSchema
+    url: json-schema/fyno-notification-event-schema.json
+  - type: JSONSchema
+    url: json-schema/fyno-user-profile-schema.json
+  - type: Examples
+    url: examples/fyno-notify-single-user-example.json
+  - type: Examples
+    url: examples/fyno-notify-with-explicit-channels-example.json
+  - type: Examples
+    url: examples/fyno-bulk-notify-example.json
+  - type: Examples
+    url: examples/fyno-create-user-profile-example.json
+- aid: fyno:fyno-manage-user-subscriptions-preferences-api
+  name: Fyno Manage User Subscriptions & Preferences API
+  description: >-
+    The Manage User Subscriptions & Preferences API from Fyno — 2 operation(s) for manage user subscriptions
+    & preferences.
+  humanURL: https://fyno.io/docs/notification-event-creation
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - Manage User Subscriptions & Preferences
+  properties:
+  - type: OpenAPI
+    url: openapi/fyno-manage-user-subscriptions-preferences-api-openapi.yml
+  - type: Documentation
+    url: https://fyno.io/docs/notification-event-creation
+  - type: APIReference
+    url: https://fyno.io/docs/api-reference
+  - type: JSONSchema
+    url: json-schema/fyno-notification-event-schema.json
+  - type: JSONSchema
+    url: json-schema/fyno-user-profile-schema.json
+  - type: Examples
+    url: examples/fyno-notify-single-user-example.json
+  - type: Examples
+    url: examples/fyno-notify-with-explicit-channels-example.json
+  - type: Examples
+    url: examples/fyno-bulk-notify-example.json
+  - type: Examples
+    url: examples/fyno-create-user-profile-example.json
+- aid: fyno:fyno-suppression-list-api
+  name: Fyno Suppression List API
+  description: The Suppression List API from Fyno — 1 operation(s) for suppression list.
+  humanURL: https://fyno.io/docs/notification-event-creation
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - Suppression List
+  properties:
+  - type: OpenAPI
+    url: openapi/fyno-suppression-list-api-openapi.yml
+  - type: Documentation
+    url: https://fyno.io/docs/notification-event-creation
+  - type: APIReference
+    url: https://fyno.io/docs/api-reference
+  - type: JSONSchema
+    url: json-schema/fyno-notification-event-schema.json
+  - type: JSONSchema
+    url: json-schema/fyno-user-profile-schema.json
+  - type: Examples
+    url: examples/fyno-notify-single-user-example.json
+  - type: Examples
+    url: examples/fyno-notify-with-explicit-channels-example.json
+  - type: Examples
+    url: examples/fyno-bulk-notify-example.json
+  - type: Examples
+    url: examples/fyno-create-user-profile-example.json
+- aid: fyno:fyno-user-properties-api
+  name: Fyno User Properties API
+  description: The User Properties API from Fyno — 7 operation(s) for user properties.
+  humanURL: https://fyno.io/docs/notification-event-creation
+  baseURL: https://api.fyno.io/v1
+  tags:
+  - User Properties
+  properties:
+  - type: OpenAPI
+    url: openapi/fyno-user-properties-api-openapi.yml
+  - type: Documentation
+    url: https://fyno.io/docs/notification-event-creation
+  - type: APIReference
+    url: https://fyno.io/docs/api-reference
+  - type: JSONSchema
+    url: json-schema/fyno-notification-event-schema.json
+  - type: JSONSchema
+    url: json-schema/fyno-user-profile-schema.json
+  - type: Examples
+    url: examples/fyno-notify-single-user-example.json
+  - type: Examples
+    url: examples/fyno-notify-with-explicit-channels-example.json
+  - type: Examples
+    url: examples/fyno-bulk-notify-example.json
+  - type: Examples
+    url: examples/fyno-create-user-profile-example.json
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/fyno/overview
 
   - type: AgenticAccess
     url: agentic-access/fyno-agentic-access.yml
