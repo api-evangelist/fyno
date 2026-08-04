@@ -1,0 +1,1997 @@
+{
+  "info": {
+    "_postman_id": "f80a6322-5f7d-474a-b262-62cebef75552",
+    "name": "Fyno Rest Fire an Event User Properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:43:35.000Z",
+    "updatedAt": "2026-07-28T01:43:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f80a6322-5f7d-474a-b262-62cebef75552"
+  },
+  "item": [
+    {
+      "name": "{WSID}",
+      "item": [
+        {
+          "name": "{version}",
+          "item": [
+            {
+              "name": "profiles",
+              "item": [
+                {
+                  "name": "properties",
+                  "item": [
+                    {
+                      "name": "set",
+                      "item": [
+                        {
+                          "name": "Update User Property",
+                          "id": "26754dea-66cf-4279-ab2b-a5407579ce99",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$set\": {\n    \"enimb5\": \"<string>\",\n    \"consequat_7f6\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/set",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "properties",
+                                "set"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "4b1499a2-9484-4995-a7d6-a094a3d4101b",
+                                  "key": "WSID",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                },
+                                {
+                                  "id": "bcab528d-54c5-463e-b236-471dc77619ee",
+                                  "key": "version",
+                                  "value": "live",
+                                  "description": "(Required) Specify the version for which you would like to update the user property."
+                                }
+                              ]
+                            },
+                            "description": "This API enables you to update user properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will be determined based on the data type of the value. For example, if you `$set` a new property called `premium_user=true`, it will create the `premium_user` property with `Boolean` type and value `true`.<br/><br/>The property values can take the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `user_type=Premium` or `membership_number=ABC123`.</li> <li>**Number:** Can be an integer or a decimal. Example: `ltv=23000` or `cost=20.34`.</li> <li>**Boolean:** Can only contain `true` or `false` values.</li> <li>**Date:** Must be in ISO 8601 format. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> <li>**List:** Can contain an array of strings, numbers, and dates. Example: `products_ordered=['iPhone 16 Pro', 'iPad 32 GB']` or `purchase_amount=[23000, 20.34]` or `purchase_date=['2020-10-01T18:30:00Z', '2021-11-01T13:35:00+02:00', '2023-12-05']`</li></ul>If you try to set a value with a data type that does not match the predefined property type, the API will accept the request but ignore the invalid value. For example, if a predefined property `cost` expects a numeric value and you try to set it to `ABC`, the API will not store the value.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort)."
+                          },
+                          "response": [
+                            {
+                              "id": "007d7e6b-d05f-4695-9c67-7aeeaa7b69f8",
+                              "name": "Request has been accepted and will be processed asynchronously.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$set\": {\n    \"enimb5\": \"<string>\",\n    \"consequat_7f6\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/set",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "set"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"request_id\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-007d7e6b-d05f-4695-9c67-7aeeaa7b69f8"
+                            },
+                            {
+                              "id": "1e8639f9-6bf6-4ccd-a0c0-8d646088fb3b",
+                              "name": "$set object is empty",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$set\": {\n    \"enimb5\": \"<string>\",\n    \"consequat_7f6\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/set",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "set"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-1e8639f9-6bf6-4ccd-a0c0-8d646088fb3b"
+                            },
+                            {
+                              "id": "e020fc1d-e9c6-4b90-8d86-9402c62b9702",
+                              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$set\": {\n    \"enimb5\": \"<string>\",\n    \"consequat_7f6\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/set",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "set"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-e020fc1d-e9c6-4b90-8d86-9402c62b9702"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:36.000Z",
+                          "updatedAt": "2026-07-28T01:43:36.000Z",
+                          "uid": "35240-26754dea-66cf-4279-ab2b-a5407579ce99"
+                        }
+                      ],
+                      "id": "c5722775-109a-47b0-a114-36ada78ed41d",
+                      "createdAt": "2026-07-28T01:43:36.000Z",
+                      "updatedAt": "2026-07-28T01:43:36.000Z",
+                      "uid": "35240-c5722775-109a-47b0-a114-36ada78ed41d"
+                    },
+                    {
+                      "name": "set-once",
+                      "item": [
+                        {
+                          "name": "Set an Unset Property",
+                          "id": "a8600e6f-9787-4cdd-afd3-028a947d4699",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$once\": {\n    \"ipsum_6\": \"<string>\",\n    \"do24\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/set-once",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "properties",
+                                "set-once"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bca3a6a4-8bd8-441a-8bd7-db11970311a7",
+                                  "key": "WSID",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                },
+                                {
+                                  "id": "330e6ee1-f885-462b-b6f3-83ac01a477b8",
+                                  "key": "version",
+                                  "value": "live",
+                                  "description": "(Required) Specify the version for which you would like to update the user property."
+                                }
+                              ]
+                            },
+                            "description": "This API enables you to set user properties of your users listed in your [User Profiles](../user-profiles-overview) **only if it is currently unset.** If the given payload contains a mix of properties that are currently set and unset, then it will only add values to the properties that are currently unset and ignore the other properties. If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and sets values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will be determined based on the data type of the value. For example, if you `$once` a new property called `premium_user=true`, it will create the `premium_user` property with `Boolean` type and value `true`.<br/><br/>The property values can take the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `user_type=Premium` or `membership_number=ABC123`.</li> <li>**Number:** Can be an integer or a decimal. Example: `ltv=23000` or `cost=20.34`.</li> <li>**Boolean:** Can only contain `true` or `false` values.</li> <li>**Date:** Must be in ISO 8601 format. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> <li>**List:** Can contain an array of strings, numbers, and dates. Example: `products_ordered=['iPhone 16 Pro', 'iPad 32 GB']` or `purchase_amount=[23000, 20.34]` or `purchase_date=['2020-10-01T18:30:00Z', '2021-11-01T13:35:00+02:00', '2023-12-05']`</li> </ul>If you try to set a value with a data type that does not match the predefined property type, the API will accept the request but ignore the invalid value. For example, if a predefined property `cost` expects a numeric value and you try to set it to `ABC`, the API will not store the value.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort)."
+                          },
+                          "response": [
+                            {
+                              "id": "8c7faa0d-7340-47a0-8afc-645ca439f2c8",
+                              "name": "Request has been accepted and will be processed asynchronously.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$once\": {\n    \"ipsum_6\": \"<string>\",\n    \"do24\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/set-once",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "set-once"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"request_id\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-8c7faa0d-7340-47a0-8afc-645ca439f2c8"
+                            },
+                            {
+                              "id": "b58f0421-1e1d-458f-b395-18eb7b791970",
+                              "name": "$once object is empty",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$once\": {\n    \"ipsum_6\": \"<string>\",\n    \"do24\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/set-once",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "set-once"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-b58f0421-1e1d-458f-b395-18eb7b791970"
+                            },
+                            {
+                              "id": "c583f194-56f6-4145-9a08-ebea0f6d6b11",
+                              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$once\": {\n    \"ipsum_6\": \"<string>\",\n    \"do24\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/set-once",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "set-once"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-c583f194-56f6-4145-9a08-ebea0f6d6b11"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:36.000Z",
+                          "updatedAt": "2026-07-28T01:43:36.000Z",
+                          "uid": "35240-a8600e6f-9787-4cdd-afd3-028a947d4699"
+                        }
+                      ],
+                      "id": "ce81666e-85a1-440d-b761-3a69b1fcbf52",
+                      "createdAt": "2026-07-28T01:43:36.000Z",
+                      "updatedAt": "2026-07-28T01:43:36.000Z",
+                      "uid": "35240-ce81666e-85a1-440d-b761-3a69b1fcbf52"
+                    },
+                    {
+                      "name": "numerical-add",
+                      "item": [
+                        {
+                          "name": "Increment/Decrement Numeric Property",
+                          "id": "57ef91ac-1469-475b-8911-e3cf6c576cf1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$add\": {\n    \"pariatur_ae\": \"<number>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/numerical-add",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "properties",
+                                "numerical-add"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ba751bc3-e098-498e-9da8-b675487ab859",
+                                  "key": "WSID",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                },
+                                {
+                                  "id": "ee4fc29d-3e7f-498e-b905-dbf36f8fda35",
+                                  "key": "version",
+                                  "value": "live",
+                                  "description": "(Required) Specify the version for which you would like to update the user property."
+                                }
+                              ]
+                            },
+                            "description": "This API enables you to increment/decrement values of numeric properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties. To decrement property values, you can pass a negative value.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will set to `Number`. For example, if you `$add` a new property called `ltv=1200`, it will create the `ltv` property with `Number` type and value `1200`. Do not enclose the value in double quotes as they must be of numeric type.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort)."
+                          },
+                          "response": [
+                            {
+                              "id": "8df95744-76e2-48bf-b8f4-95bfd0c1c25a",
+                              "name": "Request has been accepted and will be processed asynchronously.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$add\": {\n    \"pariatur_ae\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/numerical-add",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "numerical-add"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"request_id\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-8df95744-76e2-48bf-b8f4-95bfd0c1c25a"
+                            },
+                            {
+                              "id": "1ff766c0-486e-4b1a-a940-c2730bdded0c",
+                              "name": "$add object is empty",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$add\": {\n    \"pariatur_ae\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/numerical-add",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "numerical-add"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-1ff766c0-486e-4b1a-a940-c2730bdded0c"
+                            },
+                            {
+                              "id": "8615070d-7e50-4768-acab-37f62b499e4a",
+                              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$add\": {\n    \"pariatur_ae\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/numerical-add",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "numerical-add"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-8615070d-7e50-4768-acab-37f62b499e4a"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:36.000Z",
+                          "updatedAt": "2026-07-28T01:43:36.000Z",
+                          "uid": "35240-57ef91ac-1469-475b-8911-e3cf6c576cf1"
+                        }
+                      ],
+                      "id": "ad173bd9-e349-4ff9-991c-1d2599ea7421",
+                      "createdAt": "2026-07-28T01:43:36.000Z",
+                      "updatedAt": "2026-07-28T01:43:36.000Z",
+                      "uid": "35240-ad173bd9-e349-4ff9-991c-1d2599ea7421"
+                    },
+                    {
+                      "name": "list-append",
+                      "item": [
+                        {
+                          "name": "Append Values to List",
+                          "id": "54b440b7-2591-4cd4-9ac9-25078769c0d8",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$append\": {\n    \"aute_5e\": \"<number>\",\n    \"id_\": \"<number>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/list-append",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "properties",
+                                "list-append"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "af6b0168-36b7-4205-83dc-836f2828648a",
+                                  "key": "WSID",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                },
+                                {
+                                  "id": "4b4ddbb7-55f8-4cd3-bc05-ff322b997ccc",
+                                  "key": "version",
+                                  "value": "live",
+                                  "description": "(Required) Specify the version for which you would like to update the user property."
+                                }
+                              ]
+                            },
+                            "description": "This API enables you to append values to list type properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will set to `List`. For example, if you `$append` a new property called `order_ids=245`, it will create the `order_ids` property with `List` type and value `[245]`. A list may contain only unique values, so if a value already exists, and you try to add the same value, it will be ignored. <br/><br/>You can append values with the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `products_order=['iPhone 16 Pro', 'iPad 32 GB']`.</li> <li>**Number:** Can be an integer or a decimal. Example: `purchase_amount=[23000, 20.34]`.</li> <li>**Date:** Must be in ISO 8601 format: `YYYY-MM-DDTHH:MM:SS.sssZ`. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> </ul>You can append only one value to a property at a time. Although not recommended, a list property can contain a mix of different data types.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort)."
+                          },
+                          "response": [
+                            {
+                              "id": "496592f6-5e47-48b5-93d7-39297bb36c31",
+                              "name": "Request has been accepted and will be processed asynchronously.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$append\": {\n    \"aute_5e\": \"<number>\",\n    \"id_\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/list-append",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "list-append"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"request_id\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-496592f6-5e47-48b5-93d7-39297bb36c31"
+                            },
+                            {
+                              "id": "24a7a7b2-ed74-4dc9-b362-463488cbef89",
+                              "name": "$append object is empty",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$append\": {\n    \"aute_5e\": \"<number>\",\n    \"id_\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/list-append",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "list-append"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-24a7a7b2-ed74-4dc9-b362-463488cbef89"
+                            },
+                            {
+                              "id": "ddb56117-624b-445c-8da6-e378fbf6a741",
+                              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$append\": {\n    \"aute_5e\": \"<number>\",\n    \"id_\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/list-append",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "list-append"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-ddb56117-624b-445c-8da6-e378fbf6a741"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:36.000Z",
+                          "updatedAt": "2026-07-28T01:43:36.000Z",
+                          "uid": "35240-54b440b7-2591-4cd4-9ac9-25078769c0d8"
+                        }
+                      ],
+                      "id": "9fdf3bb7-b8a2-4ff1-a7a6-6237fbe099f3",
+                      "createdAt": "2026-07-28T01:43:36.000Z",
+                      "updatedAt": "2026-07-28T01:43:36.000Z",
+                      "uid": "35240-9fdf3bb7-b8a2-4ff1-a7a6-6237fbe099f3"
+                    },
+                    {
+                      "name": "list-remove",
+                      "item": [
+                        {
+                          "name": "Remove Value From List",
+                          "id": "d491e0e4-86cb-4f69-b315-cc3163a1d0b0",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$remove\": {\n    \"commodoc\": \"<number>\",\n    \"mollite9\": \"<number>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/list-remove",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "properties",
+                                "list-remove"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "785b295f-48b1-4471-bd4f-4245c6d5119e",
+                                  "key": "WSID",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                },
+                                {
+                                  "id": "d867a083-1830-4fd9-9c0f-2db9c135be52",
+                                  "key": "version",
+                                  "value": "live",
+                                  "description": "(Required) Specify the version for which you would like to update the user property."
+                                }
+                              ]
+                            },
+                            "description": "This API enables you to remove existing values from the list type properties of your users listed in your [User Profiles](../user-profiles-overview). If the specified distinct ID or list property doesn't exist, it simply accepts the remove request and ignores it.<br/><br/>**Note:** This API can only be used to remove values from list and can remove only one value from a property at a time. To unset (nullify) other property types, please use [Unset User Property API.](./unset-user-property)"
+                          },
+                          "response": [
+                            {
+                              "id": "a649cfb0-bb07-45f9-bd60-1163c28f3b89",
+                              "name": "Request has been accepted and will be processed asynchronously.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$remove\": {\n    \"commodoc\": \"<number>\",\n    \"mollite9\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/list-remove",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "list-remove"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"request_id\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-a649cfb0-bb07-45f9-bd60-1163c28f3b89"
+                            },
+                            {
+                              "id": "2404c303-0a1e-4077-95fa-31d95ef025f5",
+                              "name": "$remove object is empty",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$remove\": {\n    \"commodoc\": \"<number>\",\n    \"mollite9\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/list-remove",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "list-remove"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-2404c303-0a1e-4077-95fa-31d95ef025f5"
+                            },
+                            {
+                              "id": "92270a90-ad3b-443a-8c99-2f55eeb480bb",
+                              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$remove\": {\n    \"commodoc\": \"<number>\",\n    \"mollite9\": \"<number>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/list-remove",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "list-remove"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-92270a90-ad3b-443a-8c99-2f55eeb480bb"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:36.000Z",
+                          "updatedAt": "2026-07-28T01:43:36.000Z",
+                          "uid": "35240-d491e0e4-86cb-4f69-b315-cc3163a1d0b0"
+                        }
+                      ],
+                      "id": "e902d0f7-8059-4c83-ba47-499d931de153",
+                      "createdAt": "2026-07-28T01:43:36.000Z",
+                      "updatedAt": "2026-07-28T01:43:36.000Z",
+                      "uid": "35240-e902d0f7-8059-4c83-ba47-499d931de153"
+                    },
+                    {
+                      "name": "unset",
+                      "item": [
+                        {
+                          "name": "Unset User Property",
+                          "id": "f8071428-1767-4d3b-ba28-3287b6a89a7f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$unset\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/unset",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "properties",
+                                "unset"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "07624ed4-57e8-45b6-aba0-71c6f886fca8",
+                                  "key": "WSID",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                },
+                                {
+                                  "id": "807f060b-86c1-4c75-aefc-90dc7673639c",
+                                  "key": "version",
+                                  "value": "live",
+                                  "description": "(Required) Specify the version for which you would like to update the user property."
+                                }
+                              ]
+                            },
+                            "description": "This API enables you to unset (nullify) user properties of your users listed in your [User Profiles](../user-profiles-overview). If the specified distinct ID or property doesn't exist, it simply accepts the unset request and ignores it. This API can be used to unset all property data types: String, Number, Boolean, Date, List."
+                          },
+                          "response": [
+                            {
+                              "id": "953c17c7-2c90-4c49-bda6-d6a7803a7530",
+                              "name": "Request has been accepted and will be processed asynchronously.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$unset\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/unset",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "unset"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"request_id\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-953c17c7-2c90-4c49-bda6-d6a7803a7530"
+                            },
+                            {
+                              "id": "e4edf5ea-bd42-4679-91f7-43ed1c6def96",
+                              "name": "$unset object is empty",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$unset\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/unset",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "unset"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-e4edf5ea-bd42-4679-91f7-43ed1c6def96"
+                            },
+                            {
+                              "id": "cc3c29b7-9817-4d34-b7df-b7acbf2038b4",
+                              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$unset\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/unset",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "unset"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-cc3c29b7-9817-4d34-b7df-b7acbf2038b4"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:36.000Z",
+                          "updatedAt": "2026-07-28T01:43:36.000Z",
+                          "uid": "35240-f8071428-1767-4d3b-ba28-3287b6a89a7f"
+                        }
+                      ],
+                      "id": "cd69545c-0136-4fa8-837f-be8d2748d5c2",
+                      "createdAt": "2026-07-28T01:43:36.000Z",
+                      "updatedAt": "2026-07-28T01:43:36.000Z",
+                      "uid": "35240-cd69545c-0136-4fa8-837f-be8d2748d5c2"
+                    },
+                    {
+                      "name": "batch",
+                      "item": [
+                        {
+                          "name": "Batch Update User Properties",
+                          "id": "cccca39d-3615-4217-9d28-14e147b7e1c2",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"batch\": [\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"fugiate\": \"<string>\"\n        },\n        \"$once\": {\n          \"fugiat_92b\": \"<string>\",\n          \"laboref5\": \"<string>\",\n          \"pariatur03\": \"<string>\"\n        },\n        \"$add\": {\n          \"ad7d\": \"<number>\"\n        },\n        \"$append\": {\n          \"incididunta32\": \"<number>\",\n          \"et_a\": \"<number>\"\n        },\n        \"$remove\": {\n          \"exercitation_c4\": \"<number>\",\n          \"dolore_3\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"Lorem7ca\": \"<string>\",\n          \"dolor_6\": \"<string>\"\n        },\n        \"$once\": {\n          \"dolore_c72\": \"<string>\",\n          \"id_7\": \"<string>\",\n          \"ad0\": \"<string>\"\n        },\n        \"$add\": {\n          \"culpa_7\": \"<number>\",\n          \"nostrud_a6\": \"<number>\"\n        },\n        \"$append\": {\n          \"qui_f\": \"<number>\"\n        },\n        \"$remove\": {\n          \"et_a81\": \"<number>\",\n          \"aliqua__1e\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/batch",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "properties",
+                                "batch"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "4c3bf761-64a3-4c7a-9c26-ccf63668c4a9",
+                                  "key": "WSID",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                },
+                                {
+                                  "id": "be503639-1464-4805-8e9c-3f7bb30e81ae",
+                                  "key": "version",
+                                  "value": "live",
+                                  "description": "(Required) Specify the version for which you would like to update the user property."
+                                }
+                              ]
+                            },
+                            "description": "This API enables you to modify user properties of your users listed in your [User Profiles](../user-profiles-overview) in bulk:<br/><ul><li>[Update User Properties](./update-user-property) - `$set`</li><li>[Set Unset Properties](./set-an-unset-property) - `$once`</li><li>[Increment/Decrement Numeric Properties](./increment-decrement-numeric-property) - `$add`</li><li>[Append Values to List](./append-values-to-list) - `$append`</li><li>[Remove Values From List](./remove-value-from-list) - `$remove`, and</li><li>[Unset User Properties](./unset-user-property) `$unset`</li></ul><strong>Please refer to function specific API documentation for [&#36;set](./update-user-property), [&#36;once](./set-an-unset-property), [&#36;add](./increment-decrement-numeric-property), [&#36;append](./append-values-to-list), [&#36;remove](./remove-value-from-list), [&#36;unset](./unset-user-property) before using this API.</strong><br/></br><br/>**Note:** The user properties in User Profiles can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort)."
+                          },
+                          "response": [
+                            {
+                              "id": "50094059-e6f6-46d5-ac61-f7487baddaab",
+                              "name": "Request has been accepted and will be processed asynchronously.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"batch\": [\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"fugiate\": \"<string>\"\n        },\n        \"$once\": {\n          \"fugiat_92b\": \"<string>\",\n          \"laboref5\": \"<string>\",\n          \"pariatur03\": \"<string>\"\n        },\n        \"$add\": {\n          \"ad7d\": \"<number>\"\n        },\n        \"$append\": {\n          \"incididunta32\": \"<number>\",\n          \"et_a\": \"<number>\"\n        },\n        \"$remove\": {\n          \"exercitation_c4\": \"<number>\",\n          \"dolore_3\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"Lorem7ca\": \"<string>\",\n          \"dolor_6\": \"<string>\"\n        },\n        \"$once\": {\n          \"dolore_c72\": \"<string>\",\n          \"id_7\": \"<string>\",\n          \"ad0\": \"<string>\"\n        },\n        \"$add\": {\n          \"culpa_7\": \"<number>\",\n          \"nostrud_a6\": \"<number>\"\n        },\n        \"$append\": {\n          \"qui_f\": \"<number>\"\n        },\n        \"$remove\": {\n          \"et_a81\": \"<number>\",\n          \"aliqua__1e\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/batch",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "batch"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Accepted",
+                              "code": 202,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"request_id\": \"<string>\",\n  \"batch\": [\n    {\n      \"$set\": \"<string>\",\n      \"$once\": \"<string>\",\n      \"$add\": \"<string>\",\n      \"$append\": \"<string>\",\n      \"$remove\": \"<string>\",\n      \"$unset\": \"<string>\"\n    },\n    {\n      \"$set\": \"<string>\",\n      \"$once\": \"<string>\",\n      \"$add\": \"<string>\",\n      \"$append\": \"<string>\",\n      \"$remove\": \"<string>\",\n      \"$unset\": \"<string>\"\n    }\n  ]\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-50094059-e6f6-46d5-ac61-f7487baddaab"
+                            },
+                            {
+                              "id": "42741301-bb37-49b7-8ad6-6ec236556ed7",
+                              "name": "$unset object is empty",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"batch\": [\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"fugiate\": \"<string>\"\n        },\n        \"$once\": {\n          \"fugiat_92b\": \"<string>\",\n          \"laboref5\": \"<string>\",\n          \"pariatur03\": \"<string>\"\n        },\n        \"$add\": {\n          \"ad7d\": \"<number>\"\n        },\n        \"$append\": {\n          \"incididunta32\": \"<number>\",\n          \"et_a\": \"<number>\"\n        },\n        \"$remove\": {\n          \"exercitation_c4\": \"<number>\",\n          \"dolore_3\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"Lorem7ca\": \"<string>\",\n          \"dolor_6\": \"<string>\"\n        },\n        \"$once\": {\n          \"dolore_c72\": \"<string>\",\n          \"id_7\": \"<string>\",\n          \"ad0\": \"<string>\"\n        },\n        \"$add\": {\n          \"culpa_7\": \"<number>\",\n          \"nostrud_a6\": \"<number>\"\n        },\n        \"$append\": {\n          \"qui_f\": \"<number>\"\n        },\n        \"$remove\": {\n          \"et_a81\": \"<number>\",\n          \"aliqua__1e\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/batch",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "batch"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-42741301-bb37-49b7-8ad6-6ec236556ed7"
+                            },
+                            {
+                              "id": "388d4bdc-509d-4c16-9d3c-bef479a94d2b",
+                              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"batch\": [\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"fugiate\": \"<string>\"\n        },\n        \"$once\": {\n          \"fugiat_92b\": \"<string>\",\n          \"laboref5\": \"<string>\",\n          \"pariatur03\": \"<string>\"\n        },\n        \"$add\": {\n          \"ad7d\": \"<number>\"\n        },\n        \"$append\": {\n          \"incididunta32\": \"<number>\",\n          \"et_a\": \"<number>\"\n        },\n        \"$remove\": {\n          \"exercitation_c4\": \"<number>\",\n          \"dolore_3\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"Lorem7ca\": \"<string>\",\n          \"dolor_6\": \"<string>\"\n        },\n        \"$once\": {\n          \"dolore_c72\": \"<string>\",\n          \"id_7\": \"<string>\",\n          \"ad0\": \"<string>\"\n        },\n        \"$add\": {\n          \"culpa_7\": \"<number>\",\n          \"nostrud_a6\": \"<number>\"\n        },\n        \"$append\": {\n          \"qui_f\": \"<number>\"\n        },\n        \"$remove\": {\n          \"et_a81\": \"<number>\",\n          \"aliqua__1e\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/properties/batch",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    "properties",
+                                    "batch"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:36.000Z",
+                              "updatedAt": "2026-07-28T01:43:36.000Z",
+                              "uid": "35240-388d4bdc-509d-4c16-9d3c-bef479a94d2b"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:36.000Z",
+                          "updatedAt": "2026-07-28T01:43:36.000Z",
+                          "uid": "35240-cccca39d-3615-4217-9d28-14e147b7e1c2"
+                        }
+                      ],
+                      "id": "d3c082f3-0c06-425e-b574-04375c9ae57d",
+                      "createdAt": "2026-07-28T01:43:36.000Z",
+                      "updatedAt": "2026-07-28T01:43:36.000Z",
+                      "uid": "35240-d3c082f3-0c06-425e-b574-04375c9ae57d"
+                    }
+                  ],
+                  "id": "e7723f21-710b-42cc-9e91-70f70d5bc4cc",
+                  "createdAt": "2026-07-28T01:43:36.000Z",
+                  "updatedAt": "2026-07-28T01:43:36.000Z",
+                  "uid": "35240-e7723f21-710b-42cc-9e91-70f70d5bc4cc"
+                }
+              ],
+              "id": "2dc767f6-0635-470f-861e-3c29cb118f49",
+              "createdAt": "2026-07-28T01:43:36.000Z",
+              "updatedAt": "2026-07-28T01:43:36.000Z",
+              "uid": "35240-2dc767f6-0635-470f-861e-3c29cb118f49"
+            }
+          ],
+          "id": "d508f7b2-3658-4681-8b52-65b98683c1e8",
+          "createdAt": "2026-07-28T01:43:36.000Z",
+          "updatedAt": "2026-07-28T01:43:36.000Z",
+          "uid": "35240-d508f7b2-3658-4681-8b52-65b98683c1e8"
+        }
+      ],
+      "id": "b56ed661-809e-4666-85d7-7b834c143375",
+      "createdAt": "2026-07-28T01:43:36.000Z",
+      "updatedAt": "2026-07-28T01:43:36.000Z",
+      "uid": "35240-b56ed661-809e-4666-85d7-7b834c143375"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fyno.io/v1"
+    }
+  ]
+}

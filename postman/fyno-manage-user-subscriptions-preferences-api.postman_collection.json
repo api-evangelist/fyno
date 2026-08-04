@@ -1,0 +1,924 @@
+{
+  "info": {
+    "_postman_id": "33776162-6816-40fc-a671-d19c23b35029",
+    "name": "Fyno Rest Fire an Event Manage User Subscriptions & Preferences API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:43:33.000Z",
+    "updatedAt": "2026-07-28T01:43:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-33776162-6816-40fc-a671-d19c23b35029"
+  },
+  "item": [
+    {
+      "name": "{WSID}",
+      "item": [
+        {
+          "name": "{version}",
+          "item": [
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "preference",
+                  "item": [
+                    {
+                      "name": "Get user preference",
+                      "id": "992f3ed9-4fe0-407c-9d97-07806cb60f2a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/subscriptions/preference?distinct_id=<string>&event_list=false",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "subscriptions",
+                            "preference"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Enter the distinct ID that you currently use to identify the user.",
+                              "key": "distinct_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Set this value to 'true' to receive list of notification events attached to each subscription topic.",
+                              "key": "event_list",
+                              "value": "false"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "8de88426-e5fd-4e34-84f7-1caf6dbb75ee",
+                              "key": "WSID",
+                              "value": "<string>",
+                              "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                            },
+                            {
+                              "id": "ea1bdcc1-4761-494e-9d3e-dc85ed9e2d8a",
+                              "key": "version",
+                              "value": "live",
+                              "description": "(Required) Specify the version for which you would like to manage the user profile."
+                            }
+                          ]
+                        },
+                        "description": "This API enables you to get all the subscriptions topics (with sections) defined in your workspace along with the opted-in/opted-out preference of a particular user."
+                      },
+                      "response": [
+                        {
+                          "id": "d78d26ca-4da7-4d78-98a5-2a9e021b4bad",
+                          "name": "Preference fetched successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/subscriptions/preference?distinct_id=<string>&event_list=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "subscriptions",
+                                "preference"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Enter the distinct ID that you currently use to identify the user.",
+                                  "key": "distinct_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Set this value to 'true' to receive list of notification events attached to each subscription topic.",
+                                  "key": "event_list",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"meta\": {\n    \"all\": {\n      \"preference\": {\n        \"discord\": \"opted-out\",\n        \"email\": \"opted-out\",\n        \"inapp\": \"opted-out\",\n        \"push\": \"opted-out\",\n        \"slack\": \"opted-out\",\n        \"sms\": \"opted-out\",\n        \"teams\": \"opted-out\",\n        \"voice\": \"opted-out\",\n        \"whatsapp\": \"opted-out\"\n      },\n      \"updated_at\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"webpush\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      }\n    }\n  },\n  \"result\": {\n    \"Section1\": [\n      {\n        \"channel_config\": {\n          \"discord\": \"on\",\n          \"email\": \"on\",\n          \"inapp\": \"on\",\n          \"push\": \"on\",\n          \"slack\": \"on\",\n          \"sms\": \"on\",\n          \"teams\": \"on\",\n          \"voice\": \"on\",\n          \"webpush\": \"on\",\n          \"whatsapp\": \"on\"\n        },\n        \"description\": \"<string>\",\n        \"is_global_opted_out\": {\n          \"discord\": true,\n          \"email\": true,\n          \"inapp\": true,\n          \"push\": true,\n          \"slack\": true,\n          \"sms\": true,\n          \"teams\": true,\n          \"voice\": true,\n          \"webpush\": true,\n          \"whatsapp\": true\n        },\n        \"name\": \"<string>\",\n        \"notification_events\": [\n          {\n            \"event_id\": \"<string>\",\n            \"event_name\": \"<string>\"\n          },\n          {\n            \"event_id\": \"<string>\",\n            \"event_name\": \"<string>\"\n          }\n        ],\n        \"preference\": {\n          \"discord\": \"opted-in\",\n          \"email\": \"opted-in\",\n          \"inapp\": \"opted-in\",\n          \"push\": \"opted-in\",\n          \"slack\": \"opted-in\",\n          \"sms\": \"opted-in\",\n          \"teams\": \"opted-in\",\n          \"voice\": \"opted-in\",\n          \"webpush\": \"opted-in\",\n          \"whatsapp\": \"opted-in\"\n        },\n        \"subscription_id\": \"<string>\",\n        \"updated_at\": {\n          \"discord\": \"<string>\",\n          \"email\": \"<string>\",\n          \"inapp\": \"<string>\",\n          \"push\": \"<string>\",\n          \"slack\": \"<string>\",\n          \"sms\": \"<string>\",\n          \"teams\": \"<string>\",\n          \"voice\": \"<string>\",\n          \"webpush\": \"<string>\",\n          \"whatsapp\": \"<string>\"\n        }\n      },\n      {\n        \"channel_config\": {\n          \"discord\": \"on\",\n          \"email\": \"on\",\n          \"inapp\": \"on\",\n          \"push\": \"on\",\n          \"slack\": \"on\",\n          \"sms\": \"on\",\n          \"teams\": \"on\",\n          \"voice\": \"on\",\n          \"webpush\": \"on\",\n          \"whatsapp\": \"on\"\n        },\n        \"description\": \"<string>\",\n        \"is_global_opted_out\": {\n          \"discord\": true,\n          \"email\": true,\n          \"inapp\": true,\n          \"push\": true,\n          \"slack\": true,\n          \"sms\": true,\n          \"teams\": true,\n          \"voice\": true,\n          \"webpush\": true,\n          \"whatsapp\": true\n        },\n        \"name\": \"<string>\",\n        \"notification_events\": [\n          {\n            \"event_id\": \"<string>\",\n            \"event_name\": \"<string>\"\n          },\n          {\n            \"event_id\": \"<string>\",\n            \"event_name\": \"<string>\"\n          }\n        ],\n        \"preference\": {\n          \"discord\": \"opted-in\",\n          \"email\": \"opted-in\",\n          \"inapp\": \"opted-in\",\n          \"push\": \"opted-in\",\n          \"slack\": \"opted-in\",\n          \"sms\": \"opted-in\",\n          \"teams\": \"opted-in\",\n          \"voice\": \"opted-in\",\n          \"webpush\": \"opted-in\",\n          \"whatsapp\": \"opted-in\"\n        },\n        \"subscription_id\": \"<string>\",\n        \"updated_at\": {\n          \"discord\": \"<string>\",\n          \"email\": \"<string>\",\n          \"inapp\": \"<string>\",\n          \"push\": \"<string>\",\n          \"slack\": \"<string>\",\n          \"sms\": \"<string>\",\n          \"teams\": \"<string>\",\n          \"voice\": \"<string>\",\n          \"webpush\": \"<string>\",\n          \"whatsapp\": \"<string>\"\n        }\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T01:43:34.000Z",
+                          "updatedAt": "2026-07-28T01:43:34.000Z",
+                          "uid": "35240-d78d26ca-4da7-4d78-98a5-2a9e021b4bad"
+                        },
+                        {
+                          "id": "dfb10fea-99e0-4ba2-940b-0dbc62993a9f",
+                          "name": "Distinct ID is not provided",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/subscriptions/preference?distinct_id=<string>&event_list=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "subscriptions",
+                                "preference"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Enter the distinct ID that you currently use to identify the user.",
+                                  "key": "distinct_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Set this value to 'true' to receive list of notification events attached to each subscription topic.",
+                                  "key": "event_list",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:34.000Z",
+                          "updatedAt": "2026-07-28T01:43:34.000Z",
+                          "uid": "35240-dfb10fea-99e0-4ba2-940b-0dbc62993a9f"
+                        },
+                        {
+                          "id": "659564f9-7b05-46e4-9fbc-0ee6a4f56b0c",
+                          "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/subscriptions/preference?distinct_id=<string>&event_list=false",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "subscriptions",
+                                "preference"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Enter the distinct ID that you currently use to identify the user.",
+                                  "key": "distinct_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Set this value to 'true' to receive list of notification events attached to each subscription topic.",
+                                  "key": "event_list",
+                                  "value": "false"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:34.000Z",
+                          "updatedAt": "2026-07-28T01:43:34.000Z",
+                          "uid": "35240-659564f9-7b05-46e4-9fbc-0ee6a4f56b0c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:43:34.000Z",
+                      "updatedAt": "2026-07-28T01:43:34.000Z",
+                      "uid": "35240-992f3ed9-4fe0-407c-9d97-07806cb60f2a"
+                    },
+                    {
+                      "name": "Update user preference",
+                      "id": "b34a7ff1-35e3-42fa-ba70-3e588fa43d45",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_preference\": {\n    \"SXXXXXXXXX\": {\n      \"discord\": \"opted-in\",\n      \"email\": \"opted-in\",\n      \"inapp\": \"opted-in\",\n      \"push\": \"opted-in\",\n      \"slack\": \"opted-in\",\n      \"sms\": \"opted-in\",\n      \"teams\": \"opted-in\",\n      \"voice\": \"opted-in\",\n      \"webpush\": \"opted-in\",\n      \"whatsapp\": \"opted-in\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/subscriptions/preference?distinct_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "subscriptions",
+                            "preference"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Enter the distinct ID that you currently use to identify the user.",
+                              "key": "distinct_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ed9eada9-d52e-4abe-aaed-bd3181008452",
+                              "key": "WSID",
+                              "value": "<string>",
+                              "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                            },
+                            {
+                              "id": "e13c8a9c-6668-4132-bcf8-a8a53d96e300",
+                              "key": "version",
+                              "value": "live",
+                              "description": "(Required) Specify the version for which you would like to manage the user profile."
+                            }
+                          ]
+                        },
+                        "description": "This API enables you to update the channel preference of a user for multiple subscription topics. In the JSON payload, enter the subscription ID as keys to update the channel preference. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id.<br/><br/>**Note&#58;** If the channel configuration for a subscription topic is set to 'required', then the user preference for the channel cannot be updated."
+                      },
+                      "response": [
+                        {
+                          "id": "a6b47a88-7cd4-4b8d-b0e2-cde53e624e71",
+                          "name": "Subscription updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"user_preference\": {\n    \"SXXXXXXXXX\": {\n      \"discord\": \"opted-in\",\n      \"email\": \"opted-in\",\n      \"inapp\": \"opted-in\",\n      \"push\": \"opted-in\",\n      \"slack\": \"opted-in\",\n      \"sms\": \"opted-in\",\n      \"teams\": \"opted-in\",\n      \"voice\": \"opted-in\",\n      \"webpush\": \"opted-in\",\n      \"whatsapp\": \"opted-in\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/subscriptions/preference?distinct_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "subscriptions",
+                                "preference"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Enter the distinct ID that you currently use to identify the user.",
+                                  "key": "distinct_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"SXXXXXXXXX\": {\n    \"discord\": \"opted-in\",\n    \"email\": \"opted-in\",\n    \"inapp\": \"opted-in\",\n    \"push\": \"opted-in\",\n    \"slack\": \"opted-in\",\n    \"sms\": \"opted-in\",\n    \"teams\": \"opted-in\",\n    \"voice\": \"opted-in\",\n    \"webpush\": \"opted-in\",\n    \"whatsapp\": \"opted-in\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:43:34.000Z",
+                          "updatedAt": "2026-07-28T01:43:34.000Z",
+                          "uid": "35240-a6b47a88-7cd4-4b8d-b0e2-cde53e624e71"
+                        },
+                        {
+                          "id": "f18e2a2c-ae64-4ab2-a6e7-ae3ee8f150d4",
+                          "name": "Distinct ID, channel, or status is not provided",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"user_preference\": {\n    \"SXXXXXXXXX\": {\n      \"discord\": \"opted-in\",\n      \"email\": \"opted-in\",\n      \"inapp\": \"opted-in\",\n      \"push\": \"opted-in\",\n      \"slack\": \"opted-in\",\n      \"sms\": \"opted-in\",\n      \"teams\": \"opted-in\",\n      \"voice\": \"opted-in\",\n      \"webpush\": \"opted-in\",\n      \"whatsapp\": \"opted-in\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/subscriptions/preference?distinct_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "subscriptions",
+                                "preference"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Enter the distinct ID that you currently use to identify the user.",
+                                  "key": "distinct_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:34.000Z",
+                          "updatedAt": "2026-07-28T01:43:34.000Z",
+                          "uid": "35240-f18e2a2c-ae64-4ab2-a6e7-ae3ee8f150d4"
+                        },
+                        {
+                          "id": "6c7794f4-f97e-48db-b64e-817e2c877824",
+                          "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"user_preference\": {\n    \"SXXXXXXXXX\": {\n      \"discord\": \"opted-in\",\n      \"email\": \"opted-in\",\n      \"inapp\": \"opted-in\",\n      \"push\": \"opted-in\",\n      \"slack\": \"opted-in\",\n      \"sms\": \"opted-in\",\n      \"teams\": \"opted-in\",\n      \"voice\": \"opted-in\",\n      \"webpush\": \"opted-in\",\n      \"whatsapp\": \"opted-in\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/subscriptions/preference?distinct_id=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "subscriptions",
+                                "preference"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) Enter the distinct ID that you currently use to identify the user.",
+                                  "key": "distinct_id",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:34.000Z",
+                          "updatedAt": "2026-07-28T01:43:34.000Z",
+                          "uid": "35240-6c7794f4-f97e-48db-b64e-817e2c877824"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:43:34.000Z",
+                      "updatedAt": "2026-07-28T01:43:34.000Z",
+                      "uid": "35240-b34a7ff1-35e3-42fa-ba70-3e588fa43d45"
+                    }
+                  ],
+                  "id": "5945eafa-6f6c-4ad3-8b7b-608000c0bfe7",
+                  "createdAt": "2026-07-28T01:43:34.000Z",
+                  "updatedAt": "2026-07-28T01:43:34.000Z",
+                  "uid": "35240-5945eafa-6f6c-4ad3-8b7b-608000c0bfe7"
+                },
+                {
+                  "name": "list",
+                  "item": [
+                    {
+                      "name": "{subscription_id}",
+                      "item": [
+                        {
+                          "name": "user",
+                          "item": [
+                            {
+                              "name": "Update user preference (single)",
+                              "id": "d671188d-b2dc-4997-93a0-3d1697049d7b",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"channel\": \"inapp\",\n  \"distinct_id\": \"<string>\",\n  \"status\": \"opted-out\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/subscriptions/list/:subscription_id/user",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "subscriptions",
+                                    "list",
+                                    ":subscription_id",
+                                    "user"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "cf3e4cc9-5f85-4d71-a3b6-be9dee0bbb4a",
+                                      "key": "WSID",
+                                      "value": "<string>",
+                                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                    },
+                                    {
+                                      "id": "14b0cdcd-5833-4799-9019-c7ceb4b03537",
+                                      "key": "version",
+                                      "value": "live",
+                                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                                    },
+                                    {
+                                      "id": "219195e3-45f9-40b7-aefc-ddf919fc26cd",
+                                      "key": "subscription_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Enter the subscription ID to update the channel preference for the subscription topic. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id."
+                                    }
+                                  ]
+                                },
+                                "description": "This API enables you to update the channel preference of a user for a particular subscription topic.<br/><br/>**Note&#58;** If the channel configuration for a subscription topic is set to 'required', then the user preference for the channel cannot be updated."
+                              },
+                              "response": [
+                                {
+                                  "id": "bd418c27-55a6-4c31-9607-3d384847f58c",
+                                  "name": "Subscription updated successfully",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"channel\": \"inapp\",\n  \"distinct_id\": \"<string>\",\n  \"status\": \"opted-out\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/subscriptions/list/:subscription_id/user",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "subscriptions",
+                                        "list",
+                                        ":subscription_id",
+                                        "user"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "subscription_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"SXXXXXXXXX\": {\n    \"discord\": \"opted-in\",\n    \"email\": \"opted-in\",\n    \"inapp\": \"opted-in\",\n    \"push\": \"opted-in\",\n    \"slack\": \"opted-in\",\n    \"sms\": \"opted-in\",\n    \"teams\": \"opted-in\",\n    \"voice\": \"opted-in\",\n    \"webpush\": \"opted-in\",\n    \"whatsapp\": \"opted-in\"\n  }\n}",
+                                  "createdAt": "2026-07-28T01:43:34.000Z",
+                                  "updatedAt": "2026-07-28T01:43:34.000Z",
+                                  "uid": "35240-bd418c27-55a6-4c31-9607-3d384847f58c"
+                                },
+                                {
+                                  "id": "96c6f81a-9343-4552-95f3-84c6f59637b3",
+                                  "name": "Distinct ID, channel, or status is not provided",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"channel\": \"inapp\",\n  \"distinct_id\": \"<string>\",\n  \"status\": \"opted-out\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/subscriptions/list/:subscription_id/user",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "subscriptions",
+                                        "list",
+                                        ":subscription_id",
+                                        "user"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "subscription_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:43:34.000Z",
+                                  "updatedAt": "2026-07-28T01:43:34.000Z",
+                                  "uid": "35240-96c6f81a-9343-4552-95f3-84c6f59637b3"
+                                },
+                                {
+                                  "id": "4aeffbac-a264-43cb-bffe-284b3e59192e",
+                                  "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"channel\": \"inapp\",\n  \"distinct_id\": \"<string>\",\n  \"status\": \"opted-out\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/subscriptions/list/:subscription_id/user",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "subscriptions",
+                                        "list",
+                                        ":subscription_id",
+                                        "user"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "subscription_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:43:34.000Z",
+                                  "updatedAt": "2026-07-28T01:43:34.000Z",
+                                  "uid": "35240-4aeffbac-a264-43cb-bffe-284b3e59192e"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:43:34.000Z",
+                              "updatedAt": "2026-07-28T01:43:34.000Z",
+                              "uid": "35240-d671188d-b2dc-4997-93a0-3d1697049d7b"
+                            }
+                          ],
+                          "id": "6fea76a9-087e-4f8a-af32-18425ec154fd",
+                          "createdAt": "2026-07-28T01:43:34.000Z",
+                          "updatedAt": "2026-07-28T01:43:34.000Z",
+                          "uid": "35240-6fea76a9-087e-4f8a-af32-18425ec154fd"
+                        }
+                      ],
+                      "id": "380ae39b-4c49-4370-8ee6-395be017675f",
+                      "createdAt": "2026-07-28T01:43:34.000Z",
+                      "updatedAt": "2026-07-28T01:43:34.000Z",
+                      "uid": "35240-380ae39b-4c49-4370-8ee6-395be017675f"
+                    }
+                  ],
+                  "id": "8578c558-9a7c-43f1-9d69-e39345b49912",
+                  "createdAt": "2026-07-28T01:43:34.000Z",
+                  "updatedAt": "2026-07-28T01:43:34.000Z",
+                  "uid": "35240-8578c558-9a7c-43f1-9d69-e39345b49912"
+                }
+              ],
+              "id": "20f25e21-8542-4a66-a10c-d30714ac64f6",
+              "createdAt": "2026-07-28T01:43:34.000Z",
+              "updatedAt": "2026-07-28T01:43:34.000Z",
+              "uid": "35240-20f25e21-8542-4a66-a10c-d30714ac64f6"
+            }
+          ],
+          "id": "5b3a2417-b9d0-4a18-af7f-6a1e8f122b12",
+          "createdAt": "2026-07-28T01:43:34.000Z",
+          "updatedAt": "2026-07-28T01:43:34.000Z",
+          "uid": "35240-5b3a2417-b9d0-4a18-af7f-6a1e8f122b12"
+        }
+      ],
+      "id": "7767d682-4acd-41f1-9278-d2b932acae3f",
+      "createdAt": "2026-07-28T01:43:34.000Z",
+      "updatedAt": "2026-07-28T01:43:34.000Z",
+      "uid": "35240-7767d682-4acd-41f1-9278-d2b932acae3f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fyno.io/v1"
+    }
+  ]
+}

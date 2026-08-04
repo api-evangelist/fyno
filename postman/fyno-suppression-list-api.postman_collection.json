@@ -1,0 +1,675 @@
+{
+  "info": {
+    "_postman_id": "ccd0e91f-da18-4a3c-a14c-84959ffcbf2d",
+    "name": "Fyno Rest Fire an Event Suppression List API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:43:34.000Z",
+    "updatedAt": "2026-07-28T01:43:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ccd0e91f-da18-4a3c-a14c-84959ffcbf2d"
+  },
+  "item": [
+    {
+      "name": "{WSID}",
+      "item": [
+        {
+          "name": "suppressions",
+          "item": [
+            {
+              "name": "Get Suppression List",
+              "id": "4c4649b0-4e81-4c94-b56b-105ae17d373a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:WSID/suppressions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":WSID",
+                    "suppressions"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d80ad71f-4a36-4f89-9863-ff0a5e0df44f",
+                      "key": "WSID",
+                      "value": "<string>",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    }
+                  ]
+                },
+                "description": "The Suppression List API enables you to manage users who should be excluded from receiving communications on specific channels.<br/><br/>This API enables you to retrieve the list of all suppressed users across various channels."
+              },
+              "response": [
+                {
+                  "id": "00e9d249-aca7-4ee5-a037-f4de01ca6a17",
+                  "name": "Suppression list fetched.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/suppressions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        "suppressions"
+                      ],
+                      "variable": [
+                        {
+                          "key": "WSID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"_id\": \"<string>\",\n    \"destination\": \"<string>\",\n    \"distinct_id\": \"<string>\",\n    \"channel\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"expiry_ts\": \"<string>\"\n  },\n  {\n    \"_id\": \"<string>\",\n    \"destination\": \"<string>\",\n    \"distinct_id\": \"<string>\",\n    \"channel\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"expiry_ts\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-07-28T01:43:35.000Z",
+                  "updatedAt": "2026-07-28T01:43:35.000Z",
+                  "uid": "35240-00e9d249-aca7-4ee5-a037-f4de01ca6a17"
+                },
+                {
+                  "id": "218f91cb-1432-476c-90fe-fa47261e559c",
+                  "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/suppressions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        "suppressions"
+                      ],
+                      "variable": [
+                        {
+                          "key": "WSID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:43:35.000Z",
+                  "updatedAt": "2026-07-28T01:43:35.000Z",
+                  "uid": "35240-218f91cb-1432-476c-90fe-fa47261e559c"
+                }
+              ],
+              "createdAt": "2026-07-28T01:43:35.000Z",
+              "updatedAt": "2026-07-28T01:43:35.000Z",
+              "uid": "35240-4c4649b0-4e81-4c94-b56b-105ae17d373a"
+            },
+            {
+              "name": "Add User to Suppression List",
+              "id": "38af1927-be24-4834-b796-3cea691ba08b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:WSID/suppressions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":WSID",
+                    "suppressions"
+                  ],
+                  "variable": [
+                    {
+                      "id": "88a45b40-b0eb-4f23-801f-8cb5943083fc",
+                      "key": "WSID",
+                      "value": "<string>",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    }
+                  ]
+                },
+                "description": "Add a user to the suppression list for a given channel.<br/><br/><strong>Note:</strong> If both `distinct_id` and `destination` are provided, `distinct_id` takes precedence, and `destination` is ignored."
+              },
+              "response": [
+                {
+                  "id": "cea90818-34b5-4b38-bb25-63f81de45c47",
+                  "name": "Suppression list updated.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/suppressions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        "suppressions"
+                      ],
+                      "variable": [
+                        {
+                          "key": "WSID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"_message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:43:35.000Z",
+                  "updatedAt": "2026-07-28T01:43:35.000Z",
+                  "uid": "35240-cea90818-34b5-4b38-bb25-63f81de45c47"
+                },
+                {
+                  "id": "a17fc7e6-df1b-4e66-b323-0036d25cc105",
+                  "name": "Destination is invalid",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/suppressions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        "suppressions"
+                      ],
+                      "variable": [
+                        {
+                          "key": "WSID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"_message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:43:35.000Z",
+                  "updatedAt": "2026-07-28T01:43:35.000Z",
+                  "uid": "35240-a17fc7e6-df1b-4e66-b323-0036d25cc105"
+                },
+                {
+                  "id": "bb9cd2e9-be3d-41e9-98da-8968d4c9106f",
+                  "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/suppressions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        "suppressions"
+                      ],
+                      "variable": [
+                        {
+                          "key": "WSID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:43:35.000Z",
+                  "updatedAt": "2026-07-28T01:43:35.000Z",
+                  "uid": "35240-bb9cd2e9-be3d-41e9-98da-8968d4c9106f"
+                }
+              ],
+              "createdAt": "2026-07-28T01:43:35.000Z",
+              "updatedAt": "2026-07-28T01:43:35.000Z",
+              "uid": "35240-38af1927-be24-4834-b796-3cea691ba08b"
+            },
+            {
+              "name": "Delete User from Suppression List",
+              "id": "e6557d4e-5c53-450a-ae1c-484be37eba16",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:WSID/suppressions?_id=<string>&distinct_id=<string>&destination=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":WSID",
+                    "suppressions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unique identifier of the suppression record to delete.",
+                      "key": "_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Unique identifier (used as an alternative to destination)",
+                      "key": "distinct_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Phone number or email of the suppressed user",
+                      "key": "destination",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "df28589f-e579-4bed-ab35-b717f7966d72",
+                      "key": "WSID",
+                      "value": "<string>",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    }
+                  ]
+                },
+                "description": "Delete a suppression entry using its `_id`, `distinct_id`, `destination`.<br/><br/><strong>Note:</strong> If all three values (`distinct_id`, `destination`, `_id`) are provided, `_id` takes precedence followed by `distinct_id`."
+              },
+              "response": [
+                {
+                  "id": "49b82d3b-4ead-4bde-9671-1885472bf9e9",
+                  "name": "Suppression list updated.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/suppressions?_id=<string>&distinct_id=<string>&destination=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        "suppressions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier of the suppression record to delete.",
+                          "key": "_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Unique identifier (used as an alternative to destination)",
+                          "key": "distinct_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Phone number or email of the suppressed user",
+                          "key": "destination",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "WSID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"_message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:43:35.000Z",
+                  "updatedAt": "2026-07-28T01:43:35.000Z",
+                  "uid": "35240-49b82d3b-4ead-4bde-9671-1885472bf9e9"
+                },
+                {
+                  "id": "89bbcc0c-28aa-4048-a51b-9fc4a34a415e",
+                  "name": "The provided `_id` does not exist.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/suppressions?_id=<string>&distinct_id=<string>&destination=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        "suppressions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier of the suppression record to delete.",
+                          "key": "_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Unique identifier (used as an alternative to destination)",
+                          "key": "distinct_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Phone number or email of the suppressed user",
+                          "key": "destination",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "WSID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"_message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:43:35.000Z",
+                  "updatedAt": "2026-07-28T01:43:35.000Z",
+                  "uid": "35240-89bbcc0c-28aa-4048-a51b-9fc4a34a415e"
+                },
+                {
+                  "id": "b4a02524-7520-4dcd-8014-b9b1e52b0660",
+                  "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/suppressions?_id=<string>&distinct_id=<string>&destination=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        "suppressions"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier of the suppression record to delete.",
+                          "key": "_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Unique identifier (used as an alternative to destination)",
+                          "key": "distinct_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Phone number or email of the suppressed user",
+                          "key": "destination",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "WSID"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:43:35.000Z",
+                  "updatedAt": "2026-07-28T01:43:35.000Z",
+                  "uid": "35240-b4a02524-7520-4dcd-8014-b9b1e52b0660"
+                }
+              ],
+              "createdAt": "2026-07-28T01:43:35.000Z",
+              "updatedAt": "2026-07-28T01:43:35.000Z",
+              "uid": "35240-e6557d4e-5c53-450a-ae1c-484be37eba16"
+            }
+          ],
+          "id": "82a82f6b-92e9-4a3d-9cd4-9e2bd2b94840",
+          "createdAt": "2026-07-28T01:43:35.000Z",
+          "updatedAt": "2026-07-28T01:43:35.000Z",
+          "uid": "35240-82a82f6b-92e9-4a3d-9cd4-9e2bd2b94840"
+        }
+      ],
+      "id": "33cc39ff-e0bc-4237-8a14-5f31c68604d5",
+      "createdAt": "2026-07-28T01:43:35.000Z",
+      "updatedAt": "2026-07-28T01:43:35.000Z",
+      "uid": "35240-33cc39ff-e0bc-4237-8a14-5f31c68604d5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fyno.io/v1"
+    }
+  ]
+}

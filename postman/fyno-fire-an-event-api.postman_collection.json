@@ -1,0 +1,587 @@
+{
+  "info": {
+    "_postman_id": "8ed566d7-675e-4bb0-8c50-58412c4e6443",
+    "name": "Fyno Rest Fire an Event API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:43:24.000Z",
+    "updatedAt": "2026-07-28T01:43:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8ed566d7-675e-4bb0-8c50-58412c4e6443"
+  },
+  "item": [
+    {
+      "name": "{WSID}",
+      "item": [
+        {
+          "name": "{version}",
+          "item": [
+            {
+              "name": "event",
+              "item": [
+                {
+                  "name": "bulk",
+                  "item": [
+                    {
+                      "name": "Notify multiple users",
+                      "id": "7a3c5eb1-e284-47d8-b74f-62ca39d6c076",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"batch\": [\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {}\n    },\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": false,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {}\n    }\n  ],\n  \"event\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/event/bulk",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "event",
+                            "bulk"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d169d87f-636d-4ce0-a3fb-42d60d5f273f",
+                              "key": "WSID",
+                              "value": "<string>",
+                              "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                            },
+                            {
+                              "id": "2b9177d1-2606-4525-8d9f-b56610bfa0b1",
+                              "key": "version",
+                              "value": "live",
+                              "description": "(Required) Enter the version for which you wish to fire the notification."
+                            }
+                          ]
+                        },
+                        "description": "This API enables you to notify multiple users with one event trigger.<br/><br/>Before firing your first notification event, you must perform the following actions in your Fyno account:<br/>- Create a Template<br/>- Create an Event<br/>- Create an API Key<br/>- And obtain your workspace ID from the API Keys page."
+                      },
+                      "response": [
+                        {
+                          "id": "1133df03-aea5-4ab4-9490-57947f802641",
+                          "name": "Request accepted successfully and it will be processed asynchronously.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"batch\": [\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {}\n    },\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": false,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {}\n    }\n  ],\n  \"event\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/event/bulk",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "event",
+                                "bulk"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Accepted",
+                          "code": 202,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"event\": \"<string>\",\n  \"received_time\": \"<number>\",\n  \"request_id\": \"<string>\",\n  \"response\": [\n    {\n      \"discord\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"email\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"inapp\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"push\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"seq\": \"<integer>\",\n      \"slack\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"sms\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"teams\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"voice\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"whatsapp\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      }\n    },\n    {\n      \"discord\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"email\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"inapp\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"push\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"seq\": \"<integer>\",\n      \"slack\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"sms\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"teams\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"voice\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      \"whatsapp\": {\n        \"destination\": \"<string>\",\n        \"msg_id\": \"<string>\",\n        \"status\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:43:24.000Z",
+                          "updatedAt": "2026-07-28T01:43:24.000Z",
+                          "uid": "35240-1133df03-aea5-4ab4-9490-57947f802641"
+                        },
+                        {
+                          "id": "b5f43584-0119-4e46-8a19-96a4c609c123",
+                          "name": "Event name does not exist",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"batch\": [\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {}\n    },\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": false,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {}\n    }\n  ],\n  \"event\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/event/bulk",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "event",
+                                "bulk"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:24.000Z",
+                          "updatedAt": "2026-07-28T01:43:24.000Z",
+                          "uid": "35240-b5f43584-0119-4e46-8a19-96a4c609c123"
+                        },
+                        {
+                          "id": "2124bb09-5aa3-41ad-802e-4efc4a3d8db6",
+                          "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"batch\": [\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {}\n    },\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": false,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {}\n    }\n  ],\n  \"event\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/event/bulk",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "event",
+                                "bulk"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:24.000Z",
+                          "updatedAt": "2026-07-28T01:43:24.000Z",
+                          "uid": "35240-2124bb09-5aa3-41ad-802e-4efc4a3d8db6"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:43:24.000Z",
+                      "updatedAt": "2026-07-28T01:43:24.000Z",
+                      "uid": "35240-7a3c5eb1-e284-47d8-b74f-62ca39d6c076"
+                    }
+                  ],
+                  "id": "e1613335-072a-43b4-a542-bd7352ede668",
+                  "createdAt": "2026-07-28T01:43:24.000Z",
+                  "updatedAt": "2026-07-28T01:43:24.000Z",
+                  "uid": "35240-e1613335-072a-43b4-a542-bd7352ede668"
+                },
+                {
+                  "name": "Notify a single user",
+                  "id": "000ad2b3-9e8a-41d2-922f-a4f313c1589e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"event\": \"<string>\",\n  \"to\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": \"<string>\",\n    \"push\": \"<string>\",\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"callback\": {\n    \"custom_id\": \"<string>\",\n    \"custom1\": \"<string>\",\n    \"custom2\": \"<string>\",\n    \"custom3\": \"<string>\",\n    \"enable\": true,\n    \"allowlist_url\": \"<string>\"\n  },\n  \"data\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/:version/event",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        ":version",
+                        "event"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d02ad711-1ce6-4cd4-9e43-1985d1cf29e1",
+                          "key": "WSID",
+                          "value": "<string>",
+                          "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                        },
+                        {
+                          "id": "e426f535-9aaa-4a69-85c1-be9c0fb9cad8",
+                          "key": "version",
+                          "value": "live",
+                          "description": "(Required) Enter the version for which you wish to fire the notification."
+                        }
+                      ]
+                    },
+                    "description": "This API enables you to fire a notification event, which sends out notifications to your users. <br/><br/>Before firing your first notification event, you must perform the following actions in your Fyno account:<br/>- Create a Template<br/>- Create a Notification Event<br/>- Create an API Key<br/>- And obtain your workspace ID from the API Keys page."
+                  },
+                  "response": [
+                    {
+                      "id": "2115b489-bf6d-4cf8-932b-fa15244ac381",
+                      "name": "Request accepted successfully and it will be processed asynchronously.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event\": \"<string>\",\n  \"to\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": \"<string>\",\n    \"push\": \"<string>\",\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"callback\": {\n    \"custom_id\": \"<string>\",\n    \"custom1\": \"<string>\",\n    \"custom2\": \"<string>\",\n    \"custom3\": \"<string>\",\n    \"enable\": true,\n    \"allowlist_url\": \"<string>\"\n  },\n  \"data\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/event",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "event"
+                          ],
+                          "variable": [
+                            {
+                              "key": "WSID"
+                            },
+                            {
+                              "key": "version"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"event\": \"<string>\",\n  \"received_time\": \"<date>\",\n  \"request_id\": \"<string>\",\n  \"response\": {\n    \"discord\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    \"email\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    \"inapp\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    \"push\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    \"slack\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    \"sms\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    \"teams\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    \"voice\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    \"whatsapp\": {\n      \"destination\": \"<string>\",\n      \"msg_id\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:43:24.000Z",
+                      "updatedAt": "2026-07-28T01:43:24.000Z",
+                      "uid": "35240-2115b489-bf6d-4cf8-932b-fa15244ac381"
+                    },
+                    {
+                      "id": "c9bc82ee-6936-4197-83d7-4f19676c131f",
+                      "name": "Event name does not exist",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event\": \"<string>\",\n  \"to\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": \"<string>\",\n    \"push\": \"<string>\",\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"callback\": {\n    \"custom_id\": \"<string>\",\n    \"custom1\": \"<string>\",\n    \"custom2\": \"<string>\",\n    \"custom3\": \"<string>\",\n    \"enable\": true,\n    \"allowlist_url\": \"<string>\"\n  },\n  \"data\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/event",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "event"
+                          ],
+                          "variable": [
+                            {
+                              "key": "WSID"
+                            },
+                            {
+                              "key": "version"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:43:24.000Z",
+                      "updatedAt": "2026-07-28T01:43:24.000Z",
+                      "uid": "35240-c9bc82ee-6936-4197-83d7-4f19676c131f"
+                    },
+                    {
+                      "id": "34b29851-785c-46d3-b3f2-8866245243ca",
+                      "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"event\": \"<string>\",\n  \"to\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": \"<string>\",\n    \"push\": \"<string>\",\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"callback\": {\n    \"custom_id\": \"<string>\",\n    \"custom1\": \"<string>\",\n    \"custom2\": \"<string>\",\n    \"custom3\": \"<string>\",\n    \"enable\": true,\n    \"allowlist_url\": \"<string>\"\n  },\n  \"data\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/event",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "event"
+                          ],
+                          "variable": [
+                            {
+                              "key": "WSID"
+                            },
+                            {
+                              "key": "version"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:43:24.000Z",
+                      "updatedAt": "2026-07-28T01:43:24.000Z",
+                      "uid": "35240-34b29851-785c-46d3-b3f2-8866245243ca"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:43:24.000Z",
+                  "updatedAt": "2026-07-28T01:43:24.000Z",
+                  "uid": "35240-000ad2b3-9e8a-41d2-922f-a4f313c1589e"
+                }
+              ],
+              "id": "a95c5a1e-4fdf-4093-89ff-9c572ad806b9",
+              "createdAt": "2026-07-28T01:43:24.000Z",
+              "updatedAt": "2026-07-28T01:43:24.000Z",
+              "uid": "35240-a95c5a1e-4fdf-4093-89ff-9c572ad806b9"
+            }
+          ],
+          "id": "a1429405-58e6-4dab-9bd6-dc2018115b66",
+          "createdAt": "2026-07-28T01:43:24.000Z",
+          "updatedAt": "2026-07-28T01:43:24.000Z",
+          "uid": "35240-a1429405-58e6-4dab-9bd6-dc2018115b66"
+        }
+      ],
+      "id": "7c78f395-40e6-441e-a074-07e31017c7f2",
+      "createdAt": "2026-07-28T01:43:24.000Z",
+      "updatedAt": "2026-07-28T01:43:24.000Z",
+      "uid": "35240-7c78f395-40e6-441e-a074-07e31017c7f2"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fyno.io/v1"
+    }
+  ]
+}

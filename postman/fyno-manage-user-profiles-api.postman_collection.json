@@ -1,0 +1,1954 @@
+{
+  "info": {
+    "_postman_id": "8dcdcf58-a512-4d3a-979e-d203064bfa83",
+    "name": "Fyno Rest Fire an Event Manage User Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:43:32.000Z",
+    "updatedAt": "2026-07-28T01:43:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8dcdcf58-a512-4d3a-979e-d203064bfa83"
+  },
+  "item": [
+    {
+      "name": "{WSID}",
+      "item": [
+        {
+          "name": "{version}",
+          "item": [
+            {
+              "name": "profiles",
+              "item": [
+                {
+                  "name": "{distinct_id}",
+                  "item": [
+                    {
+                      "name": "channel",
+                      "item": [
+                        {
+                          "name": "delete",
+                          "item": [
+                            {
+                              "name": "Delete channel data",
+                              "id": "c77a57b0-16ee-42e6-9692-80288f8321ce",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"channel\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id/channel/delete",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    ":distinct_id",
+                                    "channel",
+                                    "delete"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "de6e556b-8b02-4d4e-abba-8f52fabaa328",
+                                      "key": "WSID",
+                                      "value": "<string>",
+                                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                    },
+                                    {
+                                      "id": "ed49df4a-b8eb-4f0b-a91a-614fb101354f",
+                                      "key": "version",
+                                      "value": "live",
+                                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                                    },
+                                    {
+                                      "id": "74cb5503-b337-4e45-8d61-9981031c0464",
+                                      "key": "distinct_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                                    }
+                                  ]
+                                },
+                                "description": "This API enables you to delete existing data for all channels. You can use either of the following approaches&#58;<br/><br/>- **Option 1&#58;** Use the `channel` key in the payload to delete all tokens in the specified channel.<br/>-  **Option 2&#58;** Use the `push` and `inapp` keys in the payload to delete specific tokens in these channels.<br/><br/>**Note&#58;** You can use either option 1 or option 2. It is not allowed to use both approaches in one request."
+                              },
+                              "response": [
+                                {
+                                  "id": "ff4039b2-1b41-4dff-830c-14dc80e0f726",
+                                  "name": "Profile updated successfully",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"channel\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id/channel/delete",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "profiles",
+                                        ":distinct_id",
+                                        "channel",
+                                        "delete"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "distinct_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:43:33.000Z",
+                                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                                  "uid": "35240-ff4039b2-1b41-4dff-830c-14dc80e0f726"
+                                },
+                                {
+                                  "id": "4ec3fc2f-4ac5-4d90-9526-05129853e70b",
+                                  "name": "Distinct ID or channel data does not exist",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"channel\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id/channel/delete",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "profiles",
+                                        ":distinct_id",
+                                        "channel",
+                                        "delete"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "distinct_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:43:33.000Z",
+                                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                                  "uid": "35240-4ec3fc2f-4ac5-4d90-9526-05129853e70b"
+                                },
+                                {
+                                  "id": "e38c4ce7-03fb-4b11-86f6-ec776ca8827a",
+                                  "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"channel\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id/channel/delete",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "profiles",
+                                        ":distinct_id",
+                                        "channel",
+                                        "delete"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "distinct_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:43:33.000Z",
+                                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                                  "uid": "35240-e38c4ce7-03fb-4b11-86f6-ec776ca8827a"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:43:33.000Z",
+                              "updatedAt": "2026-07-28T01:43:33.000Z",
+                              "uid": "35240-c77a57b0-16ee-42e6-9692-80288f8321ce"
+                            }
+                          ],
+                          "id": "7e7cf2cd-9de5-4f8d-9f6a-18cc026c51f0",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-7e7cf2cd-9de5-4f8d-9f6a-18cc026c51f0"
+                        },
+                        {
+                          "name": "Add/Update channel data",
+                          "id": "d89e13f4-5ebe-4623-b77b-06088637255e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id/channel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                ":distinct_id",
+                                "channel"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "47ea101b-4c20-4624-975f-31a20527c78d",
+                                  "key": "WSID",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                },
+                                {
+                                  "id": "8f00468b-af0c-4f6d-86b6-dfbede786c61",
+                                  "key": "version",
+                                  "value": "live",
+                                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                                },
+                                {
+                                  "id": "0cd9bb5f-8754-4bd0-9931-0556fa8d138b",
+                                  "key": "distinct_id",
+                                  "value": "<string>",
+                                  "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                                }
+                              ]
+                            },
+                            "description": "This API enables you to update existing data for `sms`, `whatsapp`, `email`, `slack`, `discord`, and `teams` channels, and add new tokens for `push` and `inapp` channels. It works like an update for channels that can hold a single destination only and like an insert for channels that can hold multiple destinations/tokens."
+                          },
+                          "response": [
+                            {
+                              "id": "0c0cc207-f154-4156-9260-69da6940bf8e",
+                              "name": "Profile updated successfully",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id/channel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    ":distinct_id",
+                                    "channel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    },
+                                    {
+                                      "key": "distinct_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:33.000Z",
+                              "updatedAt": "2026-07-28T01:43:33.000Z",
+                              "uid": "35240-0c0cc207-f154-4156-9260-69da6940bf8e"
+                            },
+                            {
+                              "id": "fdc0fb60-f2d3-4f42-a71a-9ec10fcacadf",
+                              "name": "Distinct ID does not exist",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id/channel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    ":distinct_id",
+                                    "channel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    },
+                                    {
+                                      "key": "distinct_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:33.000Z",
+                              "updatedAt": "2026-07-28T01:43:33.000Z",
+                              "uid": "35240-fdc0fb60-f2d3-4f42-a71a-9ec10fcacadf"
+                            },
+                            {
+                              "id": "5bf81083-767c-4f54-884a-59ed592feff8",
+                              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  }\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id/channel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    ":distinct_id",
+                                    "channel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "WSID"
+                                    },
+                                    {
+                                      "key": "version"
+                                    },
+                                    {
+                                      "key": "distinct_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:43:33.000Z",
+                              "updatedAt": "2026-07-28T01:43:33.000Z",
+                              "uid": "35240-5bf81083-767c-4f54-884a-59ed592feff8"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-d89e13f4-5ebe-4623-b77b-06088637255e"
+                        }
+                      ],
+                      "id": "75acdc14-048c-43da-90dd-8be18476ebba",
+                      "createdAt": "2026-07-28T01:43:33.000Z",
+                      "updatedAt": "2026-07-28T01:43:33.000Z",
+                      "uid": "35240-75acdc14-048c-43da-90dd-8be18476ebba"
+                    },
+                    {
+                      "name": "Get user profile",
+                      "id": "2431f0bc-8923-49f1-acb6-23507eeea500",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "profiles",
+                            ":distinct_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ea5cc13a-5de5-44a2-9a4f-8cc14833ae08",
+                              "key": "WSID",
+                              "value": "<string>",
+                              "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                            },
+                            {
+                              "id": "f9fa54ae-d11b-4f8c-87ef-2e587850e5b9",
+                              "key": "version",
+                              "value": "live",
+                              "description": "(Required) Specify the version for which you would like to manage the user profile."
+                            },
+                            {
+                              "id": "a0c9bf41-8ab3-462d-b43a-078b277c7705",
+                              "key": "distinct_id",
+                              "value": "<string>",
+                              "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                            }
+                          ]
+                        },
+                        "description": "This API enables you to get an existing user profile."
+                      },
+                      "response": [
+                        {
+                          "id": "a8c8e154-48ec-4070-871d-aaa684a565fa",
+                          "name": "Profile fetched successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                ":distinct_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                },
+                                {
+                                  "key": "distinct_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"distinct_id\": \"<string>\",\n  \"country_code\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"timezone_offset\": \"<string>\",\n  \"created_at\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"push\": [\n      {\n        \"integration_id\": \"<string>\",\n        \"status\": 1,\n        \"token\": \"<string>\"\n      },\n      {\n        \"integration_id\": \"<string>\",\n        \"status\": 1,\n        \"token\": \"<string>\"\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"status\": 1,\n  \"id_list\": [\n    {\n      \"example\": \"6442XXXXXXXXXXXXXXXXc684\"\n    },\n    {\n      \"example\": \"6442XXXXXXXXXXXXXXXXc684\"\n    }\n  ],\n  \"profile_id\": \"<string>\",\n  \"version\": \"test\",\n  \"name\": \"<string>\",\n  \"properties\": 3390397\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-a8c8e154-48ec-4070-871d-aaa684a565fa"
+                        },
+                        {
+                          "id": "8d750443-1865-4dd6-823c-33296b75f34d",
+                          "name": "Distinct ID does not exist",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                ":distinct_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                },
+                                {
+                                  "key": "distinct_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-8d750443-1865-4dd6-823c-33296b75f34d"
+                        },
+                        {
+                          "id": "2bd965ff-c29e-4509-80b8-7a11d17d4be4",
+                          "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                ":distinct_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                },
+                                {
+                                  "key": "distinct_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-2bd965ff-c29e-4509-80b8-7a11d17d4be4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:43:33.000Z",
+                      "updatedAt": "2026-07-28T01:43:33.000Z",
+                      "uid": "35240-2431f0bc-8923-49f1-acb6-23507eeea500"
+                    },
+                    {
+                      "name": "Update user profile",
+                      "id": "9316ce2d-7a6c-47c0-bc2d-06a3e526307b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"distinct_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": 0,\n  \"timezone\": \"Europe/Malta\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "profiles",
+                            ":distinct_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d13983e6-1c46-4d84-bde9-9900f1008eb2",
+                              "key": "WSID",
+                              "value": "<string>",
+                              "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                            },
+                            {
+                              "id": "af4df6cd-7834-4a9b-a9f7-ec85c4f57276",
+                              "key": "version",
+                              "value": "live",
+                              "description": "(Required) Specify the version for which you would like to manage the user profile."
+                            },
+                            {
+                              "id": "df511025-e924-4fd3-9323-252c8515e609",
+                              "key": "distinct_id",
+                              "value": "<string>",
+                              "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                            }
+                          ]
+                        },
+                        "description": "This API enables you to update an existing user profile. It updates the entire user profile including `distinct_id` (if specified).<br/><br/>**Note&#58;** If there were existing values in the profile, they will be completely replaced (if those keys are passed) or ignored (if those keys are not passed)."
+                      },
+                      "response": [
+                        {
+                          "id": "84a85049-19ce-42a6-908d-f2bc83f5683e",
+                          "name": "Profile updated successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"distinct_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": 0,\n  \"timezone\": \"Europe/Malta\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                ":distinct_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                },
+                                {
+                                  "key": "distinct_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-84a85049-19ce-42a6-908d-f2bc83f5683e"
+                        },
+                        {
+                          "id": "b3946f3c-d8df-400a-ad17-4397400ff734",
+                          "name": "Distinct ID does not exist",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"distinct_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": 0,\n  \"timezone\": \"Europe/Malta\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                ":distinct_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                },
+                                {
+                                  "key": "distinct_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-b3946f3c-d8df-400a-ad17-4397400ff734"
+                        },
+                        {
+                          "id": "f048defb-4779-443c-86b7-547e0d588075",
+                          "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"distinct_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": 0,\n  \"timezone\": \"Europe/Malta\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/:distinct_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                ":distinct_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                },
+                                {
+                                  "key": "distinct_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-f048defb-4779-443c-86b7-547e0d588075"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:43:33.000Z",
+                      "updatedAt": "2026-07-28T01:43:33.000Z",
+                      "uid": "35240-9316ce2d-7a6c-47c0-bc2d-06a3e526307b"
+                    }
+                  ],
+                  "id": "4e05f33a-6cd6-4249-b1fb-4e9e7dbd5fcc",
+                  "createdAt": "2026-07-28T01:43:33.000Z",
+                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                  "uid": "35240-4e05f33a-6cd6-4249-b1fb-4e9e7dbd5fcc"
+                },
+                {
+                  "name": "{source_distinct_id}",
+                  "item": [
+                    {
+                      "name": "merge",
+                      "item": [
+                        {
+                          "name": "{target_distinct_id}",
+                          "item": [
+                            {
+                              "name": "Merge user profiles",
+                              "id": "c3496d01-86f4-4bbb-9f20-dbd6023d1ff9",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/:WSID/:version/profiles/:source_distinct_id/merge/:target_distinct_id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    ":WSID",
+                                    ":version",
+                                    "profiles",
+                                    ":source_distinct_id",
+                                    "merge",
+                                    ":target_distinct_id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "92990930-3967-4fa4-9b73-a0ca5302d6f2",
+                                      "key": "WSID",
+                                      "value": "<string>",
+                                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                                    },
+                                    {
+                                      "id": "12abe685-3e8c-4d69-a3b9-f638e7e3b2b9",
+                                      "key": "version",
+                                      "value": "live",
+                                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                                    },
+                                    {
+                                      "id": "c0cadda2-0843-45c8-a52a-f60834035ef6",
+                                      "key": "source_distinct_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Enter the source distinct ID that you wish to merge from."
+                                    },
+                                    {
+                                      "id": "da3a73be-8798-4193-b704-5be54b3cf5d6",
+                                      "key": "target_distinct_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Enter the target distinct ID to which the profile should merge into."
+                                    }
+                                  ]
+                                },
+                                "description": "This API enables you to merge the attributes of a user profile to another user profile. The profile with source distinct ID is merged with the target profile, after which the source profile is automatically deleted. If the target distinct ID does not exist, the source distinct ID is updated to target distinct ID."
+                              },
+                              "response": [
+                                {
+                                  "id": "d9608857-d30a-41e4-beeb-4e55eb481228",
+                                  "name": "Profiles merged successfully and the source profile is deleted",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/profiles/:source_distinct_id/merge/:target_distinct_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "profiles",
+                                        ":source_distinct_id",
+                                        "merge",
+                                        ":target_distinct_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "source_distinct_id"
+                                        },
+                                        {
+                                          "key": "target_distinct_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:43:33.000Z",
+                                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                                  "uid": "35240-d9608857-d30a-41e4-beeb-4e55eb481228"
+                                },
+                                {
+                                  "id": "6a42e816-5b3a-4268-b854-d855ff8044a1",
+                                  "name": "Source distinct ID does not exist",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/profiles/:source_distinct_id/merge/:target_distinct_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "profiles",
+                                        ":source_distinct_id",
+                                        "merge",
+                                        ":target_distinct_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "source_distinct_id"
+                                        },
+                                        {
+                                          "key": "target_distinct_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:43:33.000Z",
+                                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                                  "uid": "35240-6a42e816-5b3a-4268-b854-d855ff8044a1"
+                                },
+                                {
+                                  "id": "9376511c-8185-4bcc-ad87-55f880ac196c",
+                                  "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                                  "originalRequest": {
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/:WSID/:version/profiles/:source_distinct_id/merge/:target_distinct_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        ":WSID",
+                                        ":version",
+                                        "profiles",
+                                        ":source_distinct_id",
+                                        "merge",
+                                        ":target_distinct_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "WSID"
+                                        },
+                                        {
+                                          "key": "version"
+                                        },
+                                        {
+                                          "key": "source_distinct_id"
+                                        },
+                                        {
+                                          "key": "target_distinct_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:43:33.000Z",
+                                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                                  "uid": "35240-9376511c-8185-4bcc-ad87-55f880ac196c"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:43:33.000Z",
+                              "updatedAt": "2026-07-28T01:43:33.000Z",
+                              "uid": "35240-c3496d01-86f4-4bbb-9f20-dbd6023d1ff9"
+                            }
+                          ],
+                          "id": "314dcf0d-cfc8-4e54-93a8-f0193ff8ed0b",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-314dcf0d-cfc8-4e54-93a8-f0193ff8ed0b"
+                        }
+                      ],
+                      "id": "4d428f1f-9304-45d3-9bd9-a48df16747f6",
+                      "createdAt": "2026-07-28T01:43:33.000Z",
+                      "updatedAt": "2026-07-28T01:43:33.000Z",
+                      "uid": "35240-4d428f1f-9304-45d3-9bd9-a48df16747f6"
+                    }
+                  ],
+                  "id": "6a682a5f-f9d4-400e-87a4-dc761f0e6d7d",
+                  "createdAt": "2026-07-28T01:43:33.000Z",
+                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                  "uid": "35240-6a682a5f-f9d4-400e-87a4-dc761f0e6d7d"
+                },
+                {
+                  "name": "delete",
+                  "item": [
+                    {
+                      "name": "Delete user profile",
+                      "id": "e0975a5e-50f4-46a5-9d5d-b78ce4879389",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"distinct_id\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/profiles/delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "profiles",
+                            "delete"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e69d35f7-1d31-424a-ab97-2e4ff7ebbbe3",
+                              "key": "WSID",
+                              "value": "<string>",
+                              "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                            },
+                            {
+                              "id": "b5ff319a-46b8-4ddc-ba85-a129621319c3",
+                              "key": "version",
+                              "value": "live",
+                              "description": "(Required) Specify the version for which you would like to manage the user profile."
+                            }
+                          ]
+                        },
+                        "description": "This API enables you to delete existing user profiles by using `distinct_id`."
+                      },
+                      "response": [
+                        {
+                          "id": "d6cb603b-a261-4562-9429-68a6d585b354",
+                          "name": "Profile deleted successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/delete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "delete"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-d6cb603b-a261-4562-9429-68a6d585b354"
+                        },
+                        {
+                          "id": "102876c5-21eb-4e64-96df-503de8d476ab",
+                          "name": "Distinct ID does not exist",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/delete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "delete"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-102876c5-21eb-4e64-96df-503de8d476ab"
+                        },
+                        {
+                          "id": "13bb233e-5991-4d73-b210-7d7b8f21a289",
+                          "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"distinct_id\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/profiles/delete",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "profiles",
+                                "delete"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:33.000Z",
+                          "updatedAt": "2026-07-28T01:43:33.000Z",
+                          "uid": "35240-13bb233e-5991-4d73-b210-7d7b8f21a289"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:43:33.000Z",
+                      "updatedAt": "2026-07-28T01:43:33.000Z",
+                      "uid": "35240-e0975a5e-50f4-46a5-9d5d-b78ce4879389"
+                    }
+                  ],
+                  "id": "cb2ce9f9-5eca-44ed-8a18-c3cec5885d99",
+                  "createdAt": "2026-07-28T01:43:33.000Z",
+                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                  "uid": "35240-cb2ce9f9-5eca-44ed-8a18-c3cec5885d99"
+                },
+                {
+                  "name": "Create user profile",
+                  "id": "55a6ea6a-96bb-403a-86af-9c28c7d5d73b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": 1,\n  \"timezone\": \"EST5EDT\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:WSID/:version/profiles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":WSID",
+                        ":version",
+                        "profiles"
+                      ],
+                      "variable": [
+                        {
+                          "id": "380d2dab-5b20-4ac4-bece-3325e54d212b",
+                          "key": "WSID",
+                          "value": "<string>",
+                          "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                        },
+                        {
+                          "id": "c49d8eac-0d5b-4da9-a6c1-c5c166925e88",
+                          "key": "version",
+                          "value": "live",
+                          "description": "(Required) Specify the version for which you would like to manage the user profile."
+                        }
+                      ]
+                    },
+                    "description": "This API enables you to create a user profile within Fyno, which you can then use to send out notifications.<br/><br/>Before creating your first user profile, you should obtain the following values needed for authentication:<br/>- API Key<br/>- Workspace ID"
+                  },
+                  "response": [
+                    {
+                      "id": "4722239b-0654-40f5-8951-76de3be0b807",
+                      "name": "Profile created successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": 1,\n  \"timezone\": \"EST5EDT\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "WSID"
+                            },
+                            {
+                              "key": "version"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:43:33.000Z",
+                      "updatedAt": "2026-07-28T01:43:33.000Z",
+                      "uid": "35240-4722239b-0654-40f5-8951-76de3be0b807"
+                    },
+                    {
+                      "id": "552ed2b2-8dc6-4cae-b9bb-52ff959e870c",
+                      "name": "Distinct ID already exists",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": 1,\n  \"timezone\": \"EST5EDT\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "WSID"
+                            },
+                            {
+                              "key": "version"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:43:33.000Z",
+                      "updatedAt": "2026-07-28T01:43:33.000Z",
+                      "uid": "35240-552ed2b2-8dc6-4cae-b9bb-52ff959e870c"
+                    },
+                    {
+                      "id": "f7676e89-3bc4-4e93-b603-06c514db88cd",
+                      "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 0\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": 1\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": 1,\n  \"timezone\": \"EST5EDT\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/profiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "profiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "WSID"
+                            },
+                            {
+                              "key": "version"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:43:33.000Z",
+                      "updatedAt": "2026-07-28T01:43:33.000Z",
+                      "uid": "35240-f7676e89-3bc4-4e93-b603-06c514db88cd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:43:33.000Z",
+                  "updatedAt": "2026-07-28T01:43:33.000Z",
+                  "uid": "35240-55a6ea6a-96bb-403a-86af-9c28c7d5d73b"
+                }
+              ],
+              "id": "bf390ad4-1db2-442a-bd80-ead37b206af0",
+              "createdAt": "2026-07-28T01:43:33.000Z",
+              "updatedAt": "2026-07-28T01:43:33.000Z",
+              "uid": "35240-bf390ad4-1db2-442a-bd80-ead37b206af0"
+            }
+          ],
+          "id": "3c46302a-ab3b-4e17-8063-e680299d75bc",
+          "createdAt": "2026-07-28T01:43:33.000Z",
+          "updatedAt": "2026-07-28T01:43:33.000Z",
+          "uid": "35240-3c46302a-ab3b-4e17-8063-e680299d75bc"
+        }
+      ],
+      "id": "0b26a4ff-3b34-4684-83b1-78bfd3da47ea",
+      "createdAt": "2026-07-28T01:43:33.000Z",
+      "updatedAt": "2026-07-28T01:43:33.000Z",
+      "uid": "35240-0b26a4ff-3b34-4684-83b1-78bfd3da47ea"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fyno.io/v1"
+    }
+  ]
+}

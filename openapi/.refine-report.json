@@ -1,0 +1,24 @@
+{
+  "provider": "fyno",
+  "sources": [
+    "fyno-fire-an-event-api-openapi.yml",
+    "fyno-fyno-verify-api-openapi.yml",
+    "fyno-manage-user-profiles-api-openapi.yml",
+    "fyno-manage-user-subscriptions-preferences-api-openapi.yml",
+    "fyno-suppression-list-api-openapi.yml",
+    "fyno-user-properties-api-openapi.yml"
+  ],
+  "outputs": [
+    "fyno-fire-an-event-api-openapi.yml",
+    "fyno-fyno-verify-api-openapi.yml",
+    "fyno-manage-user-profiles-api-openapi.yml",
+    "fyno-manage-user-subscriptions-preferences-api-openapi.yml",
+    "fyno-suppression-list-api-openapi.yml",
+    "fyno-user-properties-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

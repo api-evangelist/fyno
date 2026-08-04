@@ -1,0 +1,340 @@
+{
+  "info": {
+    "_postman_id": "0da07d28-737f-4dad-a0a6-1a625aecbfa6",
+    "name": "Fyno Rest Fire an Event Fyno Verify API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:43:25.000Z",
+    "updatedAt": "2026-07-28T01:43:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0da07d28-737f-4dad-a0a6-1a625aecbfa6"
+  },
+  "item": [
+    {
+      "name": "{WSID}",
+      "item": [
+        {
+          "name": "{version}",
+          "item": [
+            {
+              "name": "verify",
+              "item": [
+                {
+                  "name": "validate",
+                  "item": [
+                    {
+                      "name": "Verify OTP",
+                      "id": "884086a3-3c48-42e7-8072-403eef3a5607",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/:WSID/:version/verify/validate?request_id=<string>&destination=<string>&otp=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            ":WSID",
+                            ":version",
+                            "verify",
+                            "validate"
+                          ],
+                          "query": [
+                            {
+                              "description": "Specify the request id of the triggered notification event that sent the OTP to the user.<br/>You must use this query parameter if **you've disabled \"Use destination as id\"** in the Fyno Verify setting.",
+                              "key": "request_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Enter the destination where the OTP is sent. It can be either mobile no or email id.<br/>You must use this query parameter if **you've enabled \"Use destination as id\"** in the Fyno Verify setting.",
+                              "key": "destination",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Enter the OTP which you want to validate.",
+                              "key": "otp",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "8ebff8b2-5e43-4dd6-904d-f407ca916681",
+                              "key": "WSID",
+                              "value": "<string>",
+                              "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                            },
+                            {
+                              "id": "400f9e19-7db4-450d-89d8-872c4cd34384",
+                              "key": "version",
+                              "value": "live",
+                              "description": "(Required) Specify the version for which you would like to manage the user profile."
+                            }
+                          ]
+                        },
+                        "description": "This API enables you to validate the OTP entered by the user using either `request_id` (received in response of the Fire an Event API) or `destination` (such as phone number, email)."
+                      },
+                      "response": [
+                        {
+                          "id": "6b2e2f17-dbad-4ef9-83df-84fa3a86a52a",
+                          "name": "OTP successfully validated",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/verify/validate?request_id=<string>&destination=<string>&otp=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "verify",
+                                "validate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specify the request id of the triggered notification event that sent the OTP to the user.<br/>You must use this query parameter if **you've disabled \"Use destination as id\"** in the Fyno Verify setting.",
+                                  "key": "request_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Enter the destination where the OTP is sent. It can be either mobile no or email id.<br/>You must use this query parameter if **you've enabled \"Use destination as id\"** in the Fyno Verify setting.",
+                                  "key": "destination",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) Enter the OTP which you want to validate.",
+                                  "key": "otp",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:30.000Z",
+                          "updatedAt": "2026-07-28T01:43:30.000Z",
+                          "uid": "35240-6b2e2f17-dbad-4ef9-83df-84fa3a86a52a"
+                        },
+                        {
+                          "id": "2ace14dc-da40-4dd0-9f74-27c56fdc2e4e",
+                          "name": "Invalid OTP entered by user",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/verify/validate?request_id=<string>&destination=<string>&otp=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "verify",
+                                "validate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specify the request id of the triggered notification event that sent the OTP to the user.<br/>You must use this query parameter if **you've disabled \"Use destination as id\"** in the Fyno Verify setting.",
+                                  "key": "request_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Enter the destination where the OTP is sent. It can be either mobile no or email id.<br/>You must use this query parameter if **you've enabled \"Use destination as id\"** in the Fyno Verify setting.",
+                                  "key": "destination",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) Enter the OTP which you want to validate.",
+                                  "key": "otp",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:30.000Z",
+                          "updatedAt": "2026-07-28T01:43:30.000Z",
+                          "uid": "35240-2ace14dc-da40-4dd0-9f74-27c56fdc2e4e"
+                        },
+                        {
+                          "id": "84e39250-e618-41b7-8ece-2159a2f2071c",
+                          "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/:WSID/:version/verify/validate?request_id=<string>&destination=<string>&otp=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                ":WSID",
+                                ":version",
+                                "verify",
+                                "validate"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Specify the request id of the triggered notification event that sent the OTP to the user.<br/>You must use this query parameter if **you've disabled \"Use destination as id\"** in the Fyno Verify setting.",
+                                  "key": "request_id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Enter the destination where the OTP is sent. It can be either mobile no or email id.<br/>You must use this query parameter if **you've enabled \"Use destination as id\"** in the Fyno Verify setting.",
+                                  "key": "destination",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "(Required) Enter the OTP which you want to validate.",
+                                  "key": "otp",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "WSID"
+                                },
+                                {
+                                  "key": "version"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"_message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:43:30.000Z",
+                          "updatedAt": "2026-07-28T01:43:30.000Z",
+                          "uid": "35240-84e39250-e618-41b7-8ece-2159a2f2071c"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:43:30.000Z",
+                      "updatedAt": "2026-07-28T01:43:30.000Z",
+                      "uid": "35240-884086a3-3c48-42e7-8072-403eef3a5607"
+                    }
+                  ],
+                  "id": "b75f4eda-d0a0-44d8-bed4-ac152ee7c054",
+                  "createdAt": "2026-07-28T01:43:30.000Z",
+                  "updatedAt": "2026-07-28T01:43:30.000Z",
+                  "uid": "35240-b75f4eda-d0a0-44d8-bed4-ac152ee7c054"
+                }
+              ],
+              "id": "0b96d87b-7be4-42a2-b11d-b9c9cb7312a1",
+              "createdAt": "2026-07-28T01:43:30.000Z",
+              "updatedAt": "2026-07-28T01:43:30.000Z",
+              "uid": "35240-0b96d87b-7be4-42a2-b11d-b9c9cb7312a1"
+            }
+          ],
+          "id": "83f66d2d-2833-4839-bf69-127d6d313a5a",
+          "createdAt": "2026-07-28T01:43:30.000Z",
+          "updatedAt": "2026-07-28T01:43:30.000Z",
+          "uid": "35240-83f66d2d-2833-4839-bf69-127d6d313a5a"
+        }
+      ],
+      "id": "183e53c1-c27f-4143-b181-74e83802e9ad",
+      "createdAt": "2026-07-28T01:43:30.000Z",
+      "updatedAt": "2026-07-28T01:43:30.000Z",
+      "uid": "35240-183e53c1-c27f-4143-b181-74e83802e9ad"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fyno.io/v1"
+    }
+  ]
+}
