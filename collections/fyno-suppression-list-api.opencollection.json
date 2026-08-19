@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fyno Rest Fire an Event Suppression List API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suppression List",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Suppression List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fyno.io/v1/:WSID/suppressions",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              }
+            ]
+          },
+          "docs": "The Suppression List API enables you to manage users who should be excluded from receiving communications on specific channels.<br/><br/>This API enables you to retrieve the list of all suppressed users across various channels."
+        },
+        {
+          "info": {
+            "name": "Add User to Suppression List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/suppressions",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a user to the suppression list for a given channel.<br/><br/><strong>Note:</strong> If both `distinct_id` and `destination` are provided, `distinct_id` takes precedence, and `destination` is ignored."
+        },
+        {
+          "info": {
+            "name": "Delete User from Suppression List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fyno.io/v1/:WSID/suppressions",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "_id",
+                "value": "68763be4b8cee01156d9fa8a",
+                "type": "query",
+                "description": "Unique identifier of the suppression record to delete."
+              },
+              {
+                "name": "distinct_id",
+                "value": "XXXX-XXX-XXXX",
+                "type": "query",
+                "description": "Unique identifier (used as an alternative to destination)"
+              },
+              {
+                "name": "destination",
+                "value": "919XXXXXXXX",
+                "type": "query",
+                "description": "Phone number or email of the suppressed user"
+              }
+            ]
+          },
+          "docs": "Delete a suppression entry using its `_id`, `distinct_id`, `destination`.<br/><br/><strong>Note:</strong> If all three values (`distinct_id`, `destination`, `_id`) are provided, `_id` takes precedence followed by `distinct_id`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fyno Rest Fire an Event API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fire an Event",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Notify a single user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/event",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Enter the version for which you wish to fire the notification."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to fire a notification event, which sends out notifications to your users. <br/><br/>Before firing your first notification event, you must perform the following actions in your Fyno account:<br/>- Create a Template<br/>- Create a Notification Event<br/>- Create an API Key<br/>- And obtain your workspace ID from the API Keys page."
+        },
+        {
+          "info": {
+            "name": "Notify multiple users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/event/bulk",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Enter the version for which you wish to fire the notification."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to notify multiple users with one event trigger.<br/><br/>Before firing your first notification event, you must perform the following actions in your Fyno account:<br/>- Create a Template<br/>- Create an Event<br/>- Create an API Key<br/>- And obtain your workspace ID from the API Keys page."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

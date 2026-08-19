@@ -1,0 +1,227 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fyno Rest Fire an Event User Properties API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update User Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/properties/set",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to update the user property."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to update user properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will be determined based "
+        },
+        {
+          "info": {
+            "name": "Set an Unset Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/properties/set-once",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to update the user property."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to set user properties of your users listed in your [User Profiles](../user-profiles-overview) **only if it is currently unset.** If the given payload contains a mix of properties that are currently set and unset, then it will only add values to the properties that are currently unset and ignore the other properties. If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and sets values for all the provided properties.<br/><br/>**Note"
+        },
+        {
+          "info": {
+            "name": "Increment/Decrement Numeric Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/properties/numerical-add",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to update the user property."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to increment/decrement values of numeric properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties. To decrement property values, you can pass a negative value.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it"
+        },
+        {
+          "info": {
+            "name": "Append Values to List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/properties/list-append",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to update the user property."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to append values to list type properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will set t"
+        },
+        {
+          "info": {
+            "name": "Remove Value From List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/properties/list-remove",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to update the user property."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to remove existing values from the list type properties of your users listed in your [User Profiles](../user-profiles-overview). If the specified distinct ID or list property doesn't exist, it simply accepts the remove request and ignores it.<br/><br/>**Note:** This API can only be used to remove values from list and can remove only one value from a property at a time. To unset (nullify) other property types, please use [Unset User Property API.](./unset-user-property)"
+        },
+        {
+          "info": {
+            "name": "Unset User Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/properties/unset",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to update the user property."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to unset (nullify) user properties of your users listed in your [User Profiles](../user-profiles-overview). If the specified distinct ID or property doesn't exist, it simply accepts the unset request and ignores it. This API can be used to unset all property data types: String, Number, Boolean, Date, List."
+        },
+        {
+          "info": {
+            "name": "Batch Update User Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/properties/batch",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to update the user property."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to modify user properties of your users listed in your [User Profiles](../user-profiles-overview) in bulk:<br/><ul><li>[Update User Properties](./update-user-property) - `$set`</li><li>[Set Unset Properties](./set-an-unset-property) - `$once`</li><li>[Increment/Decrement Numeric Properties](./increment-decrement-numeric-property) - `$add`</li><li>[Append Values to List](./append-values-to-list) - `$append`</li><li>[Remove Values From List](./remove-value-from-list) - `$remov"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

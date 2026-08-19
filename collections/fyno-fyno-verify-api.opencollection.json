@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fyno Rest Fire an Event Fyno Verify API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fyno Verify",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Verify OTP",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/verify/validate",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "request_id",
+                "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "type": "query",
+                "description": "Specify the request id of the triggered notification event that sent the OTP to the user.<br/>You must use this query parameter if **you've disabled \"Use destination as id\"** in the Fyno Verify setting."
+              },
+              {
+                "name": "destination",
+                "value": "xxxxxxxxxx",
+                "type": "query",
+                "description": "Enter the destination where the OTP is sent. It can be either mobile no or email id.<br/>You must use this query parameter if **you've enabled \"Use destination as id\"** in the Fyno Verify setting."
+              },
+              {
+                "name": "otp",
+                "value": "1234",
+                "type": "query",
+                "description": "Enter the OTP which you want to validate."
+              }
+            ]
+          },
+          "docs": "This API enables you to validate the OTP entered by the user using either `request_id` (received in response of the Fire an Event API) or `destination` (such as phone number, email)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

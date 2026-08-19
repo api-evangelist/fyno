@@ -1,0 +1,583 @@
+{
+  "item": [
+    {
+      "id": "1ea38694-ec5b-49a3-b205-d17628a60dc0",
+      "name": "Fire an Event",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f9ea5d35-7c3d-4648-8b3e-88d9795ac1d2",
+          "name": "Notify a single user",
+          "request": {
+            "name": "Notify a single user",
+            "description": {
+              "content": "This API enables you to fire a notification event, which sends out notifications to your users. <br/><br/>Before firing your first notification event, you must perform the following actions in your Fyno account:<br/>- Create a Template<br/>- Create a Notification Event<br/>- Create an API Key<br/>- And obtain your workspace ID from the API Keys page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "event"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Enter the version for which you wish to fire the notification."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<string>\",\n  \"to\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": \"<string>\",\n    \"push\": \"<string>\",\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"callback\": {\n    \"custom_id\": \"<string>\",\n    \"custom1\": \"<string>\",\n    \"custom2\": \"<string>\",\n    \"custom3\": \"<string>\",\n    \"enable\": \"<boolean>\",\n    \"allowlist_url\": \"<string>\"\n  },\n  \"data\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4bd0505f-dab2-435d-ae4d-f695ce099dca",
+              "name": "Request accepted successfully and it will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Enter the version for which you wish to fire the notification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"event_name\",\n  \"to\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": \"12345\",\n    \"push\": \"ExponentPushToken[XXXXX]\",\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"callback\": {\n    \"custom_id\": \"ID001\",\n    \"custom1\": \"EV001\",\n    \"custom2\": \"P001\",\n    \"custom3\": \"C001\",\n    \"enable\": true,\n    \"allowlist_url\": \"<string>\"\n  },\n  \"data\": {\n    \"placeholder_key_1\": \"placeholder_value_1\",\n    \"placeholder_key_2\": \"placeholder_value_2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": \"event_name\",\n  \"received_time\": \"1986-04-14\",\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\",\n  \"response\": {\n    \"discord\": {\n      \"destination\": \"101XXXXXXXXXX7XXXXX\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    },\n    \"email\": {\n      \"destination\": \"abcde@fghi.com\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    },\n    \"inapp\": {\n      \"destination\": \"12345\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    },\n    \"push\": {\n      \"destination\": \"ExponentPushToken[XXXXX]\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    },\n    \"slack\": {\n      \"destination\": \"CXXXXXXXXXX\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    },\n    \"sms\": {\n      \"destination\": \"+919879XXXXXX\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    },\n    \"teams\": {\n      \"destination\": \"General\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    },\n    \"voice\": {\n      \"destination\": \"+919879XXXXXX\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    },\n    \"whatsapp\": {\n      \"destination\": \"+919879XXXXXX\",\n      \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n      \"status\": \"ok\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f7846d5-e2fb-498d-8c77-afcc7c88b21c",
+              "name": "Event name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Enter the version for which you wish to fire the notification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"event_name\",\n  \"to\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": \"12345\",\n    \"push\": \"ExponentPushToken[XXXXX]\",\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"callback\": {\n    \"custom_id\": \"ID001\",\n    \"custom1\": \"EV001\",\n    \"custom2\": \"P001\",\n    \"custom3\": \"C001\",\n    \"enable\": true,\n    \"allowlist_url\": \"<string>\"\n  },\n  \"data\": {\n    \"placeholder_key_1\": \"placeholder_value_1\",\n    \"placeholder_key_2\": \"placeholder_value_2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"The notification event name 'event_name' is invalid or does not exists on prod\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8c9d918-90ea-4b2e-88d4-1dae493f29ef",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "event"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Enter the version for which you wish to fire the notification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"event_name\",\n  \"to\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": \"12345\",\n    \"push\": \"ExponentPushToken[XXXXX]\",\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"callback\": {\n    \"custom_id\": \"ID001\",\n    \"custom1\": \"EV001\",\n    \"custom2\": \"P001\",\n    \"custom3\": \"C001\",\n    \"enable\": true,\n    \"allowlist_url\": \"<string>\"\n  },\n  \"data\": {\n    \"placeholder_key_1\": \"placeholder_value_1\",\n    \"placeholder_key_2\": \"placeholder_value_2\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8f9def0-53e4-4688-b4cf-36a798cc17c9",
+          "name": "Notify multiple users",
+          "request": {
+            "name": "Notify multiple users",
+            "description": {
+              "content": "This API enables you to notify multiple users with one event trigger.<br/><br/>Before firing your first notification event, you must perform the following actions in your Fyno account:<br/>- Create a Template<br/>- Create an Event<br/>- Create an API Key<br/>- And obtain your workspace ID from the API Keys page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "event",
+                "bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Enter the version for which you wish to fire the notification."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch\": [\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": \"<object>\"\n    },\n    {\n      \"to\": {\n        \"discord\": \"<string>\",\n        \"email\": \"<string>\",\n        \"inapp\": \"<string>\",\n        \"push\": \"<string>\",\n        \"slack\": \"<string>\",\n        \"sms\": \"<string>\",\n        \"teams\": \"<string>\",\n        \"voice\": \"<string>\",\n        \"whatsapp\": \"<string>\"\n      },\n      \"callback\": {\n        \"custom_id\": \"<string>\",\n        \"custom1\": \"<string>\",\n        \"custom2\": \"<string>\",\n        \"custom3\": \"<string>\",\n        \"enable\": \"<boolean>\",\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": \"<object>\"\n    }\n  ],\n  \"event\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "57477cd3-8f4a-47de-8eb0-8105a3769e5d",
+              "name": "Request accepted successfully and it will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "event",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Enter the version for which you wish to fire the notification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"to\": {\n        \"discord\": \"101XXXXXXXXXX7XXXXX\",\n        \"email\": \"abcde@fghi.com\",\n        \"inapp\": \"12345\",\n        \"push\": \"ExponentPushToken[XXXXX]\",\n        \"slack\": \"CXXXXXXXXXX\",\n        \"sms\": \"+919879XXXXXX\",\n        \"teams\": \"General\",\n        \"voice\": \"+919879XXXXXX\",\n        \"whatsapp\": \"+919879XXXXXX\"\n      },\n      \"callback\": {\n        \"custom_id\": \"ID001\",\n        \"custom1\": \"EV001\",\n        \"custom2\": \"P001\",\n        \"custom3\": \"C001\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {\n        \"placeholder_key_1\": \"placeholder_value_1\",\n        \"placeholder_key_2\": \"placeholder_value_2\"\n      }\n    },\n    {\n      \"to\": {\n        \"discord\": \"101XXXXXXXXXX7XXXXX\",\n        \"email\": \"abcde@fghi.com\",\n        \"inapp\": \"12345\",\n        \"push\": \"ExponentPushToken[XXXXX]\",\n        \"slack\": \"CXXXXXXXXXX\",\n        \"sms\": \"+919879XXXXXX\",\n        \"teams\": \"General\",\n        \"voice\": \"+919879XXXXXX\",\n        \"whatsapp\": \"+919879XXXXXX\"\n      },\n      \"callback\": {\n        \"custom_id\": \"ID001\",\n        \"custom1\": \"EV001\",\n        \"custom2\": \"P001\",\n        \"custom3\": \"C001\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {\n        \"placeholder_key_1\": \"placeholder_value_1\",\n        \"placeholder_key_2\": \"placeholder_value_2\"\n      }\n    }\n  ],\n  \"event\": \"event_name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event\": \"event_name\",\n  \"received_time\": 1672991866453,\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\",\n  \"response\": [\n    {\n      \"discord\": {\n        \"destination\": \"101XXXXXXXXXX7XXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"email\": {\n        \"destination\": \"abcde@fghi.com\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"inapp\": {\n        \"destination\": \"12345\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"push\": {\n        \"destination\": \"ExponentPushToken[XXXXX]\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"seq\": 1,\n      \"slack\": {\n        \"destination\": \"CXXXXXXXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"sms\": {\n        \"destination\": \"+919879XXXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"teams\": {\n        \"destination\": \"General\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"voice\": {\n        \"destination\": \"+919879XXXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"whatsapp\": {\n        \"destination\": \"+919879XXXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      }\n    },\n    {\n      \"discord\": {\n        \"destination\": \"101XXXXXXXXXX7XXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"email\": {\n        \"destination\": \"abcde@fghi.com\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"inapp\": {\n        \"destination\": \"12345\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"push\": {\n        \"destination\": \"ExponentPushToken[XXXXX]\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"seq\": 1,\n      \"slack\": {\n        \"destination\": \"CXXXXXXXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"sms\": {\n        \"destination\": \"+919879XXXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"teams\": {\n        \"destination\": \"General\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"voice\": {\n        \"destination\": \"+919879XXXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      },\n      \"whatsapp\": {\n        \"destination\": \"+919879XXXXXX\",\n        \"msg_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX\",\n        \"status\": \"ok\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6d6d1b0-cd0f-447c-8e57-73867cfa3f91",
+              "name": "Event name does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "event",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Enter the version for which you wish to fire the notification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"to\": {\n        \"discord\": \"101XXXXXXXXXX7XXXXX\",\n        \"email\": \"abcde@fghi.com\",\n        \"inapp\": \"12345\",\n        \"push\": \"ExponentPushToken[XXXXX]\",\n        \"slack\": \"CXXXXXXXXXX\",\n        \"sms\": \"+919879XXXXXX\",\n        \"teams\": \"General\",\n        \"voice\": \"+919879XXXXXX\",\n        \"whatsapp\": \"+919879XXXXXX\"\n      },\n      \"callback\": {\n        \"custom_id\": \"ID001\",\n        \"custom1\": \"EV001\",\n        \"custom2\": \"P001\",\n        \"custom3\": \"C001\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {\n        \"placeholder_key_1\": \"placeholder_value_1\",\n        \"placeholder_key_2\": \"placeholder_value_2\"\n      }\n    },\n    {\n      \"to\": {\n        \"discord\": \"101XXXXXXXXXX7XXXXX\",\n        \"email\": \"abcde@fghi.com\",\n        \"inapp\": \"12345\",\n        \"push\": \"ExponentPushToken[XXXXX]\",\n        \"slack\": \"CXXXXXXXXXX\",\n        \"sms\": \"+919879XXXXXX\",\n        \"teams\": \"General\",\n        \"voice\": \"+919879XXXXXX\",\n        \"whatsapp\": \"+919879XXXXXX\"\n      },\n      \"callback\": {\n        \"custom_id\": \"ID001\",\n        \"custom1\": \"EV001\",\n        \"custom2\": \"P001\",\n        \"custom3\": \"C001\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {\n        \"placeholder_key_1\": \"placeholder_value_1\",\n        \"placeholder_key_2\": \"placeholder_value_2\"\n      }\n    }\n  ],\n  \"event\": \"event_name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"The notification event name 'event_name' is invalid or does not exists on prod\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e74900ac-d6e7-4523-b833-64fcdeedc9ba",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "event",
+                    "bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Enter the version for which you wish to fire the notification."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"to\": {\n        \"discord\": \"101XXXXXXXXXX7XXXXX\",\n        \"email\": \"abcde@fghi.com\",\n        \"inapp\": \"12345\",\n        \"push\": \"ExponentPushToken[XXXXX]\",\n        \"slack\": \"CXXXXXXXXXX\",\n        \"sms\": \"+919879XXXXXX\",\n        \"teams\": \"General\",\n        \"voice\": \"+919879XXXXXX\",\n        \"whatsapp\": \"+919879XXXXXX\"\n      },\n      \"callback\": {\n        \"custom_id\": \"ID001\",\n        \"custom1\": \"EV001\",\n        \"custom2\": \"P001\",\n        \"custom3\": \"C001\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {\n        \"placeholder_key_1\": \"placeholder_value_1\",\n        \"placeholder_key_2\": \"placeholder_value_2\"\n      }\n    },\n    {\n      \"to\": {\n        \"discord\": \"101XXXXXXXXXX7XXXXX\",\n        \"email\": \"abcde@fghi.com\",\n        \"inapp\": \"12345\",\n        \"push\": \"ExponentPushToken[XXXXX]\",\n        \"slack\": \"CXXXXXXXXXX\",\n        \"sms\": \"+919879XXXXXX\",\n        \"teams\": \"General\",\n        \"voice\": \"+919879XXXXXX\",\n        \"whatsapp\": \"+919879XXXXXX\"\n      },\n      \"callback\": {\n        \"custom_id\": \"ID001\",\n        \"custom1\": \"EV001\",\n        \"custom2\": \"P001\",\n        \"custom3\": \"C001\",\n        \"enable\": true,\n        \"allowlist_url\": \"<string>\"\n      },\n      \"data\": {\n        \"placeholder_key_1\": \"placeholder_value_1\",\n        \"placeholder_key_2\": \"placeholder_value_2\"\n      }\n    }\n  ],\n  \"event\": \"event_name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fyno.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ba8de884-d628-4b79-ac45-d5318f7bdbb1",
+    "name": "Fyno Rest Fire an Event API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

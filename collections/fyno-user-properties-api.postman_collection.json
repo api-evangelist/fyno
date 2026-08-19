@@ -1,0 +1,1980 @@
+{
+  "item": [
+    {
+      "id": "178902dd-da94-4d4d-aad2-a536443a31dd",
+      "name": "User Properties",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1dfb555-8574-4f02-97a7-ea2428b3222c",
+          "name": "Update User Property",
+          "request": {
+            "name": "Update User Property",
+            "description": {
+              "content": "This API enables you to update user properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will be determined based on the data type of the value. For example, if you `$set` a new property called `premium_user=true`, it will create the `premium_user` property with `Boolean` type and value `true`.<br/><br/>The property values can take the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `user_type=Premium` or `membership_number=ABC123`.</li> <li>**Number:** Can be an integer or a decimal. Example: `ltv=23000` or `cost=20.34`.</li> <li>**Boolean:** Can only contain `true` or `false` values.</li> <li>**Date:** Must be in ISO 8601 format. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> <li>**List:** Can contain an array of strings, numbers, and dates. Example: `products_ordered=['iPhone 16 Pro', 'iPad 32 GB']` or `purchase_amount=[23000, 20.34]` or `purchase_date=['2020-10-01T18:30:00Z', '2021-11-01T13:35:00+02:00', '2023-12-05']`</li></ul>If you try to set a value with a data type that does not match the predefined property type, the API will accept the request but ignore the invalid value. For example, if a predefined property `cost` expects a numeric value and you try to set it to `ABC`, the API will not store the value.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                "properties",
+                "set"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to update the user property."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$set\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "625d0627-d573-4af2-a4b6-80cbf974e9f4",
+              "name": "Request has been accepted and will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$set\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c9fe205-2a34-47a8-9ee4-3ebb01b70859",
+              "name": "$set object is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$set\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"$set has object/keys that is not allowed\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ee57896-c87d-4002-be4c-124e2e9bb3c2",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "set"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$set\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c37af9e7-da1c-425f-8166-05511ae7e0f6",
+          "name": "Set an Unset Property",
+          "request": {
+            "name": "Set an Unset Property",
+            "description": {
+              "content": "This API enables you to set user properties of your users listed in your [User Profiles](../user-profiles-overview) **only if it is currently unset.** If the given payload contains a mix of properties that are currently set and unset, then it will only add values to the properties that are currently unset and ignore the other properties. If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and sets values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will be determined based on the data type of the value. For example, if you `$once` a new property called `premium_user=true`, it will create the `premium_user` property with `Boolean` type and value `true`.<br/><br/>The property values can take the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `user_type=Premium` or `membership_number=ABC123`.</li> <li>**Number:** Can be an integer or a decimal. Example: `ltv=23000` or `cost=20.34`.</li> <li>**Boolean:** Can only contain `true` or `false` values.</li> <li>**Date:** Must be in ISO 8601 format. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> <li>**List:** Can contain an array of strings, numbers, and dates. Example: `products_ordered=['iPhone 16 Pro', 'iPad 32 GB']` or `purchase_amount=[23000, 20.34]` or `purchase_date=['2020-10-01T18:30:00Z', '2021-11-01T13:35:00+02:00', '2023-12-05']`</li> </ul>If you try to set a value with a data type that does not match the predefined property type, the API will accept the request but ignore the invalid value. For example, if a predefined property `cost` expects a numeric value and you try to set it to `ABC`, the API will not store the value.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                "properties",
+                "set-once"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to update the user property."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$once\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "60a14a65-da94-44e0-ae67-d71a9cb642e8",
+              "name": "Request has been accepted and will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "set-once"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$once\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b56998d-b517-4012-95f3-8ddece4bd883",
+              "name": "$once object is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "set-once"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$once\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"$once has object/keys that is not allowed\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bc6de2d-390c-4737-88e1-07b426e8a6d2",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "set-once"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$once\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fd94ef4-de47-4fda-8f84-b074f28d7769",
+          "name": "Increment/Decrement Numeric Property",
+          "request": {
+            "name": "Increment/Decrement Numeric Property",
+            "description": {
+              "content": "This API enables you to increment/decrement values of numeric properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties. To decrement property values, you can pass a negative value.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will set to `Number`. For example, if you `$add` a new property called `ltv=1200`, it will create the `ltv` property with `Number` type and value `1200`. Do not enclose the value in double quotes as they must be of numeric type.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                "properties",
+                "numerical-add"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to update the user property."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$add\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d91b8a5d-23d4-4e02-ab22-4cdec134e424",
+              "name": "Request has been accepted and will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "numerical-add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$add\": {\n    \"property_1\": 23.4,\n    \"property_2\": 20301,\n    \"property_n\": -39.45\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93c1c041-52f5-4f04-9d7b-a38287118565",
+              "name": "$add object is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "numerical-add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$add\": {\n    \"property_1\": 23.4,\n    \"property_2\": 20301,\n    \"property_n\": -39.45\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"$add has object/keys that is not allowed\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca0d7101-7a92-424a-afc3-f739c353518e",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "numerical-add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$add\": {\n    \"property_1\": 23.4,\n    \"property_2\": 20301,\n    \"property_n\": -39.45\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef773531-bb4e-4afb-803e-0e9983896fdb",
+          "name": "Append Values to List",
+          "request": {
+            "name": "Append Values to List",
+            "description": {
+              "content": "This API enables you to append values to list type properties of your users listed in your [User Profiles](../user-profiles-overview). If the user with distinct ID doesn't exist, it creates a new user with the provided distinct ID and updates values for all the provided properties.<br/><br/>**Note:** If a [property was not created earlier](../adding-new-user-property#how-to-add-a-new-user-property-from-user-profile-page), it will create a new property and the data type of the property will set to `List`. For example, if you `$append` a new property called `order_ids=245`, it will create the `order_ids` property with `List` type and value `[245]`. A list may contain only unique values, so if a value already exists, and you try to add the same value, it will be ignored. <br/><br/>You can append values with the following data types:<ul> <li>**String:** Can be alphanumeric and contain a maximum of 255 characters. Example: `products_order=['iPhone 16 Pro', 'iPad 32 GB']`.</li> <li>**Number:** Can be an integer or a decimal. Example: `purchase_amount=[23000, 20.34]`.</li> <li>**Date:** Must be in ISO 8601 format: `YYYY-MM-DDTHH:MM:SS.sssZ`. Example: `membership_date=2020-10-01T18:30:00.000Z` or `membership_date=2020-10-01T18:30:00Z` or `membership_date=2020-10-01T18:30:00.000+05:30` or `membership_date=2020-10-01T18:30:00+02:00` or `membership_date=2020-10-01`.</li> </ul>You can append only one value to a property at a time. Although not recommended, a list property can contain a mix of different data types.<br/><br/>These user properties can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                "properties",
+                "list-append"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to update the user property."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$append\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2261a2a-bea6-47d2-80c3-69df0c4fc47b",
+              "name": "Request has been accepted and will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "list-append"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$append\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab5a7e6f-9f59-4d11-8142-00a41c3e3e91",
+              "name": "$append object is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "list-append"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$append\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"$append has object/keys that is not allowed\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0af2e8d7-b928-4ee3-b187-6153e25f93a3",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "list-append"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$append\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a208ffb6-69ad-4f2f-9354-2358964748ca",
+          "name": "Remove Value From List",
+          "request": {
+            "name": "Remove Value From List",
+            "description": {
+              "content": "This API enables you to remove existing values from the list type properties of your users listed in your [User Profiles](../user-profiles-overview). If the specified distinct ID or list property doesn't exist, it simply accepts the remove request and ignores it.<br/><br/>**Note:** This API can only be used to remove values from list and can remove only one value from a property at a time. To unset (nullify) other property types, please use [Unset User Property API.](./unset-user-property)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                "properties",
+                "list-remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to update the user property."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$remove\": {\n    \"key_0\": \"<number>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ee690e19-4eee-444d-8e66-890b60e632ae",
+              "name": "Request has been accepted and will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "list-remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$remove\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4d9afdc-21ce-4694-b8d4-9ec672e73c0f",
+              "name": "$remove object is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "list-remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$remove\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"$remove has object/keys that is not allowed\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c375e9a5-6775-4131-b457-8c04961e6d1a",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "list-remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$remove\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a3807f7-f75f-4844-a6c4-d7ceb2012f4d",
+          "name": "Unset User Property",
+          "request": {
+            "name": "Unset User Property",
+            "description": {
+              "content": "This API enables you to unset (nullify) user properties of your users listed in your [User Profiles](../user-profiles-overview). If the specified distinct ID or property doesn't exist, it simply accepts the unset request and ignores it. This API can be used to unset all property data types: String, Number, Boolean, Date, List.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                "properties",
+                "unset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to update the user property."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"$unset\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35052fe7-f8b4-4585-a0be-6d7a04e2e4cb",
+              "name": "Request has been accepted and will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "unset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$unset\": [\n    \"property_1\",\n    \"property_2\",\n    \"property_n\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cbfddb4-9238-4bc5-b9bb-baa750ea17ea",
+              "name": "$unset object is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "unset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$unset\": [\n    \"property_1\",\n    \"property_2\",\n    \"property_n\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"$unset channel should have atleast one item in array\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c912032-1b32-40e3-9c5e-e8b0a7cd9d85",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "unset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"$unset\": [\n    \"property_1\",\n    \"property_2\",\n    \"property_n\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d5badc6-1632-40fb-b9af-2b2fee3aa9bd",
+          "name": "Batch Update User Properties",
+          "request": {
+            "name": "Batch Update User Properties",
+            "description": {
+              "content": "This API enables you to modify user properties of your users listed in your [User Profiles](../user-profiles-overview) in bulk:<br/><ul><li>[Update User Properties](./update-user-property) - `$set`</li><li>[Set Unset Properties](./set-an-unset-property) - `$once`</li><li>[Increment/Decrement Numeric Properties](./increment-decrement-numeric-property) - `$add`</li><li>[Append Values to List](./append-values-to-list) - `$append`</li><li>[Remove Values From List](./remove-value-from-list) - `$remove`, and</li><li>[Unset User Properties](./unset-user-property) `$unset`</li></ul><strong>Please refer to function specific API documentation for [&#36;set](./update-user-property), [&#36;once](./set-an-unset-property), [&#36;add](./increment-decrement-numeric-property), [&#36;append](./append-values-to-list), [&#36;remove](./remove-value-from-list), [&#36;unset](./unset-user-property) before using this API.</strong><br/></br><br/>**Note:** The user properties in User Profiles can be used to filter your users for creating [user cohorts](../creating-cohorts) and [campaigns](../campaign_creation#creating-a-campaign-using-cohort).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                "properties",
+                "batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to update the user property."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch\": [\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$once\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        \"$add\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\"\n        },\n        \"$append\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\"\n        },\n        \"$remove\": {\n          \"key_0\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"distinct_id\": \"<string>\",\n      \"action\": {\n        \"$set\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        \"$once\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$add\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\"\n        },\n        \"$append\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\",\n          \"key_3\": \"<number>\"\n        },\n        \"$remove\": {\n          \"key_0\": \"<number>\"\n        },\n        \"$unset\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3f5fa55-559a-4a86-b468-b4a0440ec593",
+              "name": "Request has been accepted and will be processed asynchronously.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"distinct_id\": \"XXXXXXXX\",\n      \"action\": {\n        \"$set\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$once\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$add\": {\n          \"property_1\": 23.4,\n          \"property_2\": 20301,\n          \"property_n\": -39.45\n        },\n        \"$append\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\"\n        },\n        \"$remove\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\",\n          \"key_3\": \"<number>\"\n        },\n        \"$unset\": [\n          \"property_1\",\n          \"property_2\",\n          \"property_n\"\n        ]\n      }\n    },\n    {\n      \"distinct_id\": \"XXXXXXXX\",\n      \"action\": {\n        \"$set\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$once\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$add\": {\n          \"property_1\": 23.4,\n          \"property_2\": 20301,\n          \"property_n\": -39.45\n        },\n        \"$append\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\"\n        },\n        \"$remove\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\"\n        },\n        \"$unset\": [\n          \"property_1\",\n          \"property_2\",\n          \"property_n\"\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request_id\": \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\",\n  \"batch\": [\n    {\n      \"$set\": \"ok\",\n      \"$once\": \"ok\",\n      \"$add\": \"ok\",\n      \"$append\": \"ok\",\n      \"$remove\": \"ok\",\n      \"$unset\": \"ok\"\n    },\n    {\n      \"$set\": \"ok\",\n      \"$once\": \"ok\",\n      \"$add\": \"ok\",\n      \"$append\": \"ok\",\n      \"$remove\": \"ok\",\n      \"$unset\": \"ok\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8898294e-b542-426d-b522-72436ee13d3c",
+              "name": "$unset object is empty",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"distinct_id\": \"XXXXXXXX\",\n      \"action\": {\n        \"$set\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$once\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$add\": {\n          \"property_1\": 23.4,\n          \"property_2\": 20301,\n          \"property_n\": -39.45\n        },\n        \"$append\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\"\n        },\n        \"$remove\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\",\n          \"key_3\": \"<number>\"\n        },\n        \"$unset\": [\n          \"property_1\",\n          \"property_2\",\n          \"property_n\"\n        ]\n      }\n    },\n    {\n      \"distinct_id\": \"XXXXXXXX\",\n      \"action\": {\n        \"$set\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$once\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$add\": {\n          \"property_1\": 23.4,\n          \"property_2\": 20301,\n          \"property_n\": -39.45\n        },\n        \"$append\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\"\n        },\n        \"$remove\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\"\n        },\n        \"$unset\": [\n          \"property_1\",\n          \"property_2\",\n          \"property_n\"\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"$set has object/keys that is not allowed\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f520a20-764a-4ce3-95fd-5341205e9307",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "properties",
+                    "batch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to update the user property."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"batch\": [\n    {\n      \"distinct_id\": \"XXXXXXXX\",\n      \"action\": {\n        \"$set\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$once\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$add\": {\n          \"property_1\": 23.4,\n          \"property_2\": 20301,\n          \"property_n\": -39.45\n        },\n        \"$append\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\"\n        },\n        \"$remove\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\",\n          \"key_3\": \"<number>\"\n        },\n        \"$unset\": [\n          \"property_1\",\n          \"property_2\",\n          \"property_n\"\n        ]\n      }\n    },\n    {\n      \"distinct_id\": \"XXXXXXXX\",\n      \"action\": {\n        \"$set\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$once\": {\n          \"key_0\": \"<string>\"\n        },\n        \"$add\": {\n          \"property_1\": 23.4,\n          \"property_2\": 20301,\n          \"property_n\": -39.45\n        },\n        \"$append\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\"\n        },\n        \"$remove\": {\n          \"key_0\": \"<number>\",\n          \"key_1\": \"<number>\",\n          \"key_2\": \"<number>\"\n        },\n        \"$unset\": [\n          \"property_1\",\n          \"property_2\",\n          \"property_n\"\n        ]\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fyno.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e7772650-6cd6-4b69-b338-eca7bfa0cc21",
+    "name": "Fyno Rest Fire an Event User Properties API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

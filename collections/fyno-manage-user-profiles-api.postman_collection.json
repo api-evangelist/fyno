@@ -1,0 +1,2062 @@
+{
+  "item": [
+    {
+      "id": "52cc705a-64c1-4603-9aed-a6e45f59be0e",
+      "name": "Manage User Profiles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f13ada7-308e-4f9b-90c8-1662871a2a3a",
+          "name": "Create user profile",
+          "request": {
+            "name": "Create user profile",
+            "description": {
+              "content": "This API enables you to create a user profile within Fyno, which you can then use to send out notifications.<br/><br/>Before creating your first user profile, you should obtain the following values needed for authentication:<br/>- API Key<br/>- Workspace ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distinct_id\": \"<string>\",\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0239b5c4-5c67-4549-876d-dd9ea57974c0",
+              "name": "Profile created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"name\": \"John Doe\",\n  \"status\": \"<integer>\",\n  \"timezone\": \"Asia/Kolkata\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Profile created successfully\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66c969d9-ae10-4d17-ae83-63f9c90bb913",
+              "name": "Distinct ID already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"name\": \"John Doe\",\n  \"status\": \"<integer>\",\n  \"timezone\": \"Asia/Kolkata\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Distinct ID 'distinct_id' already exists in the 'version' version of your workspace\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed377818-8041-44af-b9c2-a16916ae4e16",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"name\": \"John Doe\",\n  \"status\": \"<integer>\",\n  \"timezone\": \"Asia/Kolkata\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "21579e03-b457-44a8-bfe2-4ed0fe9c6040",
+          "name": "Get user profile",
+          "request": {
+            "name": "Get user profile",
+            "description": {
+              "content": "This API enables you to get an existing user profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                ":distinct_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "distinct_id",
+                  "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b66bad24-94ed-407f-b8c9-a248fc293cea",
+              "name": "Profile fetched successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"distinct_id\": \"XXXXXXXX\",\n  \"country_code\": \"IN\",\n  \"timezone\": \"Asia/Kolkata\",\n  \"timezone_offset\": \"+05:30\",\n  \"created_at\": \"2023-04-21T06:34:01.386Z\",\n  \"updated_at\": \"2023-04-21T08:42:30.235Z\",\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": 1\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": 1\n      }\n    ],\n    \"push\": [\n      {\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": 1,\n        \"token\": \"ExponentPushToken[XXXXX]\"\n      },\n      {\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": 1,\n        \"token\": \"ExponentPushToken[XXXXX]\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+91 9879X XXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+91 9879X XXXXX\",\n    \"whatsapp\": \"+91 9879X XXXXX\"\n  },\n  \"status\": 1,\n  \"id_list\": [],\n  \"profile_id\": \"6442XXXXXXXXXXXXXXXXc685\",\n  \"version\": \"test\",\n  \"name\": \"John Doe\",\n  \"properties\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07344e81-2bca-4ada-96a1-3d921007fb10",
+              "name": "Distinct ID does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"incorrect/non existing distinct_id provided\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e2b4e83-06b5-4335-9c86-0b0bad41c224",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a165f08a-51ed-4fae-8bd4-1896da5f59e7",
+          "name": "Update user profile",
+          "request": {
+            "name": "Update user profile",
+            "description": {
+              "content": "This API enables you to update an existing user profile. It updates the entire user profile including `distinct_id` (if specified).<br/><br/>**Note&#58;** If there were existing values in the profile, they will be completely replaced (if those keys are passed) or ignored (if those keys are not passed).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                ":distinct_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "distinct_id",
+                  "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  },\n  \"distinct_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"timezone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a092534-3819-46bc-85e7-59a5a4133eee",
+              "name": "Profile updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"distinct_id\": \"new_distinct_id\",\n  \"name\": \"John Doe\",\n  \"status\": \"<integer>\",\n  \"timezone\": \"Asia/Kolkata\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"1 Record(s) updated successfully\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cab720db-bad7-43d0-8f45-fa7c26611662",
+              "name": "Distinct ID does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"distinct_id\": \"new_distinct_id\",\n  \"name\": \"John Doe\",\n  \"status\": \"<integer>\",\n  \"timezone\": \"Asia/Kolkata\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Unable to update the record since the record does not exist\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6b015cc-00a1-4506-b2cd-7062112cb140",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  },\n  \"distinct_id\": \"new_distinct_id\",\n  \"name\": \"John Doe\",\n  \"status\": \"<integer>\",\n  \"timezone\": \"Asia/Kolkata\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4e12ad2-4b1f-4bf9-800b-ca586716f040",
+          "name": "Merge user profiles",
+          "request": {
+            "name": "Merge user profiles",
+            "description": {
+              "content": "This API enables you to merge the attributes of a user profile to another user profile. The profile with source distinct ID is merged with the target profile, after which the source profile is automatically deleted. If the target distinct ID does not exist, the source distinct ID is updated to target distinct ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                ":source_distinct_id",
+                "merge",
+                ":target_distinct_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "source_distinct_id",
+                  "description": "(Required) Enter the source distinct ID that you wish to merge from."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target_distinct_id",
+                  "description": "(Required) Enter the target distinct ID to which the profile should merge into."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "deb7f61c-0f6b-44a1-93c9-6bc125498132",
+              "name": "Profiles merged successfully and the source profile is deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":source_distinct_id",
+                    "merge",
+                    ":target_distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_distinct_id",
+                      "description": "(Required) Enter the source distinct ID that you wish to merge from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_distinct_id",
+                      "description": "(Required) Enter the target distinct ID to which the profile should merge into."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"1 Record(s) updated and 1 Records(s) deleted\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e3b227a-11cc-4f85-9940-9792f34c51f4",
+              "name": "Source distinct ID does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":source_distinct_id",
+                    "merge",
+                    ":target_distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_distinct_id",
+                      "description": "(Required) Enter the source distinct ID that you wish to merge from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_distinct_id",
+                      "description": "(Required) Enter the target distinct ID to which the profile should merge into."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"merge from id does not exist\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f000dd9b-8d32-4172-9a64-9ebd776b594e",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":source_distinct_id",
+                    "merge",
+                    ":target_distinct_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "source_distinct_id",
+                      "description": "(Required) Enter the source distinct ID that you wish to merge from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target_distinct_id",
+                      "description": "(Required) Enter the target distinct ID to which the profile should merge into."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05668b1c-3be7-4711-bf45-ae772281a52c",
+          "name": "Delete user profile",
+          "request": {
+            "name": "Delete user profile",
+            "description": {
+              "content": "This API enables you to delete existing user profiles by using `distinct_id`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"distinct_id\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f70927d9-0a9a-429b-a0e9-aae0c4720428",
+              "name": "Profile deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": [\n    \"U00001\",\n    \"U00002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"1 User(s) deleted successfully\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9041be5b-0cc6-4137-aaa4-cfe69d2a9778",
+              "name": "Distinct ID does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": [\n    \"U00001\",\n    \"U00002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Cannot delete non existing user\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a60b85cf-bbf8-4aa5-9523-b5065313b7bd",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"distinct_id\": [\n    \"U00001\",\n    \"U00002\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "952305ba-5172-483c-ba4a-a8dd52cf2557",
+          "name": "Add/Update channel data",
+          "request": {
+            "name": "Add/Update channel data",
+            "description": {
+              "content": "This API enables you to update existing data for `sms`, `whatsapp`, `email`, `slack`, `discord`, and `teams` channels, and add new tokens for `push` and `inapp` channels. It works like an update for channels that can hold a single destination only and like an insert for channels that can hold multiple destinations/tokens.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                ":distinct_id",
+                "channel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "distinct_id",
+                  "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": {\n    \"discord\": \"<string>\",\n    \"email\": \"<string>\",\n    \"inapp\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"<string>\",\n        \"integration_id\": \"<string>\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"<string>\",\n    \"sms\": \"<string>\",\n    \"teams\": \"<string>\",\n    \"voice\": \"<string>\",\n    \"whatsapp\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b63c586-2d96-47c5-968a-66178f2194c7",
+              "name": "Profile updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id",
+                    "channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Channel has been modified successfully\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bab1a22-c159-40ea-822e-8057451bb3c9",
+              "name": "Distinct ID does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id",
+                    "channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"incorrect/non existing distinct_id provided\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1214302c-2e16-4cdb-823d-72ed3eb4d6e0",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id",
+                    "channel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"discord\": \"101XXXXXXXXXX7XXXXX\",\n    \"email\": \"abcde@fghi.com\",\n    \"inapp\": [\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"XXXXXXXX\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"push\": [\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      },\n      {\n        \"token\": \"ExponentPushToken[XXXXX]\",\n        \"integration_id\": \"IXXXXXXX\",\n        \"status\": \"<integer>\"\n      }\n    ],\n    \"slack\": \"CXXXXXXXXXX\",\n    \"sms\": \"+919879XXXXXX\",\n    \"teams\": \"General\",\n    \"voice\": \"+919879XXXXXX\",\n    \"whatsapp\": \"+919879XXXXXX\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b980ce2d-38c4-4671-9a25-fc55bfb3b027",
+          "name": "Delete channel data",
+          "request": {
+            "name": "Delete channel data",
+            "description": {
+              "content": "This API enables you to delete existing data for all channels. You can use either of the following approaches&#58;<br/><br/>- **Option 1&#58;** Use the `channel` key in the payload to delete all tokens in the specified channel.<br/>-  **Option 2&#58;** Use the `push` and `inapp` keys in the payload to delete specific tokens in these channels.<br/><br/>**Note&#58;** You can use either option 1 or option 2. It is not allowed to use both approaches in one request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "profiles",
+                ":distinct_id",
+                "channel",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "distinct_id",
+                  "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d5873b8-5588-4191-8a23-ad3cf496d0a2",
+              "name": "Profile updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id",
+                    "channel",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": [\n    \"sms\",\n    \"whatsapp\",\n    \"email\",\n    \"slack\",\n    \"discord\",\n    \"teams\",\n    \"voice\",\n    \"push\",\n    \"inapp\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Channel has been modified successfully\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d5a23f0-37bd-48f4-b68d-5cb1a06d9229",
+              "name": "Distinct ID or channel data does not exist",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id",
+                    "channel",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": [\n    \"sms\",\n    \"whatsapp\",\n    \"email\",\n    \"slack\",\n    \"discord\",\n    \"teams\",\n    \"voice\",\n    \"push\",\n    \"inapp\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Unable to delete channel since the channel does not exist\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2c95962-90b8-4d82-9398-c0a67045510a",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "profiles",
+                    ":distinct_id",
+                    "channel",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "distinct_id",
+                      "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": [\n    \"sms\",\n    \"whatsapp\",\n    \"email\",\n    \"slack\",\n    \"discord\",\n    \"teams\",\n    \"voice\",\n    \"push\",\n    \"inapp\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fyno.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1fdee95c-849d-493e-ae4b-07a800b79c9b",
+    "name": "Fyno Rest Fire an Event Manage User Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

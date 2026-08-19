@@ -1,0 +1,335 @@
+{
+  "item": [
+    {
+      "id": "40cb7eb6-58ea-4785-be40-3f45edcc256c",
+      "name": "Fyno Verify",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "534bf30d-8e7c-4f51-8b8a-e3fb42f6831b",
+          "name": "Verify OTP",
+          "request": {
+            "name": "Verify OTP",
+            "description": {
+              "content": "This API enables you to validate the OTP entered by the user using either `request_id` (received in response of the Fire an Event API) or `destination` (such as phone number, email).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "verify",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "request_id",
+                  "value": "<string>",
+                  "description": "Specify the request id of the triggered notification event that sent the OTP to the user.<br/>You must use this query parameter if **you've disabled \"Use destination as id\"** in the Fyno Verify setting."
+                },
+                {
+                  "disabled": false,
+                  "key": "destination",
+                  "value": "<string>",
+                  "description": "Enter the destination where the OTP is sent. It can be either mobile no or email id.<br/>You must use this query parameter if **you've enabled \"Use destination as id\"** in the Fyno Verify setting."
+                },
+                {
+                  "disabled": false,
+                  "key": "otp",
+                  "value": "<string>",
+                  "description": "(Required) Enter the OTP which you want to validate."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da5cf7cd-ddd8-4a68-93ef-9e365a06c60f",
+              "name": "OTP successfully validated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "verify",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "request_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    },
+                    {
+                      "key": "destination",
+                      "value": "xxxxxxxxxx"
+                    },
+                    {
+                      "key": "otp",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"OTP successfully validated.\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "922e805e-82a0-4b2a-8963-09751305e6bf",
+              "name": "Invalid OTP entered by user",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "verify",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "request_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    },
+                    {
+                      "key": "destination",
+                      "value": "xxxxxxxxxx"
+                    },
+                    {
+                      "key": "otp",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"user entered the wrong OTP\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4a6bbe7-8dee-4790-b196-1ec81ec8e005",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "verify",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "request_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    },
+                    {
+                      "key": "destination",
+                      "value": "xxxxxxxxxx"
+                    },
+                    {
+                      "key": "otp",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fyno.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9d455395-53d0-4134-be41-3758217affbf",
+    "name": "Fyno Rest Fire an Event Fyno Verify API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

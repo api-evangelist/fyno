@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fyno Rest Fire an Event Manage User Subscriptions & Preferences API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manage User Subscriptions & Preferences",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user preference",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fyno.io/v1/:WSID/:version/subscriptions/preference",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "distinct_id",
+                "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "type": "query",
+                "description": "Enter the distinct ID that you currently use to identify the user."
+              },
+              {
+                "name": "event_list",
+                "value": "false",
+                "type": "query",
+                "description": "Set this value to 'true' to receive list of notification events attached to each subscription topic."
+              }
+            ]
+          },
+          "docs": "This API enables you to get all the subscriptions topics (with sections) defined in your workspace along with the opted-in/opted-out preference of a particular user."
+        },
+        {
+          "info": {
+            "name": "Update user preference",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.fyno.io/v1/:WSID/:version/subscriptions/preference",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "distinct_id",
+                "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "type": "query",
+                "description": "Enter the distinct ID that you currently use to identify the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to update the channel preference of a user for multiple subscription topics. In the JSON payload, enter the subscription ID as keys to update the channel preference. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id.<br/><br/>**Note&#58;** If the channel configuration for a subscription topic is set to 'required', then the user preference for the channel cannot be updated."
+        },
+        {
+          "info": {
+            "name": "Update user preference (single)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/subscriptions/list/:subscription_id/user",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "subscription_id",
+                "value": "SXXXXXXXXX",
+                "type": "path",
+                "description": "Enter the subscription ID to update the channel preference for the subscription topic. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to update the channel preference of a user for a particular subscription topic.<br/><br/>**Note&#58;** If the channel configuration for a subscription topic is set to 'required', then the user preference for the channel cannot be updated."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

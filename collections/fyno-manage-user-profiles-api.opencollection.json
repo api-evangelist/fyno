@@ -1,0 +1,255 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fyno Rest Fire an Event Manage User Profiles API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manage User Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to create a user profile within Fyno, which you can then use to send out notifications.<br/><br/>Before creating your first user profile, you should obtain the following values needed for authentication:<br/>- API Key<br/>- Workspace ID"
+        },
+        {
+          "info": {
+            "name": "Get user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/:distinct_id",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "distinct_id",
+                "value": "XXXXXXXX",
+                "type": "path",
+                "description": "Enter the distinct ID that you currently use to identify the user."
+              }
+            ]
+          },
+          "docs": "This API enables you to get an existing user profile."
+        },
+        {
+          "info": {
+            "name": "Update user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/:distinct_id",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "distinct_id",
+                "value": "XXXXXXXX",
+                "type": "path",
+                "description": "Enter the distinct ID that you currently use to identify the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to update an existing user profile. It updates the entire user profile including `distinct_id` (if specified).<br/><br/>**Note&#58;** If there were existing values in the profile, they will be completely replaced (if those keys are passed) or ignored (if those keys are not passed)."
+        },
+        {
+          "info": {
+            "name": "Merge user profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/:source_distinct_id/merge/:target_distinct_id",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "source_distinct_id",
+                "value": "XXXXXXXX",
+                "type": "path",
+                "description": "Enter the source distinct ID that you wish to merge from."
+              },
+              {
+                "name": "target_distinct_id",
+                "value": "XXXXXXXX",
+                "type": "path",
+                "description": "Enter the target distinct ID to which the profile should merge into."
+              }
+            ]
+          },
+          "docs": "This API enables you to merge the attributes of a user profile to another user profile. The profile with source distinct ID is merged with the target profile, after which the source profile is automatically deleted. If the target distinct ID does not exist, the source distinct ID is updated to target distinct ID."
+        },
+        {
+          "info": {
+            "name": "Delete user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/delete",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to delete existing user profiles by using `distinct_id`."
+        },
+        {
+          "info": {
+            "name": "Add/Update channel data",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/:distinct_id/channel",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "distinct_id",
+                "value": "XXXXXXXX",
+                "type": "path",
+                "description": "Enter the distinct ID that you currently use to identify the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to update existing data for `sms`, `whatsapp`, `email`, `slack`, `discord`, and `teams` channels, and add new tokens for `push` and `inapp` channels. It works like an update for channels that can hold a single destination only and like an insert for channels that can hold multiple destinations/tokens."
+        },
+        {
+          "info": {
+            "name": "Delete channel data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fyno.io/v1/:WSID/:version/profiles/:distinct_id/channel/delete",
+            "params": [
+              {
+                "name": "WSID",
+                "value": "FYXXXXXXXX",
+                "type": "path",
+                "description": "Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path",
+                "description": "Specify the version for which you would like to manage the user profile."
+              },
+              {
+                "name": "distinct_id",
+                "value": "XXXXXXXX",
+                "type": "path",
+                "description": "Enter the distinct ID that you currently use to identify the user."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This API enables you to delete existing data for all channels. You can use either of the following approaches&#58;<br/><br/>- **Option 1&#58;** Use the `channel` key in the payload to delete all tokens in the specified channel.<br/>-  **Option 2&#58;** Use the `push` and `inapp` keys in the payload to delete specific tokens in these channels.<br/><br/>**Note&#58;** You can use either option 1 or option 2. It is not allowed to use both approaches in one request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

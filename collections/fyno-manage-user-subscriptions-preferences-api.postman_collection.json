@@ -1,0 +1,921 @@
+{
+  "item": [
+    {
+      "id": "be6ae4bc-1bbe-4f7f-a1b2-831fb4db9b1e",
+      "name": "Manage User Subscriptions & Preferences",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f20a2d1c-d33d-4f09-9fb8-1350f9fd92c4",
+          "name": "Get user preference",
+          "request": {
+            "name": "Get user preference",
+            "description": {
+              "content": "This API enables you to get all the subscriptions topics (with sections) defined in your workspace along with the opted-in/opted-out preference of a particular user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "subscriptions",
+                "preference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "distinct_id",
+                  "value": "<string>",
+                  "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                },
+                {
+                  "disabled": false,
+                  "key": "event_list",
+                  "value": "false",
+                  "description": "Set this value to 'true' to receive list of notification events attached to each subscription topic."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c197b4f-4223-4aba-82e9-226836fa6222",
+              "name": "Preference fetched successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "preference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "distinct_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    },
+                    {
+                      "key": "event_list",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"all\": {\n      \"preference\": {\n        \"discord\": \"opted-out\",\n        \"email\": \"opted-out\",\n        \"inapp\": \"opted-out\",\n        \"push\": \"opted-out\",\n        \"slack\": \"opted-out\",\n        \"sms\": \"opted-out\",\n        \"teams\": \"opted-out\",\n        \"voice\": \"opted-out\",\n        \"whatsapp\": \"opted-out\"\n      },\n      \"updated_at\": {\n        \"discord\": \"string\",\n        \"email\": \"string\",\n        \"inapp\": \"string\",\n        \"push\": \"string\",\n        \"slack\": \"string\",\n        \"sms\": \"string\",\n        \"teams\": \"string\",\n        \"voice\": \"string\",\n        \"webpush\": \"string\",\n        \"whatsapp\": \"string\"\n      }\n    }\n  },\n  \"result\": {\n    \"Section1\": [\n      {\n        \"channel_config\": {\n          \"discord\": \"on\",\n          \"email\": \"on\",\n          \"inapp\": \"on\",\n          \"push\": \"on\",\n          \"slack\": \"on\",\n          \"sms\": \"on\",\n          \"teams\": \"on\",\n          \"voice\": \"on\",\n          \"webpush\": \"on\",\n          \"whatsapp\": \"on\"\n        },\n        \"description\": \"string\",\n        \"is_global_opted_out\": {\n          \"discord\": true,\n          \"email\": true,\n          \"inapp\": true,\n          \"push\": true,\n          \"slack\": true,\n          \"sms\": true,\n          \"teams\": true,\n          \"voice\": true,\n          \"webpush\": true,\n          \"whatsapp\": true\n        },\n        \"name\": \"string\",\n        \"notification_events\": [\n          {\n            \"event_id\": \"string\",\n            \"event_name\": \"string\"\n          },\n          {\n            \"event_id\": \"string\",\n            \"event_name\": \"string\"\n          }\n        ],\n        \"preference\": {\n          \"discord\": \"opted-in\",\n          \"email\": \"opted-in\",\n          \"inapp\": \"opted-in\",\n          \"push\": \"opted-in\",\n          \"slack\": \"opted-in\",\n          \"sms\": \"opted-in\",\n          \"teams\": \"opted-in\",\n          \"voice\": \"opted-in\",\n          \"webpush\": \"opted-in\",\n          \"whatsapp\": \"opted-in\"\n        },\n        \"subscription_id\": \"string\",\n        \"updated_at\": {\n          \"discord\": \"string\",\n          \"email\": \"string\",\n          \"inapp\": \"string\",\n          \"push\": \"string\",\n          \"slack\": \"string\",\n          \"sms\": \"string\",\n          \"teams\": \"string\",\n          \"voice\": \"string\",\n          \"webpush\": \"string\",\n          \"whatsapp\": \"string\"\n        }\n      },\n      {\n        \"channel_config\": {\n          \"discord\": \"on\",\n          \"email\": \"on\",\n          \"inapp\": \"on\",\n          \"push\": \"on\",\n          \"slack\": \"on\",\n          \"sms\": \"on\",\n          \"teams\": \"on\",\n          \"voice\": \"on\",\n          \"webpush\": \"on\",\n          \"whatsapp\": \"on\"\n        },\n        \"description\": \"string\",\n        \"is_global_opted_out\": {\n          \"discord\": true,\n          \"email\": true,\n          \"inapp\": true,\n          \"push\": true,\n          \"slack\": true,\n          \"sms\": true,\n          \"teams\": true,\n          \"voice\": true,\n          \"webpush\": true,\n          \"whatsapp\": true\n        },\n        \"name\": \"string\",\n        \"notification_events\": [\n          {\n            \"event_id\": \"string\",\n            \"event_name\": \"string\"\n          },\n          {\n            \"event_id\": \"string\",\n            \"event_name\": \"string\"\n          }\n        ],\n        \"preference\": {\n          \"discord\": \"opted-in\",\n          \"email\": \"opted-in\",\n          \"inapp\": \"opted-in\",\n          \"push\": \"opted-in\",\n          \"slack\": \"opted-in\",\n          \"sms\": \"opted-in\",\n          \"teams\": \"opted-in\",\n          \"voice\": \"opted-in\",\n          \"webpush\": \"opted-in\",\n          \"whatsapp\": \"opted-in\"\n        },\n        \"subscription_id\": \"string\",\n        \"updated_at\": {\n          \"discord\": \"string\",\n          \"email\": \"string\",\n          \"inapp\": \"string\",\n          \"push\": \"string\",\n          \"slack\": \"string\",\n          \"sms\": \"string\",\n          \"teams\": \"string\",\n          \"voice\": \"string\",\n          \"webpush\": \"string\",\n          \"whatsapp\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "983dd363-cd78-46e6-8a61-e80772837464",
+              "name": "Distinct ID is not provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "preference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "distinct_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    },
+                    {
+                      "key": "event_list",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"distinct_id is required to list preference!\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bd0a633-43fa-4b70-929b-5c6b239a1e03",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "preference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "distinct_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    },
+                    {
+                      "key": "event_list",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6c1a8b5-87aa-40a0-bbe1-db729b280193",
+          "name": "Update user preference",
+          "request": {
+            "name": "Update user preference",
+            "description": {
+              "content": "This API enables you to update the channel preference of a user for multiple subscription topics. In the JSON payload, enter the subscription ID as keys to update the channel preference. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id.<br/><br/>**Note&#58;** If the channel configuration for a subscription topic is set to 'required', then the user preference for the channel cannot be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "subscriptions",
+                "preference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "distinct_id",
+                  "value": "<string>",
+                  "description": "(Required) Enter the distinct ID that you currently use to identify the user."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_preference\": {\n    \"SXXXXXXXXX\": {\n      \"discord\": \"opted-in\",\n      \"email\": \"opted-in\",\n      \"inapp\": \"opted-in\",\n      \"push\": \"opted-in\",\n      \"slack\": \"opted-in\",\n      \"sms\": \"opted-in\",\n      \"teams\": \"opted-in\",\n      \"voice\": \"opted-in\",\n      \"webpush\": \"opted-in\",\n      \"whatsapp\": \"opted-in\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "15c7a824-90e0-46d2-ac50-4a48f50c7273",
+              "name": "Subscription updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "preference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "distinct_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_preference\": {\n    \"SXXXXXXXXX\": {\n      \"discord\": \"opted-in\",\n      \"email\": \"opted-in\",\n      \"inapp\": \"opted-in\",\n      \"push\": \"opted-in\",\n      \"slack\": \"opted-in\",\n      \"sms\": \"opted-in\",\n      \"teams\": \"opted-in\",\n      \"voice\": \"opted-in\",\n      \"webpush\": \"opted-in\",\n      \"whatsapp\": \"opted-in\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SXXXXXXXXX\": {\n    \"discord\": \"opted-in\",\n    \"email\": \"opted-in\",\n    \"inapp\": \"opted-in\",\n    \"push\": \"opted-in\",\n    \"slack\": \"opted-in\",\n    \"sms\": \"opted-in\",\n    \"teams\": \"opted-in\",\n    \"voice\": \"opted-in\",\n    \"webpush\": \"opted-in\",\n    \"whatsapp\": \"opted-in\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4272d153-dfed-4a2b-9719-75233384d8e4",
+              "name": "Distinct ID, channel, or status is not provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "preference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "distinct_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_preference\": {\n    \"SXXXXXXXXX\": {\n      \"discord\": \"opted-in\",\n      \"email\": \"opted-in\",\n      \"inapp\": \"opted-in\",\n      \"push\": \"opted-in\",\n      \"slack\": \"opted-in\",\n      \"sms\": \"opted-in\",\n      \"teams\": \"opted-in\",\n      \"voice\": \"opted-in\",\n      \"webpush\": \"opted-in\",\n      \"whatsapp\": \"opted-in\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"distinct_id is required!\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e68a8077-bc47-4489-9465-963898fa1819",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "preference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "distinct_id",
+                      "value": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_preference\": {\n    \"SXXXXXXXXX\": {\n      \"discord\": \"opted-in\",\n      \"email\": \"opted-in\",\n      \"inapp\": \"opted-in\",\n      \"push\": \"opted-in\",\n      \"slack\": \"opted-in\",\n      \"sms\": \"opted-in\",\n      \"teams\": \"opted-in\",\n      \"voice\": \"opted-in\",\n      \"webpush\": \"opted-in\",\n      \"whatsapp\": \"opted-in\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7f959aa-6bfb-48bb-b086-fa609ca0b83f",
+          "name": "Update user preference (single)",
+          "request": {
+            "name": "Update user preference (single)",
+            "description": {
+              "content": "This API enables you to update the channel preference of a user for a particular subscription topic.<br/><br/>**Note&#58;** If the channel configuration for a subscription topic is set to 'required', then the user preference for the channel cannot be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":WSID",
+                ":version",
+                "subscriptions",
+                "list",
+                ":subscription_id",
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "WSID",
+                  "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "live",
+                  "key": "version",
+                  "description": "(Required) Specify the version for which you would like to manage the user profile."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "subscription_id",
+                  "description": "(Required) Enter the subscription ID to update the channel preference for the subscription topic. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e732a4b6-e44e-4217-b3ab-d99bad026098",
+              "name": "Subscription updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "list",
+                    ":subscription_id",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) Enter the subscription ID to update the channel preference for the subscription topic. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SXXXXXXXXX\": {\n    \"discord\": \"opted-in\",\n    \"email\": \"opted-in\",\n    \"inapp\": \"opted-in\",\n    \"push\": \"opted-in\",\n    \"slack\": \"opted-in\",\n    \"sms\": \"opted-in\",\n    \"teams\": \"opted-in\",\n    \"voice\": \"opted-in\",\n    \"webpush\": \"opted-in\",\n    \"whatsapp\": \"opted-in\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13f8b091-cb85-4cba-ae7f-b28d9587aff5",
+              "name": "Distinct ID, channel, or status is not provided",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "list",
+                    ":subscription_id",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) Enter the subscription ID to update the channel preference for the subscription topic. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"distinct_id is required!\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36f99df4-37f6-4cf8-89a8-85d67701561b",
+              "name": "API Key or Workspace ID is invalid. User is unauthorised.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":WSID",
+                    ":version",
+                    "subscriptions",
+                    "list",
+                    ":subscription_id",
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "WSID",
+                      "description": "(Required) Enter your workspace ID. You can obtain this value from the API Keys page within your Fyno account."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "live",
+                      "key": "version",
+                      "description": "(Required) Specify the version for which you would like to manage the user profile."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "subscription_id",
+                      "description": "(Required) Enter the subscription ID to update the channel preference for the subscription topic. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": \"<string>\",\n  \"distinct_id\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_message\": \"Invalid API details\",\n  \"status\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fyno.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dacd5b88-c39e-4f6b-a2db-88a249a8b2fe",
+    "name": "Fyno Rest Fire an Event Manage User Subscriptions & Preferences API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
