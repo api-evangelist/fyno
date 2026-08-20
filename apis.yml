@@ -26,6 +26,17 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fyno.png
 tags:
+  - Notification
+  - Messaging
+  - Communications
+  - Push Notifications
+  - Email
+  - SMS
+  - WhatsApp
+  - In-App
+  - Orchestration
+  - Multi-Channel
+tags_raw:
   - Notifications
   - Messaging
   - Communication
@@ -51,6 +62,10 @@ apis:
   humanURL: https://fyno.io/docs/home
   baseURL: https://api.fyno.io/v1
   tags:
+  - User
+  - Profiles
+  - Identity
+  tags_raw:
   - Users
   - Profiles
   - Identity
@@ -65,6 +80,10 @@ apis:
   humanURL: https://fyno.io/docs/home
   baseURL: https://api.fyno.io/v1
   tags:
+  - Subscription
+  - Preferences
+  - User
+  tags_raw:
   - Subscriptions
   - Preferences
   - Users
@@ -80,6 +99,10 @@ apis:
   humanURL: https://fyno.io/docs/home
   baseURL: https://api.fyno.io/v1
   tags:
+  - Suppression
+  - Compliance
+  - User
+  tags_raw:
   - Suppression
   - Compliance
   - Users
