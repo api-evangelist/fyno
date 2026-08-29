@@ -11,6 +11,18 @@ description: >
   Fyno also includes Fyno Verify (OTP/TOTP authentication) and Fyno Shorty (URL shortener)
   as bundled services.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
