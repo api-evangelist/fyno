@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Fyno Rest Fire an Event Suppression List API
+  title: Fyno Rest Suppression List API
   version: v1
 servers:
 - url: https://api.fyno.io/v1
@@ -14,7 +14,10 @@ paths:
       tags:
       - Suppression List
       summary: Get Suppression List
-      description: The Suppression List API enables you to manage users who should be excluded from receiving communications on specific channels.<br/><br/>This API enables you to retrieve the list of all suppressed users across various channels.
+      description: 'The Suppression List API enables you to manage users who should be excluded from receiving communications on specific channels.
+
+
+        This API enables you to retrieve the list of all suppressed users across various channels.'
       parameters:
       - name: WSID
         in: path
@@ -30,11 +33,16 @@ paths:
           $ref: '#/components/responses/SuppressionListSuccess'
         '401':
           $ref: '#/components/responses/APIKeyInvalid'
+      operationId: getByWSIDSuppressions
+      x-operation-id-source: derived
     post:
       tags:
       - Suppression List
       summary: Add User to Suppression List
-      description: Add a user to the suppression list for a given channel.<br/><br/><strong>Note:</strong> If both `distinct_id` and `destination` are provided, `distinct_id` takes precedence, and `destination` is ignored.
+      description: 'Add a user to the suppression list for a given channel.
+
+
+        Note: If both `distinct_id` and `destination` are provided, `distinct_id` takes precedence, and `destination` is ignored.'
       parameters:
       - name: WSID
         in: path
@@ -57,11 +65,16 @@ paths:
           $ref: '#/components/responses/SuppressionListError'
         '401':
           $ref: '#/components/responses/APIKeyInvalid'
+      operationId: postByWSIDSuppressions
+      x-operation-id-source: derived
     delete:
       tags:
       - Suppression List
       summary: Delete User from Suppression List
-      description: Delete a suppression entry using its `_id`, `distinct_id`, `destination`.<br/><br/><strong>Note:</strong> If all three values (`distinct_id`, `destination`, `_id`) are provided, `_id` takes precedence followed by `distinct_id`.
+      description: 'Delete a suppression entry using its `_id`, `distinct_id`, `destination`.
+
+
+        Note: If all three values (`distinct_id`, `destination`, `_id`) are provided, `_id` takes precedence followed by `distinct_id`.'
       parameters:
       - name: WSID
         in: path
@@ -100,75 +113,9 @@ paths:
           $ref: '#/components/responses/SuppressionDeleteError'
         '401':
           $ref: '#/components/responses/APIKeyInvalid'
+      operationId: deleteByWSIDSuppressions
+      x-operation-id-source: derived
 components:
-  schemas:
-    add_suppression_list:
-      oneOf:
-      - properties:
-          distinct_id:
-            type: string
-            example: XXXX-XXX-XXXX
-            description: Unique identifier (used as an alternative to destination)
-          channel:
-            type: string
-            example: sms
-            description: Communication channel (e.g., sms, whatsapp, email)
-          description:
-            type: string
-            example: DND
-            description: Reason or tag for suppression (e.g., "DND", "Testing").
-        type: object
-        required:
-        - distinct_id
-        - channel
-      - properties:
-          destination:
-            type: string
-            example: 919XXXXXXXX
-            description: Phone number or email of the suppressed user
-          channel:
-            type: string
-            example: sms
-            description: Communication channel (e.g., sms, whatsapp, email)
-          description:
-            type: string
-            example: DND
-            description: Reason or tag for suppression (e.g., "DND", "Testing").
-        type: object
-        required:
-        - destination
-        - channel
-    fetch_suppression_list:
-      properties:
-        _id:
-          type: string
-          example: 68763be4b8cee01156d9fa8a
-          description: Unique identifier of the suppression record
-        destination:
-          type: string
-          example: 919XXXXXXXX
-          description: Phone number or email of the suppressed user
-        distinct_id:
-          type: string
-          example: XXXX-XXX-XXXX
-          description: Unique identifier (used as an alternative to destination)
-        channel:
-          type: string
-          example: sms
-          description: Communication channel (e.g., sms, whatsapp, email)
-        description:
-          type: string
-          example: DND
-          description: Reason or tag for suppression (e.g., "DND", "Testing").
-        created_at:
-          type: string
-          example: '2025-07-15T16:20:16.302+05:30'
-          description: Timestamp when the suppression was created
-        expiry_ts:
-          type: string
-          example: '2025-07-15T16:25:16.302+05:30'
-          description: Optional timestamp for expiration of suppression
-      type: object
   responses:
     SuppressionListDeleted:
       description: Suppression list updated.
@@ -182,19 +129,6 @@ components:
               _message:
                 type: string
                 example: 1 record(s) has been deleted!
-            type: object
-    SuppressionListError:
-      description: Destination is invalid
-      content:
-        application/json:
-          schema:
-            properties:
-              status:
-                example: error
-                type: string
-              _message:
-                type: string
-                example: Invalid destination for channel sms
             type: object
     APIKeyInvalid:
       description: API Key or Workspace ID is invalid. User is unauthorised.
@@ -246,6 +180,87 @@ components:
                 type: string
                 example: User has been added to the suppression!
             type: object
+    SuppressionListError:
+      description: Destination is invalid
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                example: error
+                type: string
+              _message:
+                type: string
+                example: Invalid destination for channel sms
+            type: object
+  schemas:
+    fetch_suppression_list:
+      properties:
+        _id:
+          type: string
+          example: 68763be4b8cee01156d9fa8a
+          description: Unique identifier of the suppression record
+        destination:
+          type: string
+          example: 919XXXXXXXX
+          description: Phone number or email of the suppressed user
+        distinct_id:
+          type: string
+          example: XXXX-XXX-XXXX
+          description: Unique identifier (used as an alternative to destination)
+        channel:
+          type: string
+          example: sms
+          description: Communication channel (e.g., sms, whatsapp, email)
+        description:
+          type: string
+          example: DND
+          description: Reason or tag for suppression (e.g., "DND", "Testing").
+        created_at:
+          type: string
+          example: '2025-07-15T16:20:16.302+05:30'
+          description: Timestamp when the suppression was created
+        expiry_ts:
+          type: string
+          example: '2025-07-15T16:25:16.302+05:30'
+          description: Optional timestamp for expiration of suppression
+      type: object
+    add_suppression_list:
+      oneOf:
+      - properties:
+          distinct_id:
+            type: string
+            example: XXXX-XXX-XXXX
+            description: Unique identifier (used as an alternative to destination)
+          channel:
+            type: string
+            example: sms
+            description: Communication channel (e.g., sms, whatsapp, email)
+          description:
+            type: string
+            example: DND
+            description: Reason or tag for suppression (e.g., "DND", "Testing").
+        type: object
+        required:
+        - distinct_id
+        - channel
+      - properties:
+          destination:
+            type: string
+            example: 919XXXXXXXX
+            description: Phone number or email of the suppressed user
+          channel:
+            type: string
+            example: sms
+            description: Communication channel (e.g., sms, whatsapp, email)
+          description:
+            type: string
+            example: DND
+            description: Reason or tag for suppression (e.g., "DND", "Testing").
+        type: object
+        required:
+        - destination
+        - channel
   securitySchemes:
     BearerAuth:
       type: http

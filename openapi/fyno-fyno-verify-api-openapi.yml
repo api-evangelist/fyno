@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Fyno Rest Fire an Event Fyno Verify API
+  title: Fyno Rest Fyno Verify API
   version: v1
 servers:
 - url: https://api.fyno.io/v1
@@ -71,24 +71,10 @@ paths:
           $ref: '#/components/responses/OTPInvalid'
         '401':
           $ref: '#/components/responses/APIKeyInvalid'
+      operationId: postByWSIDByVersionVerifyValidate
+      x-operation-id-source: derived
 components:
   responses:
-    OTPInvalid:
-      description: Invalid OTP entered by user
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: user entered the wrong OTP
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
     OTPSuccess:
       description: OTP successfully validated
       content:
@@ -113,6 +99,22 @@ components:
             properties:
               _message:
                 example: Invalid API details
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    OTPInvalid:
+      description: Invalid OTP entered by user
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: user entered the wrong OTP
                 type: string
               status:
                 example: error

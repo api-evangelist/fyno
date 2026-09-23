@@ -1,6 +1,6 @@
-openapi: 3.0.2
+openapi: 3.2.0
 info:
-  title: Fyno Rest Fire an Event Manage User Subscriptions & Preferences API
+  title: Fyno Rest Manage User Subscriptions & Preferences API
   version: v1
 servers:
 - url: https://api.fyno.io/v1
@@ -66,11 +66,16 @@ paths:
           $ref: '#/components/responses/DistinctIDMissing'
         '401':
           $ref: '#/components/responses/APIKeyInvalid'
+      operationId: getByWSIDByVersionSubscriptionsPreference
+      x-operation-id-source: derived
     put:
       tags:
       - Manage User Subscriptions & Preferences
       summary: Update user preference
-      description: This API enables you to update the channel preference of a user for multiple subscription topics. In the JSON payload, enter the subscription ID as keys to update the channel preference. To update the user preference for all subscription topics at once (global preference), use 'all' instead of the subscription id.<br/><br/>**Note&#58;** If the channel configuration for a subscription topic is set to 'required', then the user preference for the channel cannot be updated.
+      description: 'This API enables you to update the channel preference of a user for multiple subscription topics. In the JSON payload, enter the subscription ID as keys to update the channel preference. To update the user preference for all subscription topics at once (global preference), use ''all'' instead of the subscription id.
+
+
+        **Note:** If the channel configuration for a subscription topic is set to ''required'', then the user preference for the channel cannot be updated.'
       parameters:
       - name: WSID
         in: path
@@ -115,12 +120,17 @@ paths:
           $ref: '#/components/responses/DistinctIDChannelStatusMissing'
         '401':
           $ref: '#/components/responses/APIKeyInvalid'
+      operationId: putByWSIDByVersionSubscriptionsPreference
+      x-operation-id-source: derived
   /{WSID}/{version}/subscriptions/list/{subscription_id}/user:
     post:
       tags:
       - Manage User Subscriptions & Preferences
       summary: Update user preference (single)
-      description: This API enables you to update the channel preference of a user for a particular subscription topic.<br/><br/>**Note&#58;** If the channel configuration for a subscription topic is set to 'required', then the user preference for the channel cannot be updated.
+      description: 'This API enables you to update the channel preference of a user for a particular subscription topic.
+
+
+        **Note:** If the channel configuration for a subscription topic is set to ''required'', then the user preference for the channel cannot be updated.'
       parameters:
       - name: WSID
         in: path
@@ -165,187 +175,21 @@ paths:
           $ref: '#/components/responses/DistinctIDChannelStatusMissing'
         '401':
           $ref: '#/components/responses/APIKeyInvalid'
+      operationId: postByWSIDByVersionSubscriptionsListBySubscriptionIdUser
+      x-operation-id-source: derived
 components:
-  schemas:
-    update_subscription_single:
-      properties:
-        channel:
-          enum:
-          - sms
-          - whatsapp
-          - email
-          - discord
-          - slack
-          - teams
-          - push
-          - voice
-          - inapp
-          - webpush
-          type: string
-        distinct_id:
-          type: string
-        status:
-          enum:
-          - opted-in
-          - opted-out
-          type: string
-      type: object
-      required:
-      - channel
-      - distinct_id
-      - status
-    preference_channels_opted_out:
-      properties:
-        discord:
-          enum:
-          - opted-out
-          type: string
-        email:
-          enum:
-          - opted-out
-          type: string
-        inapp:
-          enum:
-          - opted-out
-          type: string
-        push:
-          enum:
-          - opted-out
-          type: string
-        slack:
-          enum:
-          - opted-out
-          type: string
-        sms:
-          enum:
-          - opted-out
-          type: string
-        teams:
-          enum:
-          - opted-out
-          type: string
-        voice:
-          enum:
-          - opted-out
-          type: string
-        whatsapp:
-          enum:
-          - opted-out
-          type: string
-      type: object
-    update_subscription_multiple:
-      properties:
-        user_preference:
-          properties:
-            SXXXXXXXXX:
-              $ref: '#/components/schemas/preference_channels'
-          type: object
-      type: object
-      required:
-      - user_preference
-    updated_at:
-      properties:
-        discord:
-          type: string
-        email:
-          type: string
-        inapp:
-          type: string
-        push:
-          type: string
-        slack:
-          type: string
-        sms:
-          type: string
-        teams:
-          type: string
-        voice:
-          type: string
-        webpush:
-          type: string
-        whatsapp:
-          type: string
-      type: object
-    preference_channels:
-      properties:
-        discord:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        email:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        inapp:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        push:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        slack:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        sms:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        teams:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        voice:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        webpush:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        whatsapp:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-      type: object
   responses:
-    APIKeyInvalid:
-      description: API Key or Workspace ID is invalid. User is unauthorised.
+    SubscriptionUpdated:
+      description: Subscription updated successfully
       content:
         application/json:
           schema:
-            properties:
-              _message:
-                example: Invalid API details
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
             required:
-            - _message
-            - status
+            - SXXXXXXXXX
+            properties:
+              SXXXXXXXXX:
+                $ref: '#/components/schemas/preference_channels'
+            type: object
     PrefProfileFetched:
       description: Preference fetched successfully
       content:
@@ -541,17 +385,22 @@ components:
             required:
             - _message
             - status
-    SubscriptionUpdated:
-      description: Subscription updated successfully
+    APIKeyInvalid:
+      description: API Key or Workspace ID is invalid. User is unauthorised.
       content:
         application/json:
           schema:
-            required:
-            - SXXXXXXXXX
             properties:
-              SXXXXXXXXX:
-                $ref: '#/components/schemas/preference_channels'
+              _message:
+                example: Invalid API details
+                type: string
+              status:
+                example: error
+                type: string
             type: object
+            required:
+            - _message
+            - status
     DistinctIDChannelStatusMissing:
       description: Distinct ID, channel, or status is not provided
       content:
@@ -568,6 +417,169 @@ components:
             required:
             - _message
             - status
+  schemas:
+    update_subscription_multiple:
+      properties:
+        user_preference:
+          properties:
+            SXXXXXXXXX:
+              $ref: '#/components/schemas/preference_channels'
+          type: object
+      type: object
+      required:
+      - user_preference
+    updated_at:
+      properties:
+        discord:
+          type: string
+        email:
+          type: string
+        inapp:
+          type: string
+        push:
+          type: string
+        slack:
+          type: string
+        sms:
+          type: string
+        teams:
+          type: string
+        voice:
+          type: string
+        webpush:
+          type: string
+        whatsapp:
+          type: string
+      type: object
+    preference_channels_opted_out:
+      properties:
+        discord:
+          enum:
+          - opted-out
+          type: string
+        email:
+          enum:
+          - opted-out
+          type: string
+        inapp:
+          enum:
+          - opted-out
+          type: string
+        push:
+          enum:
+          - opted-out
+          type: string
+        slack:
+          enum:
+          - opted-out
+          type: string
+        sms:
+          enum:
+          - opted-out
+          type: string
+        teams:
+          enum:
+          - opted-out
+          type: string
+        voice:
+          enum:
+          - opted-out
+          type: string
+        whatsapp:
+          enum:
+          - opted-out
+          type: string
+      type: object
+    preference_channels:
+      properties:
+        discord:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        email:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        inapp:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        push:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        slack:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        sms:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        teams:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        voice:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        webpush:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        whatsapp:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+      type: object
+    update_subscription_single:
+      properties:
+        channel:
+          enum:
+          - sms
+          - whatsapp
+          - email
+          - discord
+          - slack
+          - teams
+          - push
+          - voice
+          - inapp
+          - webpush
+          type: string
+        distinct_id:
+          type: string
+        status:
+          enum:
+          - opted-in
+          - opted-out
+          type: string
+      type: object
+      required:
+      - channel
+      - distinct_id
+      - status
   securitySchemes:
     BearerAuth:
       type: http

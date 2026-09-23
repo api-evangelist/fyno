@@ -1,12 +1,7 @@
 {
   "provider": "fyno",
   "sources": [
-    "fyno-fire-an-event-api-openapi.yml",
-    "fyno-fyno-verify-api-openapi.yml",
-    "fyno-manage-user-profiles-api-openapi.yml",
-    "fyno-manage-user-subscriptions-preferences-api-openapi.yml",
-    "fyno-suppression-list-api-openapi.yml",
-    "fyno-user-properties-api-openapi.yml"
+    "_original/fyno-notification-events-openapi.yml"
   ],
   "outputs": [
     "fyno-fire-an-event-api-openapi.yml",
@@ -19,6 +14,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "fyno-notification-events-openapi.yml: upgraded openapi 3.0.2 -> OpenAPI 3.2.0",
+    "fyno-notification-events-openapi.yml: declared missing tag: Fire an Event",
+    "fyno-notification-events-openapi.yml: declared missing tag: Fyno Verify",
+    "fyno-notification-events-openapi.yml: declared missing tag: Manage User Profiles",
+    "fyno-notification-events-openapi.yml: declared missing tag: Manage User Subscriptions & Preferences",
+    "fyno-notification-events-openapi.yml: declared missing tag: Suppression List",
+    "fyno-notification-events-openapi.yml: declared missing tag: User Properties",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "fyno-fire-an-event-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fyno-fyno-verify-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fyno-manage-user-profiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fyno-manage-user-subscriptions-preferences-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fyno-suppression-list-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fyno-user-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
