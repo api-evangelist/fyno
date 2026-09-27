@@ -117,35 +117,6 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    SuppressionListDeleted:
-      description: Suppression list updated.
-      content:
-        application/json:
-          schema:
-            properties:
-              status:
-                example: ok
-                type: string
-              _message:
-                type: string
-                example: 1 record(s) has been deleted!
-            type: object
-    APIKeyInvalid:
-      description: API Key or Workspace ID is invalid. User is unauthorised.
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: Invalid API details
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
     SuppressionListSuccess:
       description: Suppression list fetched.
       content:
@@ -154,19 +125,6 @@ components:
             items:
               $ref: '#/components/schemas/fetch_suppression_list'
             type: array
-    SuppressionDeleteError:
-      description: The provided `_id` does not exist.
-      content:
-        application/json:
-          schema:
-            properties:
-              status:
-                example: error
-                type: string
-              _message:
-                type: string
-                example: Unable to delete non existing data!
-            type: object
     SuppressionListUpdated:
       description: Suppression list updated.
       content:
@@ -192,6 +150,48 @@ components:
               _message:
                 type: string
                 example: Invalid destination for channel sms
+            type: object
+    APIKeyInvalid:
+      description: API Key or Workspace ID is invalid. User is unauthorised.
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Invalid API details
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    SuppressionListDeleted:
+      description: Suppression list updated.
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                example: ok
+                type: string
+              _message:
+                type: string
+                example: 1 record(s) has been deleted!
+            type: object
+    SuppressionDeleteError:
+      description: The provided `_id` does not exist.
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                example: error
+                type: string
+              _message:
+                type: string
+                example: Unable to delete non existing data!
             type: object
   schemas:
     fetch_suppression_list:

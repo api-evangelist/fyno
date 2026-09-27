@@ -75,22 +75,6 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    OTPSuccess:
-      description: OTP successfully validated
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: OTP successfully validated.
-                type: string
-              status:
-                example: ok
-                type: string
-            type: object
-            required:
-            - _message
-            - status
     APIKeyInvalid:
       description: API Key or Workspace ID is invalid. User is unauthorised.
       content:
@@ -102,6 +86,22 @@ components:
                 type: string
               status:
                 example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    OTPSuccess:
+      description: OTP successfully validated
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: OTP successfully validated.
+                type: string
+              status:
+                example: ok
                 type: string
             type: object
             required:
