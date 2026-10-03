@@ -117,6 +117,19 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
+    SuppressionDeleteError:
+      description: The provided `_id` does not exist.
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                example: error
+                type: string
+              _message:
+                type: string
+                example: Unable to delete non existing data!
+            type: object
     SuppressionListSuccess:
       description: Suppression list fetched.
       content:
@@ -179,19 +192,6 @@ components:
               _message:
                 type: string
                 example: 1 record(s) has been deleted!
-            type: object
-    SuppressionDeleteError:
-      description: The provided `_id` does not exist.
-      content:
-        application/json:
-          schema:
-            properties:
-              status:
-                example: error
-                type: string
-              _message:
-                type: string
-                example: Unable to delete non existing data!
             type: object
   schemas:
     fetch_suppression_list:

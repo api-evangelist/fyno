@@ -178,170 +178,18 @@ paths:
       operationId: postByWSIDByVersionSubscriptionsListBySubscriptionIdUser
       x-operation-id-source: derived
 components:
-  schemas:
-    preference_channels:
-      properties:
-        discord:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        email:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        inapp:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        push:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        slack:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        sms:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        teams:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        voice:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        webpush:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-        whatsapp:
-          default: opted-in
-          enum:
-          - opted-out
-          - opted-in
-          type: string
-      type: object
-    preference_channels_opted_out:
-      properties:
-        discord:
-          enum:
-          - opted-out
-          type: string
-        email:
-          enum:
-          - opted-out
-          type: string
-        inapp:
-          enum:
-          - opted-out
-          type: string
-        push:
-          enum:
-          - opted-out
-          type: string
-        slack:
-          enum:
-          - opted-out
-          type: string
-        sms:
-          enum:
-          - opted-out
-          type: string
-        teams:
-          enum:
-          - opted-out
-          type: string
-        voice:
-          enum:
-          - opted-out
-          type: string
-        whatsapp:
-          enum:
-          - opted-out
-          type: string
-      type: object
-    update_subscription_multiple:
-      properties:
-        user_preference:
-          properties:
-            SXXXXXXXXX:
-              $ref: '#/components/schemas/preference_channels'
-          type: object
-      type: object
-      required:
-      - user_preference
-    update_subscription_single:
-      properties:
-        channel:
-          enum:
-          - sms
-          - whatsapp
-          - email
-          - discord
-          - slack
-          - teams
-          - push
-          - voice
-          - inapp
-          - webpush
-          type: string
-        distinct_id:
-          type: string
-        status:
-          enum:
-          - opted-in
-          - opted-out
-          type: string
-      type: object
-      required:
-      - channel
-      - distinct_id
-      - status
-    updated_at:
-      properties:
-        discord:
-          type: string
-        email:
-          type: string
-        inapp:
-          type: string
-        push:
-          type: string
-        slack:
-          type: string
-        sms:
-          type: string
-        teams:
-          type: string
-        voice:
-          type: string
-        webpush:
-          type: string
-        whatsapp:
-          type: string
-      type: object
   responses:
+    SubscriptionUpdated:
+      description: Subscription updated successfully
+      content:
+        application/json:
+          schema:
+            required:
+            - SXXXXXXXXX
+            properties:
+              SXXXXXXXXX:
+                $ref: '#/components/schemas/preference_channels'
+            type: object
     DistinctIDChannelStatusMissing:
       description: Distinct ID, channel, or status is not provided
       content:
@@ -350,6 +198,22 @@ components:
             properties:
               _message:
                 example: distinct_id is required!
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    APIKeyInvalid:
+      description: API Key or Workspace ID is invalid. User is unauthorised.
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Invalid API details
                 type: string
               status:
                 example: error
@@ -537,33 +401,6 @@ components:
                     type: array
                 type: object
             type: object
-    APIKeyInvalid:
-      description: API Key or Workspace ID is invalid. User is unauthorised.
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: Invalid API details
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    SubscriptionUpdated:
-      description: Subscription updated successfully
-      content:
-        application/json:
-          schema:
-            required:
-            - SXXXXXXXXX
-            properties:
-              SXXXXXXXXX:
-                $ref: '#/components/schemas/preference_channels'
-            type: object
     DistinctIDMissing:
       description: Distinct ID is not provided
       content:
@@ -580,6 +417,169 @@ components:
             required:
             - _message
             - status
+  schemas:
+    update_subscription_multiple:
+      properties:
+        user_preference:
+          properties:
+            SXXXXXXXXX:
+              $ref: '#/components/schemas/preference_channels'
+          type: object
+      type: object
+      required:
+      - user_preference
+    update_subscription_single:
+      properties:
+        channel:
+          enum:
+          - sms
+          - whatsapp
+          - email
+          - discord
+          - slack
+          - teams
+          - push
+          - voice
+          - inapp
+          - webpush
+          type: string
+        distinct_id:
+          type: string
+        status:
+          enum:
+          - opted-in
+          - opted-out
+          type: string
+      type: object
+      required:
+      - channel
+      - distinct_id
+      - status
+    updated_at:
+      properties:
+        discord:
+          type: string
+        email:
+          type: string
+        inapp:
+          type: string
+        push:
+          type: string
+        slack:
+          type: string
+        sms:
+          type: string
+        teams:
+          type: string
+        voice:
+          type: string
+        webpush:
+          type: string
+        whatsapp:
+          type: string
+      type: object
+    preference_channels_opted_out:
+      properties:
+        discord:
+          enum:
+          - opted-out
+          type: string
+        email:
+          enum:
+          - opted-out
+          type: string
+        inapp:
+          enum:
+          - opted-out
+          type: string
+        push:
+          enum:
+          - opted-out
+          type: string
+        slack:
+          enum:
+          - opted-out
+          type: string
+        sms:
+          enum:
+          - opted-out
+          type: string
+        teams:
+          enum:
+          - opted-out
+          type: string
+        voice:
+          enum:
+          - opted-out
+          type: string
+        whatsapp:
+          enum:
+          - opted-out
+          type: string
+      type: object
+    preference_channels:
+      properties:
+        discord:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        email:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        inapp:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        push:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        slack:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        sms:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        teams:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        voice:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        webpush:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+        whatsapp:
+          default: opted-in
+          enum:
+          - opted-out
+          - opted-in
+          type: string
+      type: object
   securitySchemes:
     BearerAuth:
       type: http
