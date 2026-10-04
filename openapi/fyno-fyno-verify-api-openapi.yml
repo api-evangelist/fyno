@@ -91,22 +91,6 @@ components:
             required:
             - _message
             - status
-    OTPSuccess:
-      description: OTP successfully validated
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: OTP successfully validated.
-                type: string
-              status:
-                example: ok
-                type: string
-            type: object
-            required:
-            - _message
-            - status
     OTPInvalid:
       description: Invalid OTP entered by user
       content:
@@ -118,6 +102,22 @@ components:
                 type: string
               status:
                 example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    OTPSuccess:
+      description: OTP successfully validated
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: OTP successfully validated.
+                type: string
+              status:
+                example: ok
                 type: string
             type: object
             required:

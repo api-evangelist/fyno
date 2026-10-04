@@ -371,25 +371,66 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    WSIDversionprofilesdistinct_idchannel_channel_push:
+    WSIDversionprofilesdistinct_id_channel:
+      description: (Optional) If you do not wish to change any channel values, remove this key from the payload. **Note&#58;** If you change any value in the `channel` key, the entire channel data is replaced.
+      properties:
+        discord:
+          description: Enter the new discord ID of the user.
+          example: 101XXXXXXXXXX7XXXXX
+          type: string
+        email:
+          description: Enter the new email address of the user.
+          example: abcde@fghi.com
+          type: string
+        inapp:
+          items:
+            $ref: '#/components/schemas/WSIDversionprofilesdistinct_id_channel_inapp'
+          type: array
+        push:
+          items:
+            $ref: '#/components/schemas/WSIDversionprofilesdistinct_id_channel_push'
+          type: array
+        slack:
+          description: Enter the new channel ID, user ID, or email address of the user.
+          example: CXXXXXXXXXX
+          type: string
+        sms:
+          description: Enter the new mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
+          example: +919879XXXXXX
+          type: string
+        teams:
+          description: Enter the new channel name. For teams, we currently support sending to one channel only. To send to multiple channels, do get in touch and we can share a workaround.
+          example: General
+          type: string
+        voice:
+          description: Enter the new mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
+          example: +919879XXXXXX
+          type: string
+        whatsapp:
+          description: Enter the new WhatsApp mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX
+          example: +919879XXXXXX
+          type: string
+      type: object
+    inline_response_200_channel_inapp:
       properties:
         integration_id:
-          description: (Optional) Enter the integration ID that was used to generate the above token. This is helpful in identifying which integration to use when an account has multiple push integrations. If this value is null, then the above token is used for all push integrations.<br/><br/>The integration ID can be obtained from Fyno's integrations page.
+          description: The integration ID that was used to generate the above token. If this value is null, then the above token is used for all InApp integrations.<br/><br/>The integration ID can be verified from Fyno's integrations page.
           example: IXXXXXXX
           type: string
         status:
-          description: (Optional) Enter 1 to specify that this token must be active and should receive notifications. Enter 0 to specify that this token must be inactive and should not receive any notifications. If null, the default value is 1.
+          description: The status of the token. If `1`, the token is active and should receive notifications. If `0`, the token in inactive and should not receive notifications.
           enum:
           - 1
           - 0
+          example: 1
           type: integer
         token:
-          description: Enter the new push token that to add for the user. If you use OneSignal, you must add the following prefix to the token:<br/><br/>- <b>For OneSignal playerId&#58;</b> `onesignal_player_id:`<enter_playerid><br/>- <b>For OneSignal externalId&#58;</b> `onesignal_external_id:`<enter_externalid><br/><br/> **Note&#58;** This value would get added (and not updated) to the channel data.
-          example: ExponentPushToken[XXXXX]
+          description: Enter the distinct ID or the generated token of the user.
+          example: XXXXXXXX
           type: string
+      type: object
       required:
       - token
-      type: object
     version_profiles_body:
       properties:
         channel:
@@ -1010,59 +1051,6 @@ components:
       required:
       - distinct_id
       type: object
-    profiles_delete_body:
-      properties:
-        distinct_id:
-          description: Enter the `distinct_id` of all user profiles that you wish to delete.
-          example:
-          - U00001
-          - U00002
-          items:
-            example: '["U00001","U00002"]'
-            type: string
-          type: array
-      required:
-      - distinct_id
-      type: object
-    WSIDversionprofilesdistinct_idchannel_channel:
-      properties:
-        discord:
-          description: Enter the new discord ID of the user. If you do not wish to change this value, remove this key from the payload.
-          example: 101XXXXXXXXXX7XXXXX
-          type: string
-        email:
-          description: Enter the new email address of the user. If you do not wish to change this value, remove this key from the payload.
-          example: abcde@fghi.com
-          type: string
-        inapp:
-          items:
-            $ref: '#/components/schemas/WSIDversionprofilesdistinct_idchannel_channel_inapp'
-          type: array
-        push:
-          items:
-            $ref: '#/components/schemas/WSIDversionprofilesdistinct_idchannel_channel_push'
-          type: array
-        slack:
-          description: Enter the new channel ID, user ID, or email address of the user. If you do not wish to change this value, remove this key from the payload.
-          example: CXXXXXXXXXX
-          type: string
-        sms:
-          description: Enter the new mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX. If you do not wish to change this value, remove this key from the payload.
-          example: +919879XXXXXX
-          type: string
-        teams:
-          description: Enter the new channel name. For teams, we currently support sending to one channel only. If you wish to send to multiple channels, do get in touch and we can share a workaround. If you do not wish to change this value, remove this key from the payload.
-          example: General
-          type: string
-        voice:
-          description: Enter the new mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX. If you do not wish to change this value, remove this key from the payload.
-          example: +919879XXXXXX
-          type: string
-        whatsapp:
-          description: Enter the new WhatsApp mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX. If you do not wish to change this value, remove this key from the payload.
-          example: +919879XXXXXX
-          type: string
-      type: object
     channel_delete_body:
       oneOf:
       - properties:
@@ -1108,82 +1096,19 @@ components:
         - inapp
         - push
         type: object
-    WSIDversionprofiles_channel_push:
+    profiles_delete_body:
       properties:
-        integration_id:
-          description: (Optional) Enter the integration ID that was used to generate the above token. This is helpful in identifying which integration to use when an account has multiple push integrations. If this value is null, then the above token is used for all push integrations.<br/><br/>The integration ID can be obtained from Fyno's integrations page.
-          example: IXXXXXXX
-          type: string
-        status:
-          description: (Optional) Enter 1 to specify that this token must be active and should receive notifications. Enter 0 to specify that this token must be inactive and should not receive any notifications. If null, the default value is 1.
-          enum:
-          - 1
-          - 0
-          type: integer
-        token:
-          description: Enter the push token of the user. If you use OneSignal, you must add the following prefix to the token:<br/><br/>- <b>For OneSignal playerId&#58;</b> `onesignal_player_id:`<enter_playerid><br/>- <b>For OneSignal externalId&#58;</b> `onesignal_external_id:`<enter_externalid><br/>
-          example: ExponentPushToken[XXXXX]
-          type: string
+        distinct_id:
+          description: Enter the `distinct_id` of all user profiles that you wish to delete.
+          example:
+          - U00001
+          - U00002
+          items:
+            example: '["U00001","U00002"]'
+            type: string
+          type: array
       required:
-      - token
-      type: object
-    inline_response_200_channel_push:
-      properties:
-        integration_id:
-          description: The integration ID that was used to generate the above token. If this value is null, then the above token is used for all push integrations.<br/><br/>The integration ID can be verified from Fyno's integrations page.
-          example: IXXXXXXX
-          type: string
-        status:
-          description: The status of the token. If `1`, the token is active and should receive notifications. If `0`, the token in inactive and should not receive notifications.
-          enum:
-          - 1
-          - 0
-          example: 1
-          type: integer
-        token:
-          description: The push token of the user.
-          example: ExponentPushToken[XXXXX]
-          type: string
-      type: object
-    WSIDversionprofilesdistinct_id_channel:
-      description: (Optional) If you do not wish to change any channel values, remove this key from the payload. **Note&#58;** If you change any value in the `channel` key, the entire channel data is replaced.
-      properties:
-        discord:
-          description: Enter the new discord ID of the user.
-          example: 101XXXXXXXXXX7XXXXX
-          type: string
-        email:
-          description: Enter the new email address of the user.
-          example: abcde@fghi.com
-          type: string
-        inapp:
-          items:
-            $ref: '#/components/schemas/WSIDversionprofilesdistinct_id_channel_inapp'
-          type: array
-        push:
-          items:
-            $ref: '#/components/schemas/WSIDversionprofilesdistinct_id_channel_push'
-          type: array
-        slack:
-          description: Enter the new channel ID, user ID, or email address of the user.
-          example: CXXXXXXXXXX
-          type: string
-        sms:
-          description: Enter the new mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
-          example: +919879XXXXXX
-          type: string
-        teams:
-          description: Enter the new channel name. For teams, we currently support sending to one channel only. To send to multiple channels, do get in touch and we can share a workaround.
-          example: General
-          type: string
-        voice:
-          description: Enter the new mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
-          example: +919879XXXXXX
-          type: string
-        whatsapp:
-          description: Enter the new WhatsApp mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX
-          example: +919879XXXXXX
-          type: string
+      - distinct_id
       type: object
     WSIDversionprofilesdistinct_id_channel_inapp:
       properties:
@@ -1203,6 +1128,101 @@ components:
           type: string
       required:
       - token
+      type: object
+    WSIDversionprofiles_channel_push:
+      properties:
+        integration_id:
+          description: (Optional) Enter the integration ID that was used to generate the above token. This is helpful in identifying which integration to use when an account has multiple push integrations. If this value is null, then the above token is used for all push integrations.<br/><br/>The integration ID can be obtained from Fyno's integrations page.
+          example: IXXXXXXX
+          type: string
+        status:
+          description: (Optional) Enter 1 to specify that this token must be active and should receive notifications. Enter 0 to specify that this token must be inactive and should not receive any notifications. If null, the default value is 1.
+          enum:
+          - 1
+          - 0
+          type: integer
+        token:
+          description: Enter the push token of the user. If you use OneSignal, you must add the following prefix to the token:<br/><br/>- <b>For OneSignal playerId&#58;</b> `onesignal_player_id:`<enter_playerid><br/>- <b>For OneSignal externalId&#58;</b> `onesignal_external_id:`<enter_externalid><br/>
+          example: ExponentPushToken[XXXXX]
+          type: string
+      required:
+      - token
+      type: object
+    WSIDversionprofilesdistinct_id_channel_push:
+      properties:
+        integration_id:
+          description: (Optional) Enter the integration ID that was used to generate the above token. This is helpful in identifying which integration to use when an account has multiple push integrations. If this value is null, then the above token is used for all push integrations.<br/><br/>The integration ID can be obtained from Fyno's integrations page.
+          example: IXXXXXXX
+          type: string
+        status:
+          description: (Optional) Enter 1 to specify that this token must be active and should receive notifications. Enter 0 to specify that this token must be inactive and should not receive any notifications. If null, the default value is 1.
+          enum:
+          - 1
+          - 0
+          type: integer
+        token:
+          description: Enter the new push token of the user. If you use OneSignal, you must add the following prefix to the token:<br/><br/>- <b>For OneSignal playerId&#58;</b> `onesignal_player_id:`<enter_playerid><br/>- <b>For OneSignal externalId&#58;</b> `onesignal_external_id:`<enter_externalid><br/>
+          example: ExponentPushToken[XXXXX]
+          type: string
+      required:
+      - token
+      type: object
+    WSIDversionprofiles_channel:
+      properties:
+        discord:
+          description: Enter the discord ID of the user.
+          example: 101XXXXXXXXXX7XXXXX
+          type: string
+        email:
+          description: Enter the email address of the user.
+          example: abcde@fghi.com
+          type: string
+        inapp:
+          items:
+            $ref: '#/components/schemas/WSIDversionprofiles_channel_inapp'
+          type: array
+        push:
+          items:
+            $ref: '#/components/schemas/WSIDversionprofiles_channel_push'
+          type: array
+        slack:
+          description: Enter the channel ID, user ID, or email address of the user.
+          example: CXXXXXXXXXX
+          type: string
+        sms:
+          description: Enter the mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
+          example: +919879XXXXXX
+          type: string
+        teams:
+          description: Enter the channel name. For teams, we currently support sending to one channel only. To send to multiple channels, do get in touch and we can share a workaround.
+          example: General
+          type: string
+        voice:
+          description: Enter the mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
+          example: +919879XXXXXX
+          type: string
+        whatsapp:
+          description: Enter the WhatsApp mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX
+          example: +919879XXXXXX
+          type: string
+      type: object
+    inline_response_200_channel_push:
+      properties:
+        integration_id:
+          description: The integration ID that was used to generate the above token. If this value is null, then the above token is used for all push integrations.<br/><br/>The integration ID can be verified from Fyno's integrations page.
+          example: IXXXXXXX
+          type: string
+        status:
+          description: The status of the token. If `1`, the token is active and should receive notifications. If `0`, the token in inactive and should not receive notifications.
+          enum:
+          - 1
+          - 0
+          example: 1
+          type: integer
+        token:
+          description: The push token of the user.
+          example: ExponentPushToken[XXXXX]
+          type: string
       type: object
     inline_response_200_channel:
       properties:
@@ -1243,6 +1263,52 @@ components:
           example: +91 9879X XXXXX
           type: string
       type: object
+    WSIDversionprofilesdistinct_idchannel_channel:
+      properties:
+        discord:
+          description: Enter the new discord ID of the user. If you do not wish to change this value, remove this key from the payload.
+          example: 101XXXXXXXXXX7XXXXX
+          type: string
+        email:
+          description: Enter the new email address of the user. If you do not wish to change this value, remove this key from the payload.
+          example: abcde@fghi.com
+          type: string
+        inapp:
+          items:
+            $ref: '#/components/schemas/WSIDversionprofilesdistinct_idchannel_channel_inapp'
+          type: array
+        push:
+          items:
+            $ref: '#/components/schemas/WSIDversionprofilesdistinct_idchannel_channel_push'
+          type: array
+        slack:
+          description: Enter the new channel ID, user ID, or email address of the user. If you do not wish to change this value, remove this key from the payload.
+          example: CXXXXXXXXXX
+          type: string
+        sms:
+          description: Enter the new mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX. If you do not wish to change this value, remove this key from the payload.
+          example: +919879XXXXXX
+          type: string
+        teams:
+          description: Enter the new channel name. For teams, we currently support sending to one channel only. If you wish to send to multiple channels, do get in touch and we can share a workaround. If you do not wish to change this value, remove this key from the payload.
+          example: General
+          type: string
+        voice:
+          description: Enter the new mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX. If you do not wish to change this value, remove this key from the payload.
+          example: +919879XXXXXX
+          type: string
+        whatsapp:
+          description: Enter the new WhatsApp mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX. If you do not wish to change this value, remove this key from the payload.
+          example: +919879XXXXXX
+          type: string
+      type: object
+    distinct_id_channel_body:
+      properties:
+        channel:
+          $ref: '#/components/schemas/WSIDversionprofilesdistinct_idchannel_channel'
+      required:
+      - channel
+      type: object
     WSIDversionprofilesdistinct_idchannel_channel_inapp:
       properties:
         integration_id:
@@ -1262,7 +1328,7 @@ components:
       required:
       - token
       type: object
-    WSIDversionprofilesdistinct_id_channel_push:
+    WSIDversionprofilesdistinct_idchannel_channel_push:
       properties:
         integration_id:
           description: (Optional) Enter the integration ID that was used to generate the above token. This is helpful in identifying which integration to use when an account has multiple push integrations. If this value is null, then the above token is used for all push integrations.<br/><br/>The integration ID can be obtained from Fyno's integrations page.
@@ -1275,8 +1341,27 @@ components:
           - 0
           type: integer
         token:
-          description: Enter the new push token of the user. If you use OneSignal, you must add the following prefix to the token:<br/><br/>- <b>For OneSignal playerId&#58;</b> `onesignal_player_id:`<enter_playerid><br/>- <b>For OneSignal externalId&#58;</b> `onesignal_external_id:`<enter_externalid><br/>
+          description: Enter the new push token that to add for the user. If you use OneSignal, you must add the following prefix to the token:<br/><br/>- <b>For OneSignal playerId&#58;</b> `onesignal_player_id:`<enter_playerid><br/>- <b>For OneSignal externalId&#58;</b> `onesignal_external_id:`<enter_externalid><br/><br/> **Note&#58;** This value would get added (and not updated) to the channel data.
           example: ExponentPushToken[XXXXX]
+          type: string
+      required:
+      - token
+      type: object
+    WSIDversionprofiles_channel_inapp:
+      properties:
+        integration_id:
+          description: (Optional) Enter the integration ID that was used to generate the above token. This is helpful in identifying which integration to use when an account has multiple InApp integrations. If this value is null, then the above token is used for all InApp integrations.<br/><br/>The integration ID can be obtained from Fyno's integrations page.
+          example: IXXXXXXX
+          type: string
+        status:
+          description: (Optional) Enter 1 to specify that this token must be active and should receive notifications. Enter 0 to specify that this token must be inactive and should not receive any notifications. If null, the default value is 1.
+          enum:
+          - 1
+          - 0
+          type: integer
+        token:
+          description: Enter the distinct ID or the generated token of the user.
+          example: XXXXXXXX
           type: string
       required:
       - token
@@ -1899,91 +1984,6 @@ components:
           example: Asia/Kolkata
           type: string
       type: object
-    WSIDversionprofiles_channel:
-      properties:
-        discord:
-          description: Enter the discord ID of the user.
-          example: 101XXXXXXXXXX7XXXXX
-          type: string
-        email:
-          description: Enter the email address of the user.
-          example: abcde@fghi.com
-          type: string
-        inapp:
-          items:
-            $ref: '#/components/schemas/WSIDversionprofiles_channel_inapp'
-          type: array
-        push:
-          items:
-            $ref: '#/components/schemas/WSIDversionprofiles_channel_push'
-          type: array
-        slack:
-          description: Enter the channel ID, user ID, or email address of the user.
-          example: CXXXXXXXXXX
-          type: string
-        sms:
-          description: Enter the mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
-          example: +919879XXXXXX
-          type: string
-        teams:
-          description: Enter the channel name. For teams, we currently support sending to one channel only. To send to multiple channels, do get in touch and we can share a workaround.
-          example: General
-          type: string
-        voice:
-          description: Enter the mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
-          example: +919879XXXXXX
-          type: string
-        whatsapp:
-          description: Enter the WhatsApp mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX
-          example: +919879XXXXXX
-          type: string
-      type: object
-    distinct_id_channel_body:
-      properties:
-        channel:
-          $ref: '#/components/schemas/WSIDversionprofilesdistinct_idchannel_channel'
-      required:
-      - channel
-      type: object
-    inline_response_200_channel_inapp:
-      properties:
-        integration_id:
-          description: The integration ID that was used to generate the above token. If this value is null, then the above token is used for all InApp integrations.<br/><br/>The integration ID can be verified from Fyno's integrations page.
-          example: IXXXXXXX
-          type: string
-        status:
-          description: The status of the token. If `1`, the token is active and should receive notifications. If `0`, the token in inactive and should not receive notifications.
-          enum:
-          - 1
-          - 0
-          example: 1
-          type: integer
-        token:
-          description: Enter the distinct ID or the generated token of the user.
-          example: XXXXXXXX
-          type: string
-      type: object
-      required:
-      - token
-    WSIDversionprofiles_channel_inapp:
-      properties:
-        integration_id:
-          description: (Optional) Enter the integration ID that was used to generate the above token. This is helpful in identifying which integration to use when an account has multiple InApp integrations. If this value is null, then the above token is used for all InApp integrations.<br/><br/>The integration ID can be obtained from Fyno's integrations page.
-          example: IXXXXXXX
-          type: string
-        status:
-          description: (Optional) Enter 1 to specify that this token must be active and should receive notifications. Enter 0 to specify that this token must be inactive and should not receive any notifications. If null, the default value is 1.
-          enum:
-          - 1
-          - 0
-          type: integer
-        token:
-          description: Enter the distinct ID or the generated token of the user.
-          example: XXXXXXXX
-          type: string
-      required:
-      - token
-      type: object
   responses:
     SourceDistinctIDDoesNotExist:
       description: Source distinct ID does not exist
@@ -1996,86 +1996,6 @@ components:
                 type: string
               status:
                 example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    DistinctIDDoesNotExist3:
-      description: Distinct ID does not exist
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: Unable to update the record since the record does not exist
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    ProfileMergedSuccessfully:
-      description: Profiles merged successfully and the source profile is deleted
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: 1 Record(s) updated and 1 Records(s) deleted
-                type: string
-              status:
-                example: ok
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    APIKeyInvalid:
-      description: API Key or Workspace ID is invalid. User is unauthorised.
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: Invalid API details
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    ProfileCreatedSuccessfully:
-      description: Profile created successfully
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: Profile created successfully
-                type: string
-              status:
-                example: ok
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    ProfileDeletedSuccessfully:
-      description: Profile deleted successfully
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: 1 User(s) deleted successfully
-                type: string
-              status:
-                example: ok
                 type: string
             type: object
             required:
@@ -2097,6 +2017,38 @@ components:
             required:
             - _message
             - status
+    ProfileUpdated:
+      description: Profile updated successfully
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: 1 Record(s) updated successfully
+                type: string
+              status:
+                example: ok
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    ProfileCreatedSuccessfully:
+      description: Profile created successfully
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Profile created successfully
+                type: string
+              status:
+                example: ok
+                type: string
+            type: object
+            required:
+            - _message
+            - status
     DistinctIDDoesNotExist:
       description: Distinct ID does not exist
       content:
@@ -2113,49 +2065,17 @@ components:
             required:
             - _message
             - status
-    ProfileChannelUpdated:
-      description: Profile updated successfully
+    APIKeyInvalid:
+      description: API Key or Workspace ID is invalid. User is unauthorised.
       content:
         application/json:
           schema:
             properties:
               _message:
-                example: Channel has been modified successfully
-                type: string
-              status:
-                example: ok
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    DistinctIDDoesNotExist2:
-      description: Distinct ID does not exist
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: Cannot delete non existing user
+                example: Invalid API details
                 type: string
               status:
                 example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    ProfileUpdated:
-      description: Profile updated successfully
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: 1 Record(s) updated successfully
-                type: string
-              status:
-                example: ok
                 type: string
             type: object
             required:
@@ -2251,6 +2171,86 @@ components:
             - profile_id
             - version
             - channel_raw
+    ProfileDeletedSuccessfully:
+      description: Profile deleted successfully
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: 1 User(s) deleted successfully
+                type: string
+              status:
+                example: ok
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    ProfileChannelUpdated:
+      description: Profile updated successfully
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Channel has been modified successfully
+                type: string
+              status:
+                example: ok
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    ProfileMergedSuccessfully:
+      description: Profiles merged successfully and the source profile is deleted
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: 1 Record(s) updated and 1 Records(s) deleted
+                type: string
+              status:
+                example: ok
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    DistinctIDDoesNotExist2:
+      description: Distinct ID does not exist
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Cannot delete non existing user
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    DistinctIDDoesNotExist3:
+      description: Distinct ID does not exist
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Unable to update the record since the record does not exist
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
   securitySchemes:
     BearerAuth:
       type: http
