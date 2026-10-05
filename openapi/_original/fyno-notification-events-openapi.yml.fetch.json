@@ -1,0 +1,12 @@
+{
+ "url": "https://fyno.io/docs/openapi.json",
+ "requested_url": "https://fyno.io/docs/openapi.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 129643,
+ "sha256": "c14fa5074e4fb3462f555add52149b12ab378d7298b0bdca144355e0a1f3110c",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.958), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
