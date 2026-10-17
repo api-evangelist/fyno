@@ -419,22 +419,6 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    EmptyUnsetObject:
-      description: $unset object is empty
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: $unset channel should have atleast one item in array
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
     EmptyRemoveObject:
       description: $remove object is empty
       content:
@@ -443,70 +427,6 @@ components:
             properties:
               _message:
                 example: $remove has object/keys that is not allowed
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    EmptyActionBulkProperty:
-      description: $unset object is empty
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: $set has object/keys that is not allowed
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    EmptySetObject:
-      description: $set object is empty
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: $set has object/keys that is not allowed
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    EmptyAddObject:
-      description: $add object is empty
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: $add has object/keys that is not allowed
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
-    EmptySetOnceObject:
-      description: $once object is empty
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: $once has object/keys that is not allowed
                 type: string
               status:
                 example: error
@@ -567,14 +487,30 @@ components:
             required:
             - request_id
             - batch
-    EmptyAppendObject:
-      description: $append object is empty
+    EmptySetObject:
+      description: $set object is empty
       content:
         application/json:
           schema:
             properties:
               _message:
-                example: $append has object/keys that is not allowed
+                example: $set has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptyActionBulkProperty:
+      description: $unset object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $set has object/keys that is not allowed
                 type: string
               status:
                 example: error
@@ -595,26 +531,86 @@ components:
             type: object
             required:
             - request_id
+    EmptyAppendObject:
+      description: $append object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $append has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptyAddObject:
+      description: $add object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $add has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptyUnsetObject:
+      description: $unset object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $unset channel should have atleast one item in array
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
+    EmptySetOnceObject:
+      description: $once object is empty
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: $once has object/keys that is not allowed
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
   schemas:
-    append_to_user_property:
-      properties:
-        $append:
-          $ref: '#/components/schemas/append_to_user_property_fields'
-        distinct_id:
-          $ref: '#/components/schemas/distinct_id'
-      required:
-      - distinct_id
-      - $append
-      type: object
-    increment_user_property:
-      properties:
-        $add:
-          $ref: '#/components/schemas/increment_user_property_fields'
-        distinct_id:
-          $ref: '#/components/schemas/distinct_id'
-      required:
-      - distinct_id
-      - $add
+    remove_from_user_property_list_fields:
+      description: Enter the property name as JSON key and the value to remove as JSON value
+      additionalProperties:
+        oneOf:
+        - type: number
+        - type: string
+        - type: string
+          format: date
+      example:
+        property_1: some text
+        property_2: 123
+        property_3: 45.67
+        property_4: '2020-10-01T18:30:00.000Z'
+        property_5: '2021-12-01'
+        property_n: '2021-11-01T13:35:00+02:00'
       type: object
     user_property_bulk:
       properties:
@@ -674,31 +670,6 @@ components:
           type: array
       required:
       - batch
-    remove_from_user_property_list_fields:
-      description: Enter the property name as JSON key and the value to remove as JSON value
-      additionalProperties:
-        oneOf:
-        - type: number
-        - type: string
-        - type: string
-          format: date
-      example:
-        property_1: some text
-        property_2: 123
-        property_3: 45.67
-        property_4: '2020-10-01T18:30:00.000Z'
-        property_5: '2021-12-01'
-        property_n: '2021-11-01T13:35:00+02:00'
-      type: object
-    unset_user_property_fields:
-      description: Enter the property names to unset in an array
-      example:
-      - property_1
-      - property_2
-      - property_n
-      items:
-        type: string
-      type: array
     increment_user_property_fields:
       description: Enter the property name as JSON key and the numeric value to increment/decrement as JSON value
       example:
@@ -707,6 +678,16 @@ components:
         property_n: -39.45
       additionalProperties:
         type: number
+      type: object
+    append_to_user_property:
+      properties:
+        $append:
+          $ref: '#/components/schemas/append_to_user_property_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $append
       type: object
     unset_user_property:
       properties:
@@ -722,26 +703,6 @@ components:
       description: Enter the distinct ID that you use to identify the recipient.
       example: XXXXXXXX
       type: string
-    remove_from_user_property_list:
-      properties:
-        $remove:
-          $ref: '#/components/schemas/remove_from_user_property_list_fields'
-        distinct_id:
-          $ref: '#/components/schemas/distinct_id'
-      required:
-      - distinct_id
-      - $remove
-      type: object
-    set_user_property:
-      properties:
-        $set:
-          $ref: '#/components/schemas/set_user_property_fields'
-        distinct_id:
-          $ref: '#/components/schemas/distinct_id'
-      required:
-      - distinct_id
-      - $set
-      type: object
     set_user_property_fields:
       description: Enter the property name as JSON key and the value to set as JSON value
       additionalProperties:
@@ -770,6 +731,25 @@ components:
         - '2020-10-01T18:30:00Z'
         - '2021-11-01T13:35:00+02:00'
         - '2023-12-05'
+      type: object
+    unset_user_property_fields:
+      description: Enter the property names to unset in an array
+      example:
+      - property_1
+      - property_2
+      - property_n
+      items:
+        type: string
+      type: array
+    set_user_property:
+      properties:
+        $set:
+          $ref: '#/components/schemas/set_user_property_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $set
       type: object
     set_user_property_once_fields:
       description: Enter the property name as JSON key and the value to set as JSON value
@@ -809,6 +789,26 @@ components:
       required:
       - distinct_id
       - $once
+      type: object
+    increment_user_property:
+      properties:
+        $add:
+          $ref: '#/components/schemas/increment_user_property_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $add
+      type: object
+    remove_from_user_property_list:
+      properties:
+        $remove:
+          $ref: '#/components/schemas/remove_from_user_property_list_fields'
+        distinct_id:
+          $ref: '#/components/schemas/distinct_id'
+      required:
+      - distinct_id
+      - $remove
       type: object
     append_to_user_property_fields:
       description: Enter the property name as JSON key and the numeric or string value to append as JSON value

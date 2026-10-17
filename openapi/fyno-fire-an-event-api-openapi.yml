@@ -120,6 +120,70 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    inline_response_202_response_discord:
+      properties:
+        destination:
+          example: 101XXXXXXXXXX7XXXXX
+          type: string
+        msg_id:
+          example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
+          type: string
+        status:
+          example: ok
+          type: string
+      type: object
+      required:
+      - destination
+      - msg_id
+      - status
+    inline_response_202_response_push:
+      properties:
+        destination:
+          example: ExponentPushToken[XXXXX]
+          type: string
+        msg_id:
+          example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
+          type: string
+        status:
+          example: ok
+          type: string
+      type: object
+      required:
+      - destination
+      - msg_id
+      - status
+    inline_response_202_response_sms:
+      properties:
+        destination:
+          example: +919879XXXXXX
+          type: string
+        msg_id:
+          example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
+          type: string
+        status:
+          example: ok
+          type: string
+      type: object
+      required:
+      - destination
+      - msg_id
+      - status
+    inline_response_202_response_email:
+      properties:
+        destination:
+          example: abcde@fghi.com
+          type: string
+        msg_id:
+          example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
+          type: string
+        status:
+          example: ok
+          type: string
+      type: object
+      required:
+      - destination
+      - msg_id
+      - status
     callback:
       description: (Optional) You can enable callback for an event by specifying the `callback` attribute in the payload of the event. By enabling callback, you will be able to receive delivery status of the events onto your webhook URL specified in the "Allowlist URL" section of the application. See [Configuring Allowlist URL/SQS to receive Delivery Report](../../configuring-allowlist-url-sqs-to-receive-delivery-report) for more details.
       properties:
@@ -159,152 +223,6 @@ components:
       required:
       - custom_id
       type: object
-    to:
-      properties:
-        discord:
-          description: Enter the discord ID of the user.
-          example: 101XXXXXXXXXX7XXXXX
-          type: string
-        email:
-          description: Enter the email address of the user.
-          example: abcde@fghi.com
-          type: string
-        inapp:
-          description: Enter the distinct ID or the generated token of the user.
-          example: '12345'
-          type: string
-        push:
-          description: If you use multiple Push providers, add the following prefix for the respective provider tokens:<br/><br/>- <b>For Expo&#58;</b> `expo_token:`<your_pushtoken><br/>- <b>For FCM&#58;</b> `fcm_token:`<your_pushtoken><br/>- <b>For OneSignal playerId&#58;</b> `onesignal_player_id:`<enter_playerid><br/>- <b>For OneSignal externalId&#58;</b> `onesignal_external_id:`<enter_externalid><br/>- <b>For Mi Push&#58;</b> `mi_token:`<your_pushtoken><br/><br/>If you use just one provider, then the prefix is not required. However, if you wish to use OneSignal with playerId token, then the prefix is required.
-          example: ExponentPushToken[XXXXX]
-          type: string
-        slack:
-          description: Enter the channel ID, user ID, or email address of the user.
-          example: CXXXXXXXXXX
-          type: string
-        sms:
-          description: Enter the mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
-          example: +919879XXXXXX
-          type: string
-        teams:
-          description: Enter the channel name. For teams, we currently support sending to one channel only. To send to multiple channels, do get in touch and we can share a workaround.
-          example: General
-          type: string
-        voice:
-          description: Enter the mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
-          example: +919879XXXXXX
-          type: string
-        whatsapp:
-          description: Enter the WhatsApp mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX
-          example: +919879XXXXXX
-          type: string
-      type: object
-    inline_response_202_response_push:
-      properties:
-        destination:
-          example: ExponentPushToken[XXXXX]
-          type: string
-        msg_id:
-          example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
-          type: string
-        status:
-          example: ok
-          type: string
-      type: object
-      required:
-      - destination
-      - msg_id
-      - status
-    event_bulk_body:
-      properties:
-        batch:
-          description: Your batch payload must specify at least *`distinct_id`* or *`to`* while firing a notification event.<br/><br/>If the payload contains&#58;<br/><br/>- <b>Option 1&#58;</b> ONLY *`to`* (and no *`distinct_id`*) - the event uses all destination values from the *`to`* object (as it is).<br/><br/>- <b>Option 2&#58;</b> ONLY *`distinct_id`* (and no *`to`*) - the event uses all destination values (such as SMS, WhatsApp, Email, Push, Voice and so on) from the user's profile and sends the notification.<br/><br/>- <b>Option 3&#58;</b> BOTH *`distinct_id`* and *`to`* - the `to` and `distinct_id` channel data merges (`to` object take precedences) and sends the notification. The sent notification is tagged to the ID specified, which can be then used to search the logs by using `distinct_id`.
-          items:
-            oneOf:
-            - properties:
-                callback:
-                  $ref: '#/components/schemas/callback'
-                data:
-                  $ref: '#/components/schemas/data'
-                to:
-                  $ref: '#/components/schemas/to'
-              required:
-              - event
-              - to
-              type: object
-            - properties:
-                callback:
-                  $ref: '#/components/schemas/callback'
-                data:
-                  $ref: '#/components/schemas/data'
-                distinct_id:
-                  $ref: '#/components/schemas/distinct_id'
-              required:
-              - distinct_id
-              - event
-              type: object
-            - properties:
-                callback:
-                  $ref: '#/components/schemas/callback'
-                data:
-                  $ref: '#/components/schemas/data'
-                distinct_id:
-                  $ref: '#/components/schemas/distinct_id'
-                to:
-                  $ref: '#/components/schemas/to'
-              required:
-              - distinct_id
-              - event
-              - to
-              type: object
-          type: array
-        event:
-          $ref: '#/components/schemas/event'
-      required:
-      - batch
-      - event
-      type: object
-    inline_response_202_response_inapp:
-      properties:
-        destination:
-          example: '12345'
-          type: string
-        msg_id:
-          example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
-          type: string
-        status:
-          example: ok
-          type: string
-      type: object
-      required:
-      - destination
-      - msg_id
-      - status
-    data:
-      description: (Optional) Enter the keys and values of your replaceabale placeholders. These values are replaced in the respective keys of the template when the notification is sent.
-      example:
-        placeholder_key_1: placeholder_value_1
-        placeholder_key_2: placeholder_value_2
-      type: object
-    inline_response_202_response_slack:
-      properties:
-        destination:
-          example: CXXXXXXXXXX
-          type: string
-        msg_id:
-          example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
-          type: string
-        status:
-          example: ok
-          type: string
-      type: object
-      required:
-      - destination
-      - msg_id
-      - status
-    distinct_id:
-      description: Enter the distinct ID that you use to identify the recipient.
-      example: XXXXXXXX
-      type: string
     inline_response_202_response_teams:
       properties:
         destination:
@@ -365,10 +283,45 @@ components:
         - event
         - to
         type: object
-    event:
-      description: Enter the name of the event you wish to fire.
-      example: event_name
-      type: string
+    to:
+      properties:
+        discord:
+          description: Enter the discord ID of the user.
+          example: 101XXXXXXXXXX7XXXXX
+          type: string
+        email:
+          description: Enter the email address of the user.
+          example: abcde@fghi.com
+          type: string
+        inapp:
+          description: Enter the distinct ID or the generated token of the user.
+          example: '12345'
+          type: string
+        push:
+          description: If you use multiple Push providers, add the following prefix for the respective provider tokens:<br/><br/>- <b>For Expo&#58;</b> `expo_token:`<your_pushtoken><br/>- <b>For FCM&#58;</b> `fcm_token:`<your_pushtoken><br/>- <b>For OneSignal playerId&#58;</b> `onesignal_player_id:`<enter_playerid><br/>- <b>For OneSignal externalId&#58;</b> `onesignal_external_id:`<enter_externalid><br/>- <b>For Mi Push&#58;</b> `mi_token:`<your_pushtoken><br/><br/>If you use just one provider, then the prefix is not required. However, if you wish to use OneSignal with playerId token, then the prefix is required.
+          example: ExponentPushToken[XXXXX]
+          type: string
+        slack:
+          description: Enter the channel ID, user ID, or email address of the user.
+          example: CXXXXXXXXXX
+          type: string
+        sms:
+          description: Enter the mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
+          example: +919879XXXXXX
+          type: string
+        teams:
+          description: Enter the channel name. For teams, we currently support sending to one channel only. To send to multiple channels, do get in touch and we can share a workaround.
+          example: General
+          type: string
+        voice:
+          description: Enter the mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX.
+          example: +919879XXXXXX
+          type: string
+        whatsapp:
+          description: Enter the WhatsApp mobile number of the user. The number must start with the country code (preferably in E.164 format). For example&#58; +919879XXXXXX
+          example: +919879XXXXXX
+          type: string
+      type: object
     inline_response_202_1_response:
       properties:
         discord:
@@ -393,10 +346,16 @@ components:
         whatsapp:
           $ref: '#/components/schemas/inline_response_202_response_sms'
       type: object
-    inline_response_202_response_sms:
+    data:
+      description: (Optional) Enter the keys and values of your replaceabale placeholders. These values are replaced in the respective keys of the template when the notification is sent.
+      example:
+        placeholder_key_1: placeholder_value_1
+        placeholder_key_2: placeholder_value_2
+      type: object
+    inline_response_202_response_slack:
       properties:
         destination:
-          example: +919879XXXXXX
+          example: CXXXXXXXXXX
           type: string
         msg_id:
           example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
@@ -409,10 +368,14 @@ components:
       - destination
       - msg_id
       - status
-    inline_response_202_response_email:
+    distinct_id:
+      description: Enter the distinct ID that you use to identify the recipient.
+      example: XXXXXXXX
+      type: string
+    inline_response_202_response_inapp:
       properties:
         destination:
-          example: abcde@fghi.com
+          example: '12345'
           type: string
         msg_id:
           example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
@@ -425,22 +388,59 @@ components:
       - destination
       - msg_id
       - status
-    inline_response_202_response_discord:
+    event:
+      description: Enter the name of the event you wish to fire.
+      example: event_name
+      type: string
+    event_bulk_body:
       properties:
-        destination:
-          example: 101XXXXXXXXXX7XXXXX
-          type: string
-        msg_id:
-          example: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXX
-          type: string
-        status:
-          example: ok
-          type: string
-      type: object
+        batch:
+          description: Your batch payload must specify at least *`distinct_id`* or *`to`* while firing a notification event.<br/><br/>If the payload contains&#58;<br/><br/>- <b>Option 1&#58;</b> ONLY *`to`* (and no *`distinct_id`*) - the event uses all destination values from the *`to`* object (as it is).<br/><br/>- <b>Option 2&#58;</b> ONLY *`distinct_id`* (and no *`to`*) - the event uses all destination values (such as SMS, WhatsApp, Email, Push, Voice and so on) from the user's profile and sends the notification.<br/><br/>- <b>Option 3&#58;</b> BOTH *`distinct_id`* and *`to`* - the `to` and `distinct_id` channel data merges (`to` object take precedences) and sends the notification. The sent notification is tagged to the ID specified, which can be then used to search the logs by using `distinct_id`.
+          items:
+            oneOf:
+            - properties:
+                callback:
+                  $ref: '#/components/schemas/callback'
+                data:
+                  $ref: '#/components/schemas/data'
+                to:
+                  $ref: '#/components/schemas/to'
+              required:
+              - event
+              - to
+              type: object
+            - properties:
+                callback:
+                  $ref: '#/components/schemas/callback'
+                data:
+                  $ref: '#/components/schemas/data'
+                distinct_id:
+                  $ref: '#/components/schemas/distinct_id'
+              required:
+              - distinct_id
+              - event
+              type: object
+            - properties:
+                callback:
+                  $ref: '#/components/schemas/callback'
+                data:
+                  $ref: '#/components/schemas/data'
+                distinct_id:
+                  $ref: '#/components/schemas/distinct_id'
+                to:
+                  $ref: '#/components/schemas/to'
+              required:
+              - distinct_id
+              - event
+              - to
+              type: object
+          type: array
+        event:
+          $ref: '#/components/schemas/event'
       required:
-      - destination
-      - msg_id
-      - status
+      - batch
+      - event
+      type: object
     inline_response_202_response:
       properties:
         discord:
@@ -463,6 +463,22 @@ components:
           $ref: '#/components/schemas/inline_response_202_response_sms'
       type: object
   responses:
+    APIKeyInvalid:
+      description: API Key or Workspace ID is invalid. User is unauthorised.
+      content:
+        application/json:
+          schema:
+            properties:
+              _message:
+                example: Invalid API details
+                type: string
+              status:
+                example: error
+                type: string
+            type: object
+            required:
+            - _message
+            - status
     EventRequestAccepted:
       description: Request accepted successfully and it will be processed asynchronously.
       content:
@@ -487,14 +503,14 @@ components:
             - received_time
             - request_id
             - response
-    APIKeyInvalid:
-      description: API Key or Workspace ID is invalid. User is unauthorised.
+    EventNameDoesNotExist:
+      description: Event name does not exist
       content:
         application/json:
           schema:
             properties:
               _message:
-                example: Invalid API details
+                example: The notification event name 'event_name' is invalid or does not exists on prod
                 type: string
               status:
                 example: error
@@ -523,22 +539,6 @@ components:
                   $ref: '#/components/schemas/inline_response_202_1_response'
                 type: array
             type: object
-    EventNameDoesNotExist:
-      description: Event name does not exist
-      content:
-        application/json:
-          schema:
-            properties:
-              _message:
-                example: The notification event name 'event_name' is invalid or does not exists on prod
-                type: string
-              status:
-                example: error
-                type: string
-            type: object
-            required:
-            - _message
-            - status
   securitySchemes:
     BearerAuth:
       type: http
