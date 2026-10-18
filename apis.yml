@@ -251,6 +251,8 @@ apis:
   humanURL: https://fyno.io/docs/notification-event-creation
   baseURL: https://api.fyno.io/v1
   tags:
+  - Suppression
+  tags_raw:
   - Suppression List
   properties:
   - type: OpenAPI
