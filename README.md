@@ -1,4 +1,4 @@
-# Fyno (fyno)
+# Fyno
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,73 +64,178 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Fyno is a notification routing and orchestration platform that provides a single unified REST API for sending and managing notifications across 10+ communication channels including email, SMS, push, WhatsApp, in-app, RCS, voice, and iMessage. Engineering teams integrate once to gain access to 100+ pre-built provider integrations, a no-code workflow builder, and an advanced routing engine with automated throttling. The platform provides detailed analytics, delivery tracking, user profile management, suppression lists, and campaign management capabilities with a 99.99% uptime SLA.
+Fyno is a notification routing and orchestration platform that provides a single unified REST API for sending and managing notifications across 10+ communication channels including email, SMS, push, WhatsApp, in-app, RCS, voice, and iMessage. Engineering teams integrate once to gain access to 100+ pre-built provider integrations, a no-code workflow builder, and an advanced routing engine with automated throttling. The platform provides detailed analytics, delivery tracking, user profile management, suppression lists, and campaign management capabilities with a 99.99% uptime SLA. Fyno also includes Fyno Verify (OTP/TOTP authentication) and Fyno Shorty (URL shortener) as bundled services.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/fyno/refs/heads/main/apis.yml
+**Areas:** Notification · Messaging · Communications · Push Notifications · Email · SMS · WhatsApp · In-App · Orchestration · Multi-Channel
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=fyno-api-evangelist&utm_content=repo
+## Fyno on APIs.io
 
-## Tags
+Everything profiled for Fyno is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fyno/](https://apis.io/providers/fyno/)** — or go straight to one of the APIs or properties below.
 
-- Notifications
-- Messaging
-- Communication
-- Push Notifications
-- Email
-- SMS
-- WhatsApp
-- In-App
-- Orchestration
-- Multi-Channel
+### APIs (10)
 
-## APIs
+- [Fyno User Profiles API](https://apis.io/apis/fyno/user-profiles/) — REST API for creating, reading, updating, and deleting user profiles within the Fyno platform. Supports adding and updating channel-specific destination…
+- [Fyno User Subscriptions API](https://apis.io/apis/fyno/user-subscriptions/) — REST API for managing user notification preferences and subscription settings. Allows retrieval and updates of per-user channel preferences and…
+- [Fyno Suppression List API](https://apis.io/apis/fyno/suppression-list/) — REST API for managing the global suppression list to prevent unwanted notifications from being sent to specific users. Supports fetching the list, adding…
+- [Fyno Verify API](https://apis.io/apis/fyno/verify/) — OTP and TOTP-based verification API for authenticating users via SMS, email, or authenticator apps. Bundled with Growth and above plans at no additional…
+- [Fyno Fire an Event API](https://apis.io/apis/fyno/fyno-fire-an-event-api/) — The Fire an Event API from Fyno — 2 operation(s) for fire an event.
+- [Fyno Verify API](https://apis.io/apis/fyno/fyno-fyno-verify-api/) — The Fyno Verify API from Fyno — 1 operation(s) for fyno verify.
+- [Fyno Manage User Profiles API](https://apis.io/apis/fyno/fyno-manage-user-profiles-api/) — The Manage User Profiles API from Fyno — 6 operation(s) for manage user profiles.
+- [Fyno Manage User Subscriptions & Preferences API](https://apis.io/apis/fyno/fyno-manage-user-subscriptions-preferences-api/) — The Manage User Subscriptions & Preferences API from Fyno — 2 operation(s) for manage user subscriptions & preferences.
+- [Fyno Suppression List API](https://apis.io/apis/fyno/fyno-suppression-list-api/) — The Suppression List API from Fyno — 1 operation(s) for suppression list.
+- [Fyno User Properties API](https://apis.io/apis/fyno/fyno-user-properties-api/) — The User Properties API from Fyno — 7 operation(s) for user properties.
 
-| API | Description | Human URL |
-|-----|-------------|-----------|
-| Fyno Notification Events API | Core REST API for triggering notification events to single or multiple users across all configured channels. Supports idempotent requests and bulk batch sending. | https://fyno.io/docs/notification-event-creation |
-| Fyno User Profiles API | REST API for creating, reading, updating, and deleting user profiles and managing channel-specific destination data. | https://fyno.io/docs/home |
-| Fyno User Subscriptions API | REST API for managing user notification preferences and per-channel opt-in/opt-out controls. | https://fyno.io/docs/home |
-| Fyno Suppression List API | REST API for managing the global suppression list to prevent notifications to opted-out users. | https://fyno.io/docs/home |
-| Fyno Verify API | OTP and TOTP-based verification API for authenticating users via SMS, email, or authenticator apps. | https://fyno.io/docs/home |
+### Published properties
 
-## Plans, Rate Limits, and FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | File |
-|----------|------|
-| Plans & Pricing | [plans/fyno-plans-pricing.yml](plans/fyno-plans-pricing.yml) |
-| Rate Limits | [rate-limits/fyno-rate-limits.yml](rate-limits/fyno-rate-limits.yml) |
-| FinOps | [finops/fyno-finops.yml](finops/fyno-finops.yml) |
+#### Agentic access (1)
 
-### Plan Summary
+Which operations an agent can call, which act, and which need a human in the loop.
 
-| Plan | Price (USD/year) | Monthly API Requests | Overage per 1M |
-|------|-----------------|---------------------|----------------|
-| Free Trial | $0 (14 days) | 50,000 (trial total) | N/A |
-| Starter | $3,000 | 200,000 | $75 |
-| Growth | $8,000 | 800,000 | $55 |
-| Business | $25,000 | 3,500,000 | $40 |
-| Enterprise | $60,000+ | 12,500,000+ | $30 |
+- [Fyno Agentic Access](https://apis.io/agentic-access/fyno/fyno-agentic-access/)
 
-## Timestamps
+#### JSON Schema (2)
 
-- Created: 2026-06-12
-- Modified: 2026-06-12
+The data models the API reads and writes.
 
-## Common Properties
+- [Fyno Notification Event](https://apis.io/schemas/fyno/fyno-notification-event/)
+- [Fyno User Profile](https://apis.io/schemas/fyno/fyno-user-profile/)
 
-| Type | URL |
-|------|-----|
-| Website | https://fyno.io/ |
-| Documentation | https://fyno.io/docs/home |
-| API Reference | https://fyno.io/docs/api-reference |
-| GitHub Organization | https://github.com/fynoio |
-| LinkedIn | https://in.linkedin.com/company/fyno-io |
-| X (Twitter) | https://x.com/fynohq |
-| Blog | https://fyno.io/blog |
-| Pricing | https://fyno.io/ratecard |
-| Status Page | https://status.fyno.io/ |
-| Changelog | https://fyno.io/docs/release-notes |
+#### JSON-LD (1)
 
-## Maintainers
+Linked-data contexts for the provider's vocabulary.
 
-- Kin Lane / kin@apievangelist.com
+- [Fyno Context](https://apis.io/jsonld/fyno/fyno-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Fyno Vocabulary](https://apis.io/vocabularies/fyno/fyno-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Fyno Bulk Notify Example](https://apis.io/examples/fyno/fyno-bulk-notify-example/)
+- [Fyno Create User Profile Example](https://apis.io/examples/fyno/fyno-create-user-profile-example/)
+- [Fyno Notify Single User Example](https://apis.io/examples/fyno/fyno-notify-single-user-example/)
+- [Fyno Notify With Explicit Channels Example](https://apis.io/examples/fyno/fyno-notify-with-explicit-channels-example/)
+
+#### Collections (12)
+
+Postman and Open Collection request collections.
+
+- [Fyno Rest Fire an Event API](https://apis.io/collections/fyno/open-fyno-fire-an-event-api/)
+- [Fyno Rest Fire an Event Fyno Verify API](https://apis.io/collections/fyno/open-fyno-fyno-verify-api/)
+- [Fyno Rest Fire an Event Manage User Profiles API](https://apis.io/collections/fyno/open-fyno-manage-user-profiles-api/)
+- [Fyno Rest Fire an Event Manage User Subscriptions & Preferences API](https://apis.io/collections/fyno/open-fyno-manage-user-subscriptions-preferences-api/)
+- [Fyno Rest Fire an Event Suppression List API](https://apis.io/collections/fyno/open-fyno-suppression-list-api/)
+- [Fyno Rest Fire an Event User Properties API](https://apis.io/collections/fyno/open-fyno-user-properties-api/)
+- [Fyno Rest Fire an Event API](https://apis.io/collections/fyno/postman-fyno-fire-an-event-api/)
+- [Fyno Rest Fire an Event Fyno Verify API](https://apis.io/collections/fyno/postman-fyno-fyno-verify-api/)
+- [Fyno Rest Fire an Event Manage User Profiles API](https://apis.io/collections/fyno/postman-fyno-manage-user-profiles-api/)
+- [Fyno Rest Fire an Event Manage User Subscriptions & Preferences API](https://apis.io/collections/fyno/postman-fyno-manage-user-subscriptions-preferences-api/)
+- [Fyno Rest Fire an Event Suppression List API](https://apis.io/collections/fyno/postman-fyno-suppression-list-api/)
+- [Fyno Rest Fire an Event User Properties API](https://apis.io/collections/fyno/postman-fyno-user-properties-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Fyno — jsonschema rules](https://apis.io/rules/fyno/fyno-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Fyno Authentication](https://apis.io/security/fyno/fyno-authentication/)
+- [Fyno Domain Security](https://apis.io/security/fyno/fyno-domain-security/)
+- [Fyno Trust Center](https://apis.io/security/fyno/fyno-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Fyno Plans Pricing](https://apis.io/plans/fyno/fyno-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Fyno Rate Limits](https://apis.io/rate-limits/fyno/fyno-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Fyno Finops](https://apis.io/finops/fyno/fyno-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://fyno.io/)
+- [Documentation](https://fyno.io/docs/home)
+- [API reference](https://fyno.io/docs/api-reference)
+- [Pricing](https://fyno.io/ratecard)
+- [Changelog](https://fyno.io/docs/release-notes)
+- [Blog](https://fyno.io/blog)
+- [GitHub](https://github.com/fynoio)
+- [Status](https://status.fyno.io/)
+
+## API Evangelist rating
+
+**Kin Score 40.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 65.7 |
+| Contract governance | 23.5 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 15.8 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 18.3** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fyno/](https://apis.io/providers/fyno/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Fyno: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fyno/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
